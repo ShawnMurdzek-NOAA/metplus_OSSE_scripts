@@ -29,5 +29,5 @@ NOTE: To run PointStat, obs must first be converted from prepBUFR to netCDF usin
 
 ## Useful Documentation
 
-[MET](https://met.readthedocs.io/en/latest/index.html): Includes in-depth details about all the various options for the MET tools.
-[METplus](https://metplus.readthedocs.io/en/latest/index.html): Includes information about the METplus wrapper options, but the user will need to refer to the MET documentation for details.
+- [MET](https://met.readthedocs.io/en/latest/index.html): Includes in-depth details about all the various options for the MET tools.  
+- [METplus](https://metplus.readthedocs.io/en/latest/index.html): Includes information about the METplus wrapper options, but the user will need to refer to the MET documentation for details.
