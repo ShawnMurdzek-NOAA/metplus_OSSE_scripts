@@ -7,6 +7,7 @@ METplus is a wrapper for the Model Evaluation Tools (MET) package. MET is a very
 - `utils`: Directory containing scripts for plotting and analyzing METplus output.
 - `metplus_orion.env`: File containing the METplus environment.
 - `PB2NC.conf`: Configuration file for the PB2NC tool, which converts prepBUFR files to netCDF files that can be used by MET. 
+- `PointStat_sfc.conf`: Configuration file for surface verification using the PointStat tool. Verification statistics are generated for 2-m T, 2-m Q, and 10-m winds. Both ADPSFC and SFCSHP platforms are used. 
 - `run_metplus.sh`: Main driver to run METplus.
 - `smurdzek_orion.conf`: Configuration file containing the input and output directories.
 
