@@ -20,7 +20,8 @@ import datetime as dt
 #---------------------------------------------------------------------------------------------------
 
 # Input file information
-parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/'
+parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/real_red_sims/'
+#parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/'
 input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/output/point_stat',
                       'color':'r'},
               'no_aircft':{'dir':parent_dir + 'winter_no_aircft/output/point_stat',
@@ -35,13 +36,29 @@ plot_lvl = 'Z2'
 plot_stat = 'MAE'
 ob_subset = 'ADPSFC'
 
+# Other plotting options
+toggle_pts = False
+
 # Valid times (as datetime objects)
-valid_times = [dt.datetime(2022, 2, 1, 10) + dt.timedelta(hours=i) for i in range(12)]
+
+# Winter real_red sims
+#valid_times = [dt.datetime(2022, 2, 1, 10) + dt.timedelta(hours=i) for i in range(158)] # 1-hr forecasts
+#valid_times = [dt.datetime(2022, 2, 1, 12) + dt.timedelta(hours=i) for i in range(156)] # 3-hr forecasts
+valid_times = [dt.datetime(2022, 2, 1, 15) + dt.timedelta(hours=i) for i in range(153)] # 6-hr forecasts
+
+# Winter synthetic sims
+#valid_times = [dt.datetime(2022, 2, 1, 10) + dt.timedelta(hours=i) for i in 
+#               list(range(83)) + list(range(84, 158))] # 1-hr forecasts
+#valid_times = [dt.datetime(2022, 2, 1, 12) + dt.timedelta(hours=i) for i in 
+#               list(range(83)) + list(range(84, 156))] # 3-hr forecasts
+#valid_times = [dt.datetime(2022, 2, 1, 15) + dt.timedelta(hours=i) for i in 
+#               list(range(83)) + list(range(84, 153))] # 6-hr forecasts
 
 # Forecast lead time (hrs)
-fcst_lead = 1
+fcst_lead = 6
 
-output_file = 'T2m_timeseries_syn.png'
+output_file = ('%s_%s_%dhr_%s_%s_timeseries_real_red.png' % 
+               (plot_var, plot_lvl, fcst_lead, plot_stat, ob_subset))
 
 
 #---------------------------------------------------------------------------------------------------
@@ -52,10 +69,10 @@ output_file = 'T2m_timeseries_syn.png'
 verif_df = {}
 for key in input_sims.keys():
     raw_dfs = []
-    for t in valid_times:
-        raw_dfs.append(pd.read_csv('%s/point_stat_%02d0000L_%sV_%s.txt' % 
-                                   (input_sims[key]['dir'], fcst_lead, t.strftime('%Y%m%d_%H%M%S'), line_type), 
-                                   delim_whitespace=True))
+    for j, t in enumerate(valid_times):
+        fname = ('%s/point_stat_%02d0000L_%sV_%s.txt' %
+                 (input_sims[key]['dir'], fcst_lead, t.strftime('%Y%m%d_%H%M%S'), line_type))
+        raw_dfs.append(pd.read_csv(fname, delim_whitespace=True))
     verif_df[key] = pd.concat(raw_dfs)
 
     # Compute derived statistics
@@ -69,13 +86,17 @@ for key in input_sims.keys():
     plot_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
                                 (verif_df[key]['FCST_LEV'] == plot_lvl) &
                                 (verif_df[key]['OBTYPE'] == ob_subset)].copy()
-    ax.plot(valid_times, plot_df[plot_stat], linestyle='-', marker='o', c=input_sims[key]['color'], 
-            label='%s (mean = %.5f)' % (key, np.mean(plot_df[plot_stat])))
+    if toggle_pts:
+        ax.plot(valid_times, plot_df[plot_stat], linestyle='-', marker='o', c=input_sims[key]['color'], 
+                label='%s (mean = %.5f)' % (key, np.mean(plot_df[plot_stat])))
+    else:
+        ax.plot(valid_times, plot_df[plot_stat], linestyle='-', c=input_sims[key]['color'], 
+                label='%s (mean = %.5f)' % (key, np.mean(plot_df[plot_stat])))
 if plot_stat == 'TOTAL':
     ax.set_ylabel('number', size=14)
 else:
     ax.set_ylabel('%s %s %s (%s)' % (plot_lvl, plot_var, plot_stat, plot_df['FCST_UNITS'].values[0]), size=14)
-ax.set_title('%d-hr Forecast' % fcst_lead, size=18)
+ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, ob_subset), size=18)
 ax.grid()
 ax.legend()
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
