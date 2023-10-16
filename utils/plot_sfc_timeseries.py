@@ -76,10 +76,7 @@ for key in input_sims.keys():
     verif_df[key] = mt.read_ascii(fnames)
 
     # Compute derived statistics
-    if line_type == 'sl1l2':
-        verif_df[key] = mt.compute_stats_sl1l2(verif_df[key])
-    elif line_type == 'vl1l2':
-        verif_df[key] = mt.compute_stats_vl1l2(verif_df[key])
+    verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
 
 # Make plot
 fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
@@ -89,7 +86,7 @@ for key in input_sims.keys():
                                 (verif_df[key]['OBTYPE'] == ob_subset)].copy()
     if toggle_pts:
         ax.plot(valid_times, plot_df[plot_stat], linestyle='-', marker='o', c=input_sims[key]['color'], 
-                label='%s (mean = %.5f)' % (key, np.mean(plot_df[plot_stat])))
+                label='%s (mean = %.6f)' % (key, np.mean(plot_df[plot_stat])))
     else:
         ax.plot(valid_times, plot_df[plot_stat], linestyle='-', c=input_sims[key]['color'], 
                 label='%s (mean = %.6f)' % (key, np.mean(plot_df[plot_stat])))
