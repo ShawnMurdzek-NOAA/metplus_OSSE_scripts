@@ -24,13 +24,13 @@ import metplus_tools as mt
 # Input file information
 #parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/real_red_sims/'
 parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/'
-input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/output/point_stat',
+input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/sfc/output/point_stat',
                       'color':'r'},
-              'no_aircft':{'dir':parent_dir + 'winter_no_aircft/output/point_stat',
+              'no_aircft':{'dir':parent_dir + 'winter_no_aircft/sfc/output/point_stat',
                            'color':'b'},
-              'no_raob':{'dir':parent_dir + 'winter_no_raob/output/point_stat',
+              'no_raob':{'dir':parent_dir + 'winter_no_raob/sfc/output/point_stat',
                          'color':'orange'},
-              'no_sfc':{'dir':parent_dir + 'winter_no_sfc/output/point_stat',
+              'no_sfc':{'dir':parent_dir + 'winter_no_sfc/sfc/output/point_stat',
                         'color':'gray'}}
 line_type = 'sl1l2'
 plot_var = 'TMP'

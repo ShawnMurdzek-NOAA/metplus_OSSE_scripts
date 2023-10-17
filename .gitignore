@@ -6,3 +6,6 @@ real_data_pt_ob_verif
 *.png
 *.pdf
 *.jpg
+
+# pycache
+__pycache__

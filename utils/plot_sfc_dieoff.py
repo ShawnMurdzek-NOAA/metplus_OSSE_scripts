@@ -22,20 +22,25 @@ import metplus_tools as mt
 #---------------------------------------------------------------------------------------------------
 
 # Input file information
-parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/real_red_sims/'
+#parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/real_red_sims/'
 #parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/'
-input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/output/point_stat',
+parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/'
+input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/sfc/output/point_stat',
                       'color':'r'},
-              'no_aircft':{'dir':parent_dir + 'winter_no_aircft/output/point_stat',
+              'no_aircft':{'dir':parent_dir + 'winter_no_aircft/sfc/output/point_stat',
                            'color':'b'},
-              'no_raob':{'dir':parent_dir + 'winter_no_raob/output/point_stat',
+              'no_raob':{'dir':parent_dir + 'winter_no_raob/sfc/output/point_stat',
                          'color':'orange'},
-              'no_sfc':{'dir':parent_dir + 'winter_no_sfc/output/point_stat',
+              'no_sfc':{'dir':parent_dir + 'winter_no_sfc/sfc/output/point_stat',
                         'color':'gray'}}
-line_type = 'sl1l2'
-plot_var = 'TMP'
-plot_lvl = 'Z2'
-plot_stat = 'RMSE'
+input_sims = {'real':{'dir':parent_dir + 'real_red_sims/winter_updated/sfc/output/point_stat',
+                      'color':'r'},
+              'OSSE':{'dir':parent_dir + 'syn_data_sims/winter_updated/sfc/output/point_stat',
+                      'color':'b'}}
+line_type = 'vl1l2'
+plot_var = 'UGRD_VGRD'
+plot_lvl = 'Z10'
+plot_stat = 'VECT_RMSE'
 ob_subset = 'ADPSFC'
 
 # Other plotting options
@@ -47,7 +52,7 @@ valid_times = [dt.datetime(2022, 2, 1, 10) + dt.timedelta(hours=i) for i in rang
 # Forecast lead times (hrs)
 fcst_lead = [0, 1, 2, 3, 6, 12]
 
-output_file = ('%s_%s_%s_%s_dieoff_real_red.png' % 
+output_file = ('%s_%s_%s_%s_dieoff_ctrl.png' % 
                (plot_var, plot_lvl, plot_stat, ob_subset))
 
 
@@ -71,21 +76,21 @@ for key in input_sims.keys():
 # Make plot
 fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
 for key in input_sims.keys():
-    xplot = []
+    yplot = []
     for l in fcst_lead:
         red_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
                                    (verif_df[key]['FCST_LEV'] == plot_lvl) &
                                    (verif_df[key]['OBTYPE'] == ob_subset) &
                                    (verif_df[key]['FCST_LEAD'] == l*1e4)].copy()
         stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type)
-        xplot.append(stats_df[plot_stat].values[0])
-    xplot = np.array(xplot)
+        yplot.append(stats_df[plot_stat].values[0])
+    yplot = np.array(yplot)
     if toggle_pts:
-        ax.plot(fcst_lead, xplot, linestyle='-', marker='o', c=input_sims[key]['color'], 
-                label='%s (mean = %.6f)' % (key, np.mean(xplot)))
+        ax.plot(fcst_lead, yplot, linestyle='-', marker='o', c=input_sims[key]['color'], 
+                label='%s (mean = %.6f)' % (key, np.mean(yplot)))
     else:
-        ax.plot(fcst_lead, xplot, linestyle='-', c=input_sims[key]['color'], 
-                label='%s (mean = %.6f)' % (key, np.mean(xplot)))
+        ax.plot(fcst_lead, yplot, linestyle='-', c=input_sims[key]['color'], 
+                label='%s (mean = %.6f)' % (key, np.mean(yplot)))
 if plot_stat == 'TOTAL':
     ax.set_ylabel('number', size=14)
 else:
