@@ -23,8 +23,8 @@ import metplus_tools as mt
 
 # Input file information
 #parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/real_red_sims/'
-#parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/'
-parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/'
+parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/'
+#parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/'
 input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/upper_air/output/point_stat',
                       'color':'r'},
               'no_aircft':{'dir':parent_dir + 'winter_no_aircft/upper_air/output/point_stat',
@@ -33,10 +33,10 @@ input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/upper_air/output/point_
                          'color':'orange'},
               'no_sfc':{'dir':parent_dir + 'winter_no_sfc/upper_air/output/point_stat',
                         'color':'gray'}}
-input_sims = {'real':{'dir':parent_dir + 'real_red_sims/winter_updated/upper_air/output/point_stat',
-                      'color':'r'},
-              'OSSE':{'dir':parent_dir + 'syn_data_sims/winter_updated/upper_air/output/point_stat',
-                      'color':'b'}}
+#input_sims = {'real':{'dir':parent_dir + 'real_red_sims/winter_updated/upper_air/output/point_stat',
+#                      'color':'r'},
+#              'OSSE':{'dir':parent_dir + 'syn_data_sims/winter_updated/upper_air/output/point_stat',
+#                      'color':'b'}}
 line_type = 'sl1l2'
 plot_var = 'TMP'
 plot_stat = 'TOTAL'
@@ -53,7 +53,7 @@ valid_times = [dt.datetime(2022, 2, 1, 15) + dt.timedelta(hours=i) for i in rang
 # Forecast lead times (hrs)
 fcst_lead = 6
 
-output_file = ('%s_%s_%s_%dhr_vprof_ctrl.png' % 
+output_file = ('%s_%s_%s_%dhr_vprof_syn.png' % 
                (plot_var, plot_stat, ob_subset, fcst_lead))
 
 

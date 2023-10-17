@@ -37,10 +37,10 @@ input_sims = {'real':{'dir':parent_dir + 'real_red_sims/winter_updated/sfc/outpu
                       'color':'r'},
               'OSSE':{'dir':parent_dir + 'syn_data_sims/winter_updated/sfc/output/point_stat',
                       'color':'b'}}
-line_type = 'vl1l2'
-plot_var = 'UGRD_VGRD'
-plot_lvl = 'Z10'
-plot_stat = 'VECT_RMSE'
+line_type = 'sl1l2'
+plot_var = 'TMP'
+plot_lvl = 'Z2'
+plot_stat = 'TOTAL'
 ob_subset = 'ADPSFC'
 
 # Other plotting options
