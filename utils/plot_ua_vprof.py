@@ -8,13 +8,11 @@ shawn.s.murdzek@noaa.gov
 # Import Modules
 #---------------------------------------------------------------------------------------------------
 
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-import pandas as pd
 import numpy as np
 import datetime as dt
 
 import metplus_tools as mt
+import metplus_plots as mp
 
 
 #---------------------------------------------------------------------------------------------------
@@ -53,57 +51,17 @@ valid_times = [dt.datetime(2022, 2, 1, 15) + dt.timedelta(hours=i) for i in rang
 # Forecast lead times (hrs)
 fcst_lead = 6
 
-output_file = ('%s_%s_%s_%dhr_vprof_syn.png' % 
-               (plot_var, plot_stat, ob_subset, fcst_lead))
+out_tag = 'syn' 
 
 
 #---------------------------------------------------------------------------------------------------
 # Read Data and Create Plot
 #---------------------------------------------------------------------------------------------------
 
-# Read in data
-verif_df = {}
-for key in input_sims.keys():
-    fnames = ['%s/point_stat_%02d0000L_%sV_%s.txt' % 
-              (input_sims[key]['dir'], fcst_lead, t.strftime('%Y%m%d_%H%M%S'), line_type) for t in valid_times]
-    verif_df[key] = mt.read_ascii(fnames)
-
-    # Compute derived statistics
-    verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
-    
-# Make plot
-fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(7, 7))
-for key in input_sims.keys():
-    red_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
-                               (verif_df[key]['OBTYPE'] == ob_subset)].copy()
-    prslev = [int(s[1:]) for s in np.unique(red_df['FCST_LEV'].values)]
-    if len(exclude_plvl) > 0:
-        for p in exclude_plvl:
-            if p in prslev:
-                prslev.remove(p)
-    prslev = np.sort(np.array(prslev))
-    xplot = np.zeros(prslev.shape)
-    for j, p in enumerate(prslev):
-        prs_df = red_df.loc[red_df['FCST_LEV'] == ('P%d' % p)]
-        stats_df = mt.compute_stats_entire_df(prs_df, line_type=line_type)
-        xplot[j] = stats_df[plot_stat].values[0]
-    if toggle_pts:
-        ax.plot(xplot, prslev, linestyle='-', marker='o', c=input_sims[key]['color'], 
-                label='%s (mean = %.6f)' % (key, np.mean(xplot)))
-    else:
-        ax.plot(xplot, prslev, linestyle='-', c=input_sims[key]['color'], 
-                label='%s (mean = %.6f)' % (key, np.mean(xplot)))
-if plot_stat == 'TOTAL':
-    ax.set_xlabel('number', size=14)
-else:
-    ax.set_xlabel('%s %s (%s)' % (plot_var, plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
-ax.set_ylabel('pressure (hPa)', size=14)
-ax.set_ylim([1050, 80])
-ax.set_yscale('log')
-ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, ob_subset), size=18)
-ax.grid()
-ax.legend()
-plt.savefig(output_file)
+out = mp.plot_ua_vprof(input_sims, valid_times, fcst_lead=fcst_lead, line_type=line_type,
+                       plot_var=plot_var, plot_stat=plot_stat, ob_subset=ob_subset, 
+                       toggle_pts=toggle_pts, out_tag=out_tag, exclude_plvl=exclude_plvl,
+                       verbose=False)
 
 
 """

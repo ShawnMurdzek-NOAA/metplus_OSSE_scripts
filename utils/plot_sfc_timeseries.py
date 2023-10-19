@@ -8,13 +8,11 @@ shawn.s.murdzek@noaa.gov
 # Import Modules
 #---------------------------------------------------------------------------------------------------
 
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-import pandas as pd
 import numpy as np
 import datetime as dt
 
 import metplus_tools as mt
+import metplus_plots as mp
 
 
 #---------------------------------------------------------------------------------------------------
@@ -59,46 +57,17 @@ valid_times = [dt.datetime(2022, 2, 1, 15) + dt.timedelta(hours=i) for i in
 # Forecast lead time (hrs)
 fcst_lead = 6
 
-output_file = ('%s_%s_%dhr_%s_%s_timeseries_syn.png' % 
-               (plot_var, plot_lvl, fcst_lead, plot_stat, ob_subset))
+out_tag = 'syn' 
 
 
 #---------------------------------------------------------------------------------------------------
 # Read Data and Create Plot
 #---------------------------------------------------------------------------------------------------
 
-# Read in data
-verif_df = {}
-for key in input_sims.keys():
-    fnames = ['%s/point_stat_%02d0000L_%sV_%s.txt' %
-              (input_sims[key]['dir'], fcst_lead, t.strftime('%Y%m%d_%H%M%S'), line_type) for t in
-              valid_times]
-    verif_df[key] = mt.read_ascii(fnames)
-
-    # Compute derived statistics
-    verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
-
-# Make plot
-fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
-for key in input_sims.keys():
-    plot_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
-                                (verif_df[key]['FCST_LEV'] == plot_lvl) &
-                                (verif_df[key]['OBTYPE'] == ob_subset)].copy()
-    if toggle_pts:
-        ax.plot(valid_times, plot_df[plot_stat], linestyle='-', marker='o', c=input_sims[key]['color'], 
-                label='%s (mean = %.6f)' % (key, np.mean(plot_df[plot_stat])))
-    else:
-        ax.plot(valid_times, plot_df[plot_stat], linestyle='-', c=input_sims[key]['color'], 
-                label='%s (mean = %.6f)' % (key, np.mean(plot_df[plot_stat])))
-if plot_stat == 'TOTAL':
-    ax.set_ylabel('number', size=14)
-else:
-    ax.set_ylabel('%s %s %s (%s)' % (plot_lvl, plot_var, plot_stat, plot_df['FCST_UNITS'].values[0]), size=14)
-ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, ob_subset), size=18)
-ax.grid()
-ax.legend()
-ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
-plt.savefig(output_file)
+out = mp.plot_sfc_timeseries(input_sims, valid_times, fcst_lead=fcst_lead, line_type=line_type,
+                             plot_var=plot_var, plot_lvl=plot_lvl, plot_stat=plot_stat,
+                             ob_subset=ob_subset, toggle_pts=toggle_pts, out_tag=out_tag, 
+                             verbose=False)
 
 
 """

@@ -30,18 +30,20 @@ import pyDA_utils.bufr as bufr
 #---------------------------------------------------------------------------------------------------
 
 # Input prepBUFR CSV files
-in_fnames = glob.glob('/work2/noaa/wrfruc/murdzek/nature_run_winter/obs/corr_errors_1st_iter_v2/err_csv/*.rap.fake.prepbufr.csv')
+#in_fnames = glob.glob('/work2/noaa/wrfruc/murdzek/nature_run_winter/obs/corr_errors_1st_iter_v2/err_csv/*.rap.fake.prepbufr.csv')
+in_fnames = glob.glob('/work2/noaa/wrfruc/murdzek/nature_run_spring/obs/corr_errors/err_csv/*.rap.fake.prepbufr.csv')
 
 # Output prepBUFR CSV files
 out_fnames = []
-out_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_obs_with_errors/winter/obs_csv/'
+#out_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_obs_with_errors/winter/obs_csv/'
+out_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_obs_with_errors/spring/obs_csv/'
 for f in in_fnames:
     out_fnames.append('%s/%s' % (out_dir, f.split('/')[-1]))
 
 # Pressure levels to undo rounding for (hPa)
 prslev = [1000, 925, 850, 700, 500, 400, 300, 250, 200, 150, 100]
 
-# Tolerance (pressure values within <tolerance> hPa of <prslev> will be changed to <prslev>
+# Tolerance (pressure values within <tolerance> hPa of <prslev> will be changed to <prslev>)
 tolerance = 0.101
 
 

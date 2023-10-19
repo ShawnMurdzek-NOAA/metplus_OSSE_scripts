@@ -8,14 +8,11 @@ shawn.s.murdzek@noaa.gov
 # Import Modules
 #---------------------------------------------------------------------------------------------------
 
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-import pandas as pd
 import numpy as np
 import datetime as dt
 
 import metplus_tools as mt
-
+import metplus_plots as mp
 
 #---------------------------------------------------------------------------------------------------
 # Input Parameters
@@ -52,54 +49,16 @@ valid_times = [dt.datetime(2022, 2, 1, 10) + dt.timedelta(hours=i) for i in rang
 # Forecast lead times (hrs)
 fcst_lead = [0, 1, 2, 3, 6, 12]
 
-output_file = ('%s_%s_%s_%s_dieoff_ctrl.png' % 
-               (plot_var, plot_lvl, plot_stat, ob_subset))
+out_tag = 'ctrl'
 
 
 #---------------------------------------------------------------------------------------------------
 # Read Data and Create Plot
 #---------------------------------------------------------------------------------------------------
 
-# Read in data
-verif_df = {}
-for key in input_sims.keys():
-    fnames = []
-    for t in valid_times:
-        for l in fcst_lead:
-            fnames.append('%s/point_stat_%02d0000L_%sV_%s.txt' %
-                          (input_sims[key]['dir'], l, t.strftime('%Y%m%d_%H%M%S'), line_type))
-    verif_df[key] = mt.read_ascii(fnames)
-
-    # Compute derived statistics
-    verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
-    
-# Make plot
-fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
-for key in input_sims.keys():
-    yplot = []
-    for l in fcst_lead:
-        red_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
-                                   (verif_df[key]['FCST_LEV'] == plot_lvl) &
-                                   (verif_df[key]['OBTYPE'] == ob_subset) &
-                                   (verif_df[key]['FCST_LEAD'] == l*1e4)].copy()
-        stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type)
-        yplot.append(stats_df[plot_stat].values[0])
-    yplot = np.array(yplot)
-    if toggle_pts:
-        ax.plot(fcst_lead, yplot, linestyle='-', marker='o', c=input_sims[key]['color'], 
-                label='%s (mean = %.6f)' % (key, np.mean(yplot)))
-    else:
-        ax.plot(fcst_lead, yplot, linestyle='-', c=input_sims[key]['color'], 
-                label='%s (mean = %.6f)' % (key, np.mean(yplot)))
-if plot_stat == 'TOTAL':
-    ax.set_ylabel('number', size=14)
-else:
-    ax.set_ylabel('%s %s %s (%s)' % (plot_lvl, plot_var, plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
-ax.set_xlabel('lead time (hr)', size=14)
-ax.set_title('Die-Off, Verified Against %s' % ob_subset, size=18)
-ax.grid()
-ax.legend()
-plt.savefig(output_file)
+out = mp.plot_sfc_dieoff(input_sims, valid_times, fcst_lead=fcst_lead, line_type=line_type,
+                         plot_var=plot_var, plot_lvl=plot_lvl, plot_stat=plot_stat, 
+                         ob_subset=ob_subset, toggle_pts=toggle_pts, out_tag=out_tag, verbose=False)
 
 
 """
