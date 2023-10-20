@@ -94,12 +94,10 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2'):
     Returns
     -------
     new_df : pd.DataFrame
-        DataFrame with additional statistics
+        DataFrame with a single line of statistics summarizing the entire input DataFrame
 
     """
  
-    condensed_dict = {}    
-
     # Update means to include all lines in the input DataFrame
     cols = []
     for c in verif_df.columns:
@@ -117,6 +115,57 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2'):
 
     # Compute statistics
     new_df = compute_stats(combined_df, line_type=line_type)
+
+    return new_df
+
+
+def compute_stats_vert_avg(verif_df, vcoord='P', vmin=100, vmax=1000, line_type='sl1l2'):
+    """
+    Compute vertically aggregated statistics from a MET output DataFrame.
+
+    Parameters
+    ----------
+    verif_df : pd.DataFrame
+        DataFrame with MET output from read_ascii()
+    vcoord : string, optional
+        Vertical coordinate. This is the first character in the FCST_LEV entries (usually 'P' or 
+        'Z')
+    vmin : float, optional
+        Minimum value of the vertical coordinate for averaging
+    vmax : float, optional
+        Maximum value of the vertical coordinate for averaging
+    line_type : string, optional
+        MET output line type
+
+    Returns
+    -------
+    new_df : pd.DataFrame
+        DataFrame with statistics aggregated over vertical levels.
+
+    """
+
+    # Only retain rows within our vertical averaging column
+    fcst_lev_num = np.array([float(s[1:]) for s in verif_df['FCST_LEV'].values])
+    fcst_lev_type = np.array([s[0] for s in verif_df['FCST_LEV'].values])
+    red_df = verif_df.loc[(fcst_lev_type == vcoord) & (fcst_lev_num >= vmin) & (fcst_lev_num <= vmax)].copy()
+
+    # Loop over each unique combo of FCST_LEAD, FCST_VALID_BEG, FCST_VAR, and OBTYPE
+    dfs = []
+    combos = np.array(np.meshgrid(np.unique(red_df['FCST_LEAD'].values),
+                                  np.unique(red_df['FCST_VALID_BEG'].values),
+                                  np.unique(red_df['FCST_VAR'].values),
+                                  np.unique(red_df['OBTYPE'].values))).T.reshape(-1, 4)
+    for i in range(combos.shape[0]):
+        subset = verif_df.loc[(red_df['FCST_LEAD'] == combos[i, 0]) &
+                              (red_df['FCST_VALID_BEG'] == combos[i, 1]) &
+                              (red_df['FCST_VAR'] == combos[i, 2]) &
+                              (red_df['OBTYPE'] == combos[i, 3])].copy()
+        tmp_df = compute_stats_entire_df(subset, line_type=line_type)
+        dfs.append(tmp_df)
+
+    new_df = pd.concat(dfs)
+    for i, var in enumerate(['FCST_LEAD', 'FCST_VALID_BEG', 'FCST_VAR', 'OBTYPE']):
+        new_df[var] = combos[:, i]
 
     return new_df
 

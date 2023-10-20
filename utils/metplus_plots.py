@@ -273,6 +273,112 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
     return verif_df
 
 
+def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc', line_type='sl1l2', 
+                  plot_var='TMP', plot_lvl1='Z2', plot_lvl2='Z2', plot_stat='RMSE', 
+                  ob_subset='ADPSFC', toggle_pts=True, out_tag='', verbose=False):
+    """
+    Plot sawtooth diagrams for surface or upper-air verification
+
+    Parameters
+    ----------
+    input_sims : Dictionary
+        METplus output files. Key is simulation name (used in the legend). The value is another
+        dictionary containing 'dir' (METplus output directory) and 'color'.
+    init_times : List of dt.datetime objects
+        Forecast initialization times
+    fcst_lead : List of Integers, optional
+        Forecast lead time (hrs)
+    verif_type : String, optional
+        Verification type ('sfc' or 'ua')
+    line_type : String, optional
+        METplus line type
+    plot_var : String, optional
+        Variable to plot from the METplus output
+    plot_lvl1 : String, optional
+        Variable vertical level
+    plot_lvl2 : String, optional
+        Variable vertical level. For surface verification, plot_lvl2 should equal plot_lvl1. For
+        upper-air verification, plot_lvl2 should be the maximum value of the vertical coordinate over
+        which the averaging is performed and plot_lvl1 should be the minimum value.
+    plot_stat : String, optional
+        Forecast statistic to plot
+    ob_subset : String, optional
+        Observation subset to use for verification
+    toggle_pts : Boolean, optional
+        Turn inidvidual points on or off
+    out_tag : String, optional
+        String to add to the output file
+    verbose : Boolean, optional
+        Option to have verbose output from mt.read_ascii()
+
+    Returns
+    -------
+    verif_df : pd.DataFrame
+        DataFrame containing METplus output
+
+    """
+
+    output_file = ('%s_%s_%s_%s_%s_sawtooth.png' %
+                   (plot_var, plot_stat, ob_subset, out_tag, verif_type))
+
+    # Read in data
+    verif_df = {}
+    for key in input_sims.keys():
+        verif_df[key] = {}
+        for itime in init_times:
+            vtimes = [itime + dt.timedelta(hours=fl) for fl in fcst_lead]
+            fnames = ['%s/point_stat_%02d0000L_%sV_%s.txt' %
+                      (input_sims[key]['dir'], fl, t.strftime('%Y%m%d_%H%M%S'), line_type)
+                      for t, fl in zip(vtimes, fcst_lead)]
+            verif_df[key][itime] = mt.read_ascii(fnames, verbose=verbose)
+
+            # Compute derived statistics
+            verif_df[key][itime] = mt.compute_stats(verif_df[key][itime], line_type=line_type)
+
+    # Make plot
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
+    for key in input_sims.keys():
+        for j, itime in enumerate(init_times):
+            tmp_df = verif_df[key][itime].loc[(verif_df[key][itime]['FCST_VAR'] == plot_var) &
+                                              (verif_df[key][itime]['OBTYPE'] == ob_subset)].copy()
+            if plot_lvl1 == plot_lvl2:
+                plot_df = tmp_df.loc[tmp_df['FCST_LEV'] == plot_lvl1].copy()
+            else:
+                plot_df = mt.compute_stats_vert_avg(tmp_df, vcoord=plot_lvl1[0],
+                                                    vmin=float(plot_lvl1[1:]),
+                                                    vmax=float(plot_lvl2[1:]),
+                                                    line_type=line_type)
+            xplot = [dt.datetime.strptime(t, '%Y%m%d_%H%M%S') for t in plot_df['FCST_VALID_BEG']]
+            if toggle_pts:
+                lead = [t for t in plot_df['FCST_LEAD']]
+                for fl, m in zip(fcst_lead, ['*', 'o', 's', '^']):
+                    plot_1row = plot_df.loc[plot_df['FCST_LEAD'] == fl*1e4]
+                    if len(plot_1row) == 0:
+                        continue
+                    x = dt.datetime.strptime(plot_1row['FCST_VALID_BEG'].values[0], '%Y%m%d_%H%M%S')
+                    ax.plot(x, plot_1row[plot_stat].values[0], marker=m, ms=10, c=input_sims[key]['color'])
+            if j == 0:
+                ax.plot(xplot, plot_df[plot_stat], linestyle='-', c=input_sims[key]['color'],
+                    label=key)
+            else:
+                ax.plot(xplot, plot_df[plot_stat], linestyle='-', c=input_sims[key]['color'])
+    if plot_stat == 'TOTAL':
+        ax.set_ylabel('number', size=14)
+    else:
+        if plot_lvl1 == plot_lvl2:
+            ax.set_ylabel('%s %s %s (%s)' % (plot_lvl1, plot_var, plot_stat, tmp_df['FCST_UNITS'].values[0]), size=14)
+        else:
+            ax.set_ylabel('%s$-$%s %s %s (%s)' % (plot_lvl1, plot_lvl2, plot_var, plot_stat,
+                                                  tmp_df['FCST_UNITS'].values[0]), size=14)
+    ax.set_title('Verified Against %s' % ob_subset, size=18)
+    ax.grid()
+    ax.legend()
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
+    plt.savefig(output_file)
+
+    return verif_df
+
+
 """
 End metplus_plots.py 
 """

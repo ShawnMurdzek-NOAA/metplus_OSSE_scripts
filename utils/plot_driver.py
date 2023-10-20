@@ -28,7 +28,6 @@ parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/'
 sim_dict = {}
 for season in ['spring', 'winter']:
     sim_dict[season] = {}
-    """
     for sim_type in ['syn_data', 'real_red']:
         sim_dict[season][sim_type] = {}
         for exp, c in zip(['ctrl', 'no_aircft', 'no_raob', 'no_sfc'], ['r', 'b', 'orange', 'gray']):
@@ -38,7 +37,6 @@ for season in ['spring', 'winter']:
                 sim_dict[season][sim_type][exp]['dir'] = '%s/%s_sims/%s_updated' % (parent_dir, sim_type, season)
             elif (season == 'spring') and (exp == 'ctrl'):
                 sim_dict[season][sim_type][exp]['dir'] = '%s/%s_sims/%s' % (parent_dir, sim_type, season)
-    """
     sim_dict[season]['ctrl'] = {}
     for exp, c in zip(['real_red', 'syn_data'], ['r', 'b']):
         sim_dict[season]['ctrl'][exp] = {'color':c}
@@ -51,7 +49,7 @@ for season in ['spring', 'winter']:
 valid_times = {'winter':[dt.datetime(2022, 2, 1, 9) + dt.timedelta(hours=i) for i in range(159)],
                'spring':[dt.datetime(2022, 4, 29, 21) + dt.timedelta(hours=i) for i in range(159)]}
 fcst_lead_dieoff = [0, 1, 2, 3, 6, 12]
-fcst_lead_other = [1, 3, 6]
+fcst_lead_other = [0]
 
 # Initial times to exclude (usually owing to missing forecast data)
 itime_exclude = {'winter': [dt.datetime(2022, 2, 4, 20)],
