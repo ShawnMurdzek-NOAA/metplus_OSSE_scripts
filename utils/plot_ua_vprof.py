@@ -21,8 +21,8 @@ import metplus_plots as mp
 
 # Input file information
 #parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/real_red_sims/'
-parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/'
-#parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/'
+#parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/'
+parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/'
 input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/upper_air/output/point_stat',
                       'color':'r'},
               'no_aircft':{'dir':parent_dir + 'winter_no_aircft/upper_air/output/point_stat',
@@ -31,27 +31,27 @@ input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/upper_air/output/point_
                          'color':'orange'},
               'no_sfc':{'dir':parent_dir + 'winter_no_sfc/upper_air/output/point_stat',
                         'color':'gray'}}
-#input_sims = {'real':{'dir':parent_dir + 'real_red_sims/winter_updated/upper_air/output/point_stat',
-#                      'color':'r'},
-#              'OSSE':{'dir':parent_dir + 'syn_data_sims/winter_updated/upper_air/output/point_stat',
-#                      'color':'b'}}
-line_type = 'sl1l2'
-plot_var = 'TMP'
-plot_stat = 'TOTAL'
+input_sims = {'real':{'dir':parent_dir + 'real_red_sims/winter_updated/upper_air/output/point_stat',
+                      'color':'r'},
+              'OSSE':{'dir':parent_dir + 'syn_data_sims/winter_updated/upper_air/output/point_stat',
+                      'color':'b'}}
+line_type = 'vl1l2'
+plot_var = 'UGRD_VGRD'
+plot_stat = 'MAG_BIAS_DIFF'
 ob_subset = 'ADPUPA'
 
 # Other plotting options
 toggle_pts = True
-exclude_plvl = [950]
+exclude_plvl = []
 
 # Valid times (as datetime objects)
 valid_times = [dt.datetime(2022, 2, 1, 10) + dt.timedelta(hours=i) for i in range(158)]
 valid_times = [dt.datetime(2022, 2, 1, 15) + dt.timedelta(hours=i) for i in range(6*24)]
 
 # Forecast lead times (hrs)
-fcst_lead = 6
+fcst_lead = 3
 
-out_tag = 'syn' 
+out_tag = 'ctrl' 
 
 
 #---------------------------------------------------------------------------------------------------

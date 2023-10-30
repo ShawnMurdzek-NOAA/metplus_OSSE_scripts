@@ -48,8 +48,10 @@ for season in ['spring', 'winter']:
 # Valid times and forecast lead times
 valid_times = {'winter':[dt.datetime(2022, 2, 1, 9) + dt.timedelta(hours=i) for i in range(159)],
                'spring':[dt.datetime(2022, 4, 29, 21) + dt.timedelta(hours=i) for i in range(159)]}
+valid_times_ua = {'winter':[dt.datetime(2022, 2, 1, 12) + dt.timedelta(hours=i) for i in range(0, 156, 12)],
+                  'spring':[dt.datetime(2022, 4, 30, 12) + dt.timedelta(hours=i) for i in range(0, 144, 12)]}
 fcst_lead_dieoff = [0, 1, 2, 3, 6, 12]
-fcst_lead_other = [0]
+fcst_lead_other = [0, 3]
 
 # Initial times to exclude (usually owing to missing forecast data)
 itime_exclude = {'winter': [dt.datetime(2022, 2, 4, 20)],
@@ -64,18 +66,21 @@ vtime_exclude = {'winter': [],
 plot_dict = {'TMP':{'line_type':'sl1l2',
                     'sfc_plot_lvl':'Z2',
                     'sfc_ob_subset':['ADPSFC'],
+                    'ua_plot_lvl':['P500'],
                     'ua_ob_subset':['ADPUPA'],
-                    'plot_stat':['RMSE', 'TOTAL']},
+                    'plot_stat':['RMSE', 'TOTAL', 'BIAS_DIFF']},
              'SPFH':{'line_type':'sl1l2',
                      'sfc_plot_lvl':'Z2',
                      'sfc_ob_subset':['ADPSFC'],
+                     'ua_plot_lvl':['P500'],
                      'ua_ob_subset':['ADPUPA'],
-                     'plot_stat':['RMSE', 'TOTAL']}, 
+                     'plot_stat':['RMSE', 'TOTAL', 'BIAS_DIFF']}, 
              'UGRD_VGRD':{'line_type':'vl1l2',
                           'sfc_plot_lvl':'Z10',
                           'sfc_ob_subset':['ADPSFC'],
+                          'ua_plot_lvl':['P500'],
                           'ua_ob_subset':['ADPUPA'],
-                          'plot_stat':['VECT_RMSE', 'TOTAL']}}
+                          'plot_stat':['VECT_RMSE', 'TOTAL', 'MAG_BIAS_DIFF']}}
 
 
 #---------------------------------------------------------------------------------------------------
@@ -88,6 +93,8 @@ for season in sim_dict.keys():
         for plot_var in plot_dict.keys():
             for plot_stat in plot_dict[plot_var]['plot_stat']:
                 print('creating plots for %s %s %s %s' % (season, sim_set, plot_var, plot_stat))
+
+                # Surface verification
                 for ob_subset in plot_dict[plot_var]['sfc_ob_subset']:
                     input_sims_sfc = copy.deepcopy(sim_dict[season][sim_set])
                     for key in input_sims_sfc:
@@ -123,12 +130,26 @@ for season in sim_dict.keys():
                                                    out_tag=sim_set,
                                                    verbose=True)
                         plt.close()
+
+                # Upper-air verification   
                 for ob_subset in plot_dict[plot_var]['ua_ob_subset']:
                     input_sims_ua = copy.deepcopy(sim_dict[season][sim_set])
                     for key in input_sims_ua:
                         input_sims_ua[key]['dir'] = input_sims_ua[key]['dir'] + '/upper_air/output/point_stat'
+                    for lvl in plot_dict[plot_var]['ua_plot_lvl']:
+                        _ = mp.plot_sfc_dieoff(input_sims_ua, valid_times_ua[season], 
+                                               fcst_lead=fcst_lead_dieoff, 
+                                               line_type=plot_dict[plot_var]['line_type'],
+                                               plot_var=plot_var,
+                                               plot_lvl=lvl,
+                                               plot_stat=plot_stat,
+                                               ob_subset=ob_subset,
+                                               toggle_pts=True,
+                                               out_tag=sim_set,
+                                               verbose=False)
+                        plt.close()
                     for ftime in fcst_lead_other:
-                        _ = mp.plot_ua_vprof(input_sims_ua, valid_times[season], 
+                        _ = mp.plot_ua_vprof(input_sims_ua, valid_times_ua[season], 
                                              fcst_lead=ftime, 
                                              line_type=plot_dict[plot_var]['line_type'],
                                              plot_var=plot_var,
@@ -138,6 +159,26 @@ for season in sim_dict.keys():
                                              out_tag=sim_set,
                                              exclude_plvl=[],
                                              verbose=False)
+                        plt.close()
+                        vtimes = valid_times_ua[season][ftime:]
+                        for t in itime_exclude[season]:
+                            t_adjust = t + dt.timedelta(hours=ftime)
+                            if t_adjust in vtimes:
+                                vtimes.remove(t_adjust)
+                        for t in vtime_exclude[season]:
+                            if t in vtimes:
+                                vtimes.remove(t)
+                        for lvl in plot_dict[plot_var]['ua_plot_lvl']:
+                            _ = mp.plot_sfc_timeseries(input_sims_ua, vtimes, 
+                                                       fcst_lead=ftime, 
+                                                       line_type=plot_dict[plot_var]['line_type'],
+                                                       plot_var=plot_var,
+                                                       plot_lvl=lvl,
+                                                       plot_stat=plot_stat,
+                                                       ob_subset=ob_subset,
+                                                       toggle_pts=False,
+                                                       out_tag=sim_set,
+                                                       verbose=True)
                         plt.close()
 
         os.system('mv *%s*.png ./%s/%s/' % (sim_set, season, sim_set))

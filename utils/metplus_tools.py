@@ -76,6 +76,8 @@ def compute_stats(verif_df, line_type='sl1l2'):
 
     elif line_type == 'vl1l2':
         new_df['VECT_RMSE'] = np.sqrt(verif_df['UVFFBAR'] - 2.*verif_df['UVFOBAR'] + verif_df['UVOOBAR'])
+        new_df['MAG_BIAS_RATIO'] = verif_df['F_SPEED_BAR'] / verif_df['O_SPEED_BAR']
+        new_df['MAG_BIAS_DIFF'] = verif_df['F_SPEED_BAR'] - verif_df['O_SPEED_BAR']
 
     return new_df
 
