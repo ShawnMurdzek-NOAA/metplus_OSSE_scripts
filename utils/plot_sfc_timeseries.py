@@ -31,18 +31,18 @@ input_sims = {'ctrl':{'dir':parent_dir + 'winter_updated/sfc/output/point_stat',
                          'color':'orange'},
               'no_sfc':{'dir':parent_dir + 'winter_no_sfc/sfc/output/point_stat',
                         'color':'gray'}}
-input_sims = {'real':{'dir':parent_dir + 'real_red_sims/winter_updated/upper_air/output/point_stat',
+input_sims = {'real':{'dir':parent_dir + 'real_red_sims/winter_updated/aircraft/output/point_stat',
                       'color':'r'},
-              'OSSE':{'dir':parent_dir + 'syn_data_sims/winter_updated/upper_air/output/point_stat',
+              'OSSE':{'dir':parent_dir + 'syn_data_sims/winter_updated/aircraft/output/point_stat',
                       'color':'b'}}
 line_type = 'vl1l2'
 plot_var = 'UGRD_VGRD'
-plot_lvl = 'P500'
-plot_stat = 'MAG_BIAS_DIFF'
-ob_subset = 'ADPUPA'
+plot_lvl = 'P250'
+plot_stat = 'VECT_RMSE'
+ob_subset = 'AIRCAR'
 
 # Other plotting options
-toggle_pts = True
+toggle_pts = False
 
 # Valid times (as datetime objects)
 
@@ -52,17 +52,19 @@ toggle_pts = True
 #valid_times = [dt.datetime(2022, 2, 1, 15) + dt.timedelta(hours=i) for i in range(153)] # 6-hr forecasts
 
 # Winter synthetic sims
+valid_times = [dt.datetime(2022, 2, 1, 9) + dt.timedelta(hours=i) for i in 
+               list(range(83)) + list(range(84, 158))][:60] # 1-hr forecasts
 #valid_times = [dt.datetime(2022, 2, 1, 10) + dt.timedelta(hours=i) for i in 
 #               list(range(83)) + list(range(84, 158))] # 1-hr forecasts
 #valid_times = [dt.datetime(2022, 2, 1, 12) + dt.timedelta(hours=i) for i in 
 #               list(range(83)) + list(range(84, 156))] # 3-hr forecasts
 #valid_times = [dt.datetime(2022, 2, 1, 15) + dt.timedelta(hours=i) for i in 
 #               list(range(83)) + list(range(84, 153))] # 6-hr forecasts
-valid_times = [dt.datetime(2022, 2, 1, 12) + dt.timedelta(hours=i) for i in 
-               list(range(0, 156, 12))] # Upper-air verification
+#valid_times = [dt.datetime(2022, 2, 1, 12) + dt.timedelta(hours=i) for i in 
+#               list(range(0, 156, 12))] # Upper-air verification
 
 # Forecast lead time (hrs)
-fcst_lead = 1
+fcst_lead = 0
 
 out_tag = 'ctrl' 
 

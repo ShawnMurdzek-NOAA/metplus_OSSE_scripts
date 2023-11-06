@@ -34,10 +34,10 @@ input_sims = {'real':{'dir':parent_dir + 'real_red_sims/winter_updated/upper_air
                       'color':'r'},
               'OSSE':{'dir':parent_dir + 'syn_data_sims/winter_updated/upper_air/output/point_stat',
                       'color':'b'}}
-line_type = 'vl1l2'
-plot_var = 'UGRD_VGRD'
-plot_lvl = 'P300'
-plot_stat = 'VECT_RMSE'
+line_type = 'sl1l2'
+plot_var = 'TMP'
+plot_lvl = 'P250'
+plot_stat = 'RMSE'
 ob_subset = 'ADPUPA'
 
 # Other plotting options

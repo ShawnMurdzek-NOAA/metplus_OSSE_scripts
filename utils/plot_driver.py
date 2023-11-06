@@ -26,11 +26,12 @@ import metplus_plots as mp
 # placed in a separate directory
 parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/'
 sim_dict = {}
-for season in ['spring', 'winter']:
+#for season in ['spring', 'winter']:
+for season in ['winter']:
     sim_dict[season] = {}
     for sim_type in ['syn_data', 'real_red']:
         sim_dict[season][sim_type] = {}
-        for exp, c in zip(['ctrl', 'no_aircft', 'no_raob', 'no_sfc'], ['r', 'b', 'orange', 'gray']):
+        for exp, c in zip(['ctrl', 'no_aircft', 'no_raob', 'no_sfc', 'no_psfc'], ['r', 'b', 'orange', 'gray', 'k']):
             sim_dict[season][sim_type][exp] = {'dir':'%s/%s_sims/%s_%s' % (parent_dir, sim_type, season, exp),
                                                'color':c}
             if (season == 'winter') and (exp == 'ctrl'):
@@ -45,13 +46,18 @@ for season in ['spring', 'winter']:
         elif season == 'spring':
             sim_dict[season]['ctrl'][exp]['dir'] = '%s/%s_sims/%s' % (parent_dir, exp, season)
 
+#sim_dict = {'spring':{'uas':{'ctrl':{'color':'r',
+#                                     'dir':'/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/spring'},
+#                             'UAS':{'color':'b',
+#                                    'dir':'/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/spring_uas_35km'}}}}
+
 # Valid times and forecast lead times
 valid_times = {'winter':[dt.datetime(2022, 2, 1, 9) + dt.timedelta(hours=i) for i in range(159)],
                'spring':[dt.datetime(2022, 4, 29, 21) + dt.timedelta(hours=i) for i in range(159)]}
 valid_times_ua = {'winter':[dt.datetime(2022, 2, 1, 12) + dt.timedelta(hours=i) for i in range(0, 156, 12)],
                   'spring':[dt.datetime(2022, 4, 30, 12) + dt.timedelta(hours=i) for i in range(0, 144, 12)]}
 fcst_lead_dieoff = [0, 1, 2, 3, 6, 12]
-fcst_lead_other = [0, 3]
+fcst_lead_other = [0, 1, 3]
 
 # Initial times to exclude (usually owing to missing forecast data)
 itime_exclude = {'winter': [dt.datetime(2022, 2, 4, 20)],
@@ -78,7 +84,7 @@ plot_dict = {'TMP':{'line_type':'sl1l2',
              'UGRD_VGRD':{'line_type':'vl1l2',
                           'sfc_plot_lvl':'Z10',
                           'sfc_ob_subset':['ADPSFC'],
-                          'ua_plot_lvl':['P500'],
+                          'ua_plot_lvl':['P500', 'P250'],
                           'ua_ob_subset':['ADPUPA'],
                           'plot_stat':['VECT_RMSE', 'TOTAL', 'MAG_BIAS_DIFF']}}
 
@@ -160,7 +166,7 @@ for season in sim_dict.keys():
                                              exclude_plvl=[],
                                              verbose=False)
                         plt.close()
-                        vtimes = valid_times_ua[season][ftime:]
+                        vtimes = valid_times_ua[season]
                         for t in itime_exclude[season]:
                             t_adjust = t + dt.timedelta(hours=ftime)
                             if t_adjust in vtimes:
