@@ -10,11 +10,40 @@ shawn.s.murdzek@noaa.gov
 
 import pandas as pd
 import numpy as np
+import scipy.stats as ss
 
 
 #---------------------------------------------------------------------------------------------------
 # Functions
 #---------------------------------------------------------------------------------------------------
+
+def confidence_interval_mean(data, level=0.95):
+    """
+    Compute the confidence interval for the mean of a dataset
+
+    Parameters
+    ----------
+    data : np.array
+        Input data
+    level : Float, optional
+        Confidence level for the confidence interval
+
+    Returns
+    -------
+    ci : Tuple
+        Upper and lower bound of the confidence interval
+
+    """
+
+    n = len(data)
+    avg = np.mean(data)
+    std = np.std(data) 
+    t_low = ss.t.ppf(0.5 * (1 - level), n - 1)
+
+    ci = (avg + (t_low * std / np.sqrt(n)), avg - (t_low * std / np.sqrt(n)))
+
+    return ci
+
 
 def read_ascii(fnames, verbose=True):
     """
@@ -82,7 +111,7 @@ def compute_stats(verif_df, line_type='sl1l2'):
     return new_df
 
 
-def compute_stats_entire_df(verif_df, line_type='sl1l2'):
+def compute_stats_entire_df(verif_df, line_type='sl1l2', ci=False, ci_lvl=0.95):
     """
     Compute statistics using all lines in a MET output DataFrame.
 
@@ -92,6 +121,10 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2'):
         DataFrame with MET output from read_ascii()
     line_type : string, optional
         MET output line type
+    ci : Boolean, optional
+        Option to draw confidence intervals
+    ci_lvl : Float, optional
+        Confidence interval level as a fraction
 
     Returns
     -------
@@ -117,6 +150,9 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2'):
 
     # Compute statistics
     new_df = compute_stats(combined_df, line_type=line_type)
+
+    # If using a confidence interval, compute statistics differently in an effort to be consistent
+    
 
     return new_df
 

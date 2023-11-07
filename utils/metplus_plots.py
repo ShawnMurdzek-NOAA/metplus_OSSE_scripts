@@ -101,7 +101,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, line_type='sl1l2',
 
 def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line_type='sl1l2', 
                     plot_var='TMP', plot_lvl='Z2', plot_stat='RMSE', ob_subset='ADPSFC', 
-                    toggle_pts=True, out_tag='', verbose=False):
+                    toggle_pts=True, out_tag='', verbose=False, ax=None, ci=False, ci_lvl=0.95):
     """
     Plot die-off curves for surface verification
 
@@ -130,6 +130,12 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
         String to add to the output file
     verbose : Boolean, optional
         Option to have verbose output from mt.read_ascii()
+    ax : matplotlib.axes object, optional
+        Axes to draw plot on
+    ci : Boolean, optional
+        Option to draw confidence intervals
+    ci_lvl : Float, optional
+        Confidence interval level as a fraction
 
     Returns
     -------
@@ -154,7 +160,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
         verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
 
     # Make plot
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
+    if ax == None:
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
     for key in input_sims.keys():
         yplot = []
         for l in fcst_lead:
@@ -179,7 +186,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
     ax.set_title('Die-Off, Verified Against %s' % ob_subset, size=18)
     ax.grid()
     ax.legend()
-    plt.savefig(output_file)
+    if ax == None:
+        plt.savefig(output_file)
 
     return verif_df
 
