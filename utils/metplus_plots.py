@@ -202,7 +202,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
 
 def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_var='TMP', 
                   plot_stat='RMSE', ob_subset='ADPUPA', toggle_pts=True, out_tag='', 
-                  exclude_plvl=[], verbose=False):
+                  exclude_plvl=[], verbose=False, ax=None, mean_legend=True):
     """
     Plot vertical profiles for upper-air verification
 
@@ -231,6 +231,10 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
         Pressure levels to exclude from the plot
     verbose : Boolean, optional
         Option to have verbose output from mt.read_ascii()
+    ax : matplotlib.axes object, optional
+        Axes to draw plot on
+    mean_legend : Boolean, optional
+        Option to plot the mean forecast statistic in the legend
 
     Returns
     -------
@@ -253,7 +257,8 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
         verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
 
     # Make plot
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(7, 7))
+    if ax == None:
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(7, 7))
     for key in input_sims.keys():
         red_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
                                    (verif_df[key]['OBTYPE'] == ob_subset)].copy()
@@ -268,12 +273,15 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
             prs_df = red_df.loc[red_df['FCST_LEV'] == ('P%d' % p)]
             stats_df = mt.compute_stats_entire_df(prs_df, line_type=line_type)
             xplot[j] = stats_df[plot_stat].values[0]
+        if mean_legend:
+            llabel = '%s (mean = %.6f)' % (key, np.mean(xplot))
+        else:
+            llabel = key
         if toggle_pts:
             ax.plot(xplot, prslev, linestyle='-', marker='o', c=input_sims[key]['color'],
-                    label='%s (mean = %.6f)' % (key, np.mean(xplot)))
+                    label=llabel)
         else:
-            ax.plot(xplot, prslev, linestyle='-', c=input_sims[key]['color'],
-                    label='%s (mean = %.6f)' % (key, np.mean(xplot)))
+            ax.plot(xplot, prslev, linestyle='-', c=input_sims[key]['color'], label=llabel)
     if plot_stat == 'TOTAL':
         ax.set_xlabel('number', size=14)
     else:
@@ -286,7 +294,11 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
     ax.legend()
     plt.savefig(output_file)
 
-    return verif_df
+    if ax == None:
+        plt.savefig(output_file)
+        return verif_df
+    else:
+        return verif_df, ax
 
 
 def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc', line_type='sl1l2', 
