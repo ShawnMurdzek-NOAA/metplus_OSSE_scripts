@@ -45,6 +45,31 @@ def confidence_interval_mean(data, level=0.95):
     return ci
 
 
+def compute_stdev(sum_val, sum_sq, n):
+    """
+    Compute the standard deviation from partial sums. Based on calculate_stddev from METcalcpy.
+
+    Parameters
+    ----------
+    sum_val : Float
+        Sum of all the values in the data set
+    sum_sq : Float
+        Sum of all the squared values in the data set
+    n : Integer
+        Number of values in the data set
+
+    Returns
+    -------
+    s : Float
+        Standard deviation
+
+    """
+
+    s = np.sqrt((sum_sq - (sum_val * sum_val) / n) / (n - 1))
+
+    return s
+
+
 def read_ascii(fnames, verbose=True):
     """
     Read several ASCII MET output files and concatenate into a single DataFrame.
@@ -94,17 +119,24 @@ def compute_stats(verif_df, line_type='sl1l2'):
     new_df : pd.DataFrame
         DataFrame with additional statistics
 
+    Notes
+    -----
+    Some of these calculations come from METcalcpy. See 
+    https://github.com/dtcenter/METcalcpy/blob/main_v2.1/metcalcpy/util/sl1l2_statistics.py
+
     """
 
     new_df = verif_df.copy()
 
     if line_type == 'sl1l2':
-        new_df['RMSE'] = np.sqrt(verif_df['FFBAR'] - 2.*verif_df['FOBAR'] + verif_df['OOBAR'])
+        new_df['MSE'] = verif_df['FFBAR'] - 2.*verif_df['FOBAR'] + verif_df['OOBAR']
+        new_df['RMSE'] = np.sqrt(new_df['MSE'])
         new_df['BIAS_RATIO'] = verif_df['FBAR'] / verif_df['OBAR']
         new_df['BIAS_DIFF'] = verif_df['FBAR'] - verif_df['OBAR']
 
     elif line_type == 'vl1l2':
-        new_df['VECT_RMSE'] = np.sqrt(verif_df['UVFFBAR'] - 2.*verif_df['UVFOBAR'] + verif_df['UVOOBAR'])
+        new_df['VECT_MSE'] = verif_df['UVFFBAR'] - 2.*verif_df['UVFOBAR'] + verif_df['UVOOBAR']
+        new_df['VECT_RMSE'] = np.sqrt(new_df['VECT_MSE'])
         new_df['MAG_BIAS_RATIO'] = verif_df['F_SPEED_BAR'] / verif_df['O_SPEED_BAR']
         new_df['MAG_BIAS_DIFF'] = verif_df['F_SPEED_BAR'] - verif_df['O_SPEED_BAR']
 
