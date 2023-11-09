@@ -14,7 +14,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 
-import metplus_tools as mt
+import metplus_OSSE_scripts.utils.metplus_tools as mt
 
 
 #---------------------------------------------------------------------------------------------------
@@ -101,7 +101,8 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, line_type='sl1l2',
 
 def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line_type='sl1l2', 
                     plot_var='TMP', plot_lvl='Z2', plot_stat='RMSE', ob_subset='ADPSFC', 
-                    toggle_pts=True, out_tag='', verbose=False, ax=None, ci=False, ci_lvl=0.95):
+                    toggle_pts=True, out_tag='', verbose=False, ax=None, ci=False, ci_lvl=0.95,
+                    mean_legend=True):
     """
     Plot die-off curves for surface verification
 
@@ -136,6 +137,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
         Option to draw confidence intervals
     ci_lvl : Float, optional
         Confidence interval level as a fraction
+    mean_legend : Boolean, optional
+        Option to plot the mean forecast statistic in the legend
 
     Returns
     -------
@@ -172,12 +175,15 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
             stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type)
             yplot.append(stats_df[plot_stat].values[0])
         yplot = np.array(yplot)
+        if mean_legend:
+            llabel = '%s (mean = %.6f)' % (key, np.mean(yplot))
+        else:
+            llabel = key
         if toggle_pts:
             ax.plot(fcst_lead, yplot, linestyle='-', marker='o', c=input_sims[key]['color'],
-                    label='%s (mean = %.6f)' % (key, np.mean(yplot)))
+                    label=llabel)
         else:
-            ax.plot(fcst_lead, yplot, linestyle='-', c=input_sims[key]['color'],
-                    label='%s (mean = %.6f)' % (key, np.mean(yplot)))
+            ax.plot(fcst_lead, yplot, linestyle='-', c=input_sims[key]['color'], label=llabel)
     if plot_stat == 'TOTAL':
         ax.set_ylabel('number', size=14)
     else:
@@ -186,10 +192,12 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
     ax.set_title('Die-Off, Verified Against %s' % ob_subset, size=18)
     ax.grid()
     ax.legend()
+
     if ax == None:
         plt.savefig(output_file)
-
-    return verif_df
+        return verif_df
+    else:
+        return verif_df, ax
 
 
 def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_var='TMP', 
