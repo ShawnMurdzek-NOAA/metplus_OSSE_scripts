@@ -147,8 +147,6 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
 
     """
 
-    output_file = ('%s_%s_%s_%s_%s_sfc_dieoff.png' % (plot_var, plot_lvl, plot_stat, ob_subset, out_tag))
-
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
@@ -160,8 +158,11 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
         verif_df[key] = mt.read_ascii(fnames, verbose=verbose)
 
     # Make plot
+    save = False
     if ax == None:
         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
+        save = True
+        output_file = ('%s_%s_%s_%s_%s_sfc_dieoff.png' % (plot_var, plot_lvl, plot_stat, ob_subset, out_tag))
     for key in input_sims.keys():
         yplot = []
         ci_low = []
@@ -199,7 +200,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
     ax.grid()
     ax.legend()
 
-    if ax == None:
+    if save:
         plt.savefig(output_file)
         return verif_df
     else:
@@ -253,9 +254,6 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
 
     """
 
-    output_file = ('%s_%s_%s_%dhr_%s_ua_vprof.png' % 
-                   (plot_var, plot_stat, ob_subset, fcst_lead, out_tag))
-
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
@@ -264,8 +262,12 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
         verif_df[key] = mt.read_ascii(fnames, verbose=verbose)
 
     # Make plot
+    save = False
     if ax == None:
         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(7, 7))
+        save = True
+        output_file = ('%s_%s_%s_%dhr_%s_ua_vprof.png' % 
+                       (plot_var, plot_stat, ob_subset, fcst_lead, out_tag))
     for key in input_sims.keys():
         red_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
                                    (verif_df[key]['OBTYPE'] == ob_subset)].copy()
@@ -310,7 +312,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
     ax.legend()
     plt.savefig(output_file)
 
-    if ax == None:
+    if save:
         plt.savefig(output_file)
         return verif_df
     else:
