@@ -21,9 +21,9 @@ import metplus_OSSE_scripts.utils.metplus_tools as mt
 # Functions
 #---------------------------------------------------------------------------------------------------
 
-def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_var='TMP', 
-                        plot_lvl='Z2', plot_stat='RMSE', ob_subset='ADPSFC', toggle_pts=True, 
-                        out_tag='', verbose=False):
+def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat', 
+                        line_type='sl1l2', plot_var='TMP', plot_lvl='Z2', plot_stat='RMSE', 
+                        ob_subset='ADPSFC', toggle_pts=True, out_tag='', verbose=False):
     """
     Plot time series for surface verification
 
@@ -36,6 +36,8 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, line_type='sl1l2',
         Forecast valid times
     fcst_lead : Integer, optional
         Forecast lead time (hrs)
+    file_prefix : String, optional
+        Prefix of METplus output files
     line_type : String, optional
         METplus line type
     plot_var : String, optional
@@ -66,8 +68,8 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, line_type='sl1l2',
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
-        fnames = ['%s/point_stat_%02d0000L_%sV_%s.txt' %
-                  (input_sims[key]['dir'], fcst_lead, t.strftime('%Y%m%d_%H%M%S'), line_type) for t in
+        fnames = ['%s/%s_%02d0000L_%sV_%s.txt' %
+                  (input_sims[key]['dir'], file_prefix, fcst_lead, t.strftime('%Y%m%d_%H%M%S'), line_type) for t in
                   valid_times]
         verif_df[key] = mt.read_ascii(fnames, verbose=verbose)
 
@@ -99,10 +101,10 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, line_type='sl1l2',
     return verif_df
 
 
-def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line_type='sl1l2', 
-                    plot_var='TMP', plot_lvl='Z2', plot_stat='RMSE', ob_subset='ADPSFC', 
-                    toggle_pts=True, out_tag='', verbose=False, ax=None, ci=False, ci_lvl=0.95,
-                    mean_legend=True):
+def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], 
+                    file_prefix='point_stat', line_type='sl1l2', plot_var='TMP', plot_lvl='Z2', 
+                    plot_stat='RMSE', ob_subset='ADPSFC', toggle_pts=True, out_tag='', 
+                    verbose=False, ax=None, ci=False, ci_lvl=0.95, mean_legend=True):
     """
     Plot die-off curves for surface verification
 
@@ -115,6 +117,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
         Forecast valid times
     fcst_lead : List, optional
         Forecast lead times (hrs)
+    file_prefix : String, optional
+        Prefix of METplus output files
     line_type : String, optional
         METplus line type
     plot_var : String, optional
@@ -153,8 +157,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
         fnames = []
         for t in valid_times:
             for l in fcst_lead:
-                fnames.append('%s/point_stat_%02d0000L_%sV_%s.txt' %
-                              (input_sims[key]['dir'], l, t.strftime('%Y%m%d_%H%M%S'), line_type))
+                fnames.append('%s/%s_%02d0000L_%sV_%s.txt' %
+                              (input_sims[key]['dir'], file_prefix, l, t.strftime('%Y%m%d_%H%M%S'), line_type))
         verif_df[key] = mt.read_ascii(fnames, verbose=verbose)
 
     # Make plot
@@ -207,8 +211,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], line
         return verif_df, ax
 
 
-def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_var='TMP', 
-                  plot_stat='RMSE', ob_subset='ADPUPA', toggle_pts=True, out_tag='', 
+def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat', line_type='sl1l2', 
+                  plot_var='TMP', plot_stat='RMSE', ob_subset='ADPUPA', toggle_pts=True, out_tag='', 
                   exclude_plvl=[], verbose=False, ax=None, ci=False, ci_lvl=0.95, mean_legend=True):
     """
     Plot vertical profiles for upper-air verification
@@ -222,6 +226,8 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
         Forecast valid times
     fcst_lead : Integer, optional
         Forecast lead time (hrs)
+    file_prefix : String, optional
+        Prefix of METplus output files
     line_type : String, optional
         METplus line type
     plot_var : String, optional
@@ -257,8 +263,8 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
-        fnames = ['%s/point_stat_%02d0000L_%sV_%s.txt' %
-                  (input_sims[key]['dir'], fcst_lead, t.strftime('%Y%m%d_%H%M%S'), line_type) for t in valid_times]
+        fnames = ['%s/%s_%02d0000L_%sV_%s.txt' %
+                  (input_sims[key]['dir'], file_prefix, fcst_lead, t.strftime('%Y%m%d_%H%M%S'), line_type) for t in valid_times]
         verif_df[key] = mt.read_ascii(fnames, verbose=verbose)
 
     # Make plot
@@ -319,9 +325,10 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, line_type='sl1l2', plot_
         return verif_df, ax
 
 
-def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc', line_type='sl1l2', 
-                  plot_var='TMP', plot_lvl1='Z2', plot_lvl2='Z2', plot_stat='RMSE', 
-                  ob_subset='ADPSFC', toggle_pts=True, out_tag='', verbose=False):
+def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc', 
+                  file_prefix='point_stat', line_type='sl1l2', plot_var='TMP', plot_lvl1='Z2', 
+                  plot_lvl2='Z2', plot_stat='RMSE', ob_subset='ADPSFC', toggle_pts=True, out_tag='', 
+                  verbose=False):
     """
     Plot sawtooth diagrams for surface or upper-air verification
 
@@ -336,6 +343,8 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc', li
         Forecast lead time (hrs)
     verif_type : String, optional
         Verification type ('sfc' or 'ua')
+    file_prefix : String, optional
+        Prefix of METplus output files
     line_type : String, optional
         METplus line type
     plot_var : String, optional
@@ -373,8 +382,8 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc', li
         verif_df[key] = {}
         for itime in init_times:
             vtimes = [itime + dt.timedelta(hours=fl) for fl in fcst_lead]
-            fnames = ['%s/point_stat_%02d0000L_%sV_%s.txt' %
-                      (input_sims[key]['dir'], fl, t.strftime('%Y%m%d_%H%M%S'), line_type)
+            fnames = ['%s/%s_%02d0000L_%sV_%s.txt' %
+                      (input_sims[key]['dir'], file_prefix, fl, t.strftime('%Y%m%d_%H%M%S'), line_type)
                       for t, fl in zip(vtimes, fcst_lead)]
             verif_df[key][itime] = mt.read_ascii(fnames, verbose=verbose)
 
