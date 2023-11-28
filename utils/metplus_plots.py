@@ -112,13 +112,15 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     ----------
     input_sims : Dictionary
         METplus output files. Key is simulation name (used in the legend). The value is another
-        dictionary containing 'dir' (METplus output directory) and 'color'.
+        dictionary containing 'dir' (METplus output directory) and 'color'. Dictionary can also
+        conatin 'subset', which overrides the "ob_subset" keyword argument, and 'prefix', which
+        overrides the "file_prefix" keyword argument.
     valid_times : List of dt.datetime objects
         Forecast valid times
     fcst_lead : List, optional
         Forecast lead times (hrs)
     file_prefix : String, optional
-        Prefix of METplus output files
+        Prefix of METplus output files. Can also be set in input_sims dictionary.
     line_type : String, optional
         METplus line type
     plot_var : String, optional
@@ -128,7 +130,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     plot_stat : String, optional
         Forecast statistic to plot
     ob_subset : String, optional
-        Observation subset to use for verification
+        Observation subset to use for verification. Can also be set in the input_sims dictionary.
     toggle_pts : Boolean, optional
         Turn inidvidual points on or off
     out_tag : String, optional
@@ -155,6 +157,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     verif_df = {}
     for key in input_sims.keys():
         fnames = []
+        if 'prefix' in input_sims[key].keys(): 
+            file_prefix = input_sims[key]['prefix']
         for t in valid_times:
             for l in fcst_lead:
                 fnames.append('%s/%s_%02d0000L_%sV_%s.txt' %
@@ -171,6 +175,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         yplot = []
         ci_low = []
         ci_high = []
+        if 'subset' in input_sims[key].keys(): 
+            ob_subset = input_sims[key]['subset']
         for l in fcst_lead:
             red_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
                                        (verif_df[key]['FCST_LEV'] == plot_lvl) &
@@ -221,13 +227,15 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     ----------
     input_sims : Dictionary
         METplus output files. Key is simulation name (used in the legend). The value is another
-        dictionary containing 'dir' (METplus output directory) and 'color'.
+        dictionary containing 'dir' (METplus output directory) and 'color'. Dictionary can also
+        conatin 'subset', which overrides the "ob_subset" keyword argument, and 'prefix', which
+        overrides the "file_prefix" keyword argument.
     valid_times : List of dt.datetime objects
         Forecast valid times
     fcst_lead : Integer, optional
         Forecast lead time (hrs)
     file_prefix : String, optional
-        Prefix of METplus output files
+        Prefix of METplus output files. Can also be set in input_sims dictionary.
     line_type : String, optional
         METplus line type
     plot_var : String, optional
@@ -235,7 +243,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     plot_stat : String, optional
         Forecast statistic to plot
     ob_subset : String, optional
-        Observation subset to use for verification
+        Observation subset to use for verification. Can also be set in input_sims dictionary.
     toggle_pts : Boolean, optional
         Turn inidvidual points on or off
     out_tag : String, optional
@@ -263,6 +271,8 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
+        if 'prefix' in input_sims[key].keys(): 
+            file_prefix = input_sims[key]['prefix']
         fnames = ['%s/%s_%02d0000L_%sV_%s.txt' %
                   (input_sims[key]['dir'], file_prefix, fcst_lead, t.strftime('%Y%m%d_%H%M%S'), line_type) for t in valid_times]
         verif_df[key] = mt.read_ascii(fnames, verbose=verbose)
@@ -275,6 +285,8 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         output_file = ('%s_%s_%s_%dhr_%s_ua_vprof.png' % 
                        (plot_var, plot_stat, ob_subset, fcst_lead, out_tag))
     for key in input_sims.keys():
+        if 'subset' in input_sims[key].keys(): 
+            ob_subset = input_sims[key]['subset']
         red_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
                                    (verif_df[key]['OBTYPE'] == ob_subset)].copy()
         prslev = [int(s[1:]) for s in np.unique(red_df['FCST_LEV'].values)]
@@ -316,7 +328,6 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, ob_subset), size=18)
     ax.grid()
     ax.legend()
-    plt.savefig(output_file)
 
     if save:
         plt.savefig(output_file)
