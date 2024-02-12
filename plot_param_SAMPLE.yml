@@ -1,0 +1,105 @@
+# Input Parameters for METplus Verification Plots
+#
+# shawn.s.murdzek@noaa.gov
+#
+#===================================================================================================
+
+# Verification type and prefix ('point_stat' or GridStat')
+verif_type: 'point_stat'
+file_prefix: 'point_stat'
+
+# Simulations to plot.
+# First set of keys are the simulation names
+# In the directory names...
+#     {typ} = Verification type ('point_stat' or 'GridStat')
+#     {subtyp} = Verification subtype ('sfc' or 'upper_air')
+sim_dict:
+  real_red_data:
+    color: 'r'
+    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion/sims_real_red_data/winter/{subtyp}/2022020109/output/{typ}'
+  syn_data:
+    color: 'b'
+    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion/sims_syn_data/winter/{subtyp}/2022020109/output/{typ}'
+
+# Output directory and output tag
+out_dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/plots/app_orion/winter/ctrl/point_stat'
+out_tag: 'ctrl'
+
+# Valid times for verification
+# Use the following format for start times: YYYY-MM-DD HH:MM:SS (no quotes are needed)
+# "step" is in hrs
+# "ua" refers to upper-air verification
+valid_time_start: 2022-02-01 09:00:00
+valid_time_step: 1
+valid_time_end_hr: 159 
+valid_time_ua_start: 2022-02-01 12:00:00
+valid_time_ua_step: 12
+valid_time_ua_end_hr: 156
+
+# Initial time and valid times to exclude (b/c, e.g., missing data)
+# Use the following format: YYYY-MM-DD HH:MM:SS (no quotes are needed)
+itime_exclude:
+  - 
+vtime_exclude:
+  - 
+
+# Plotting options.
+# First set of keys: Variables to perfor, verification for
+# Second set of keys: Plotting options for that variable
+# NOTE: For grid-to-grid verification against the NR, ob_subset should be 'NR'
+plot_dict:
+  TMP:
+    line_type: 'sl1l2'
+    sfc_plot_lvl: 'Z2'
+    sfc_ob_subset: 
+      - 'ADPSFC'
+    ua_plot_lvl: 
+      - 'P500'
+    ua_ob_subset:
+      - 'ADPUPA'
+    plot_stat:
+      - 'RMSE'
+      - 'TOTAL'
+      - 'BIAS_DIFF'
+  SPFH:
+    line_type: 'sl1l2'
+    sfc_plot_lvl: 'Z2'
+    sfc_ob_subset: 
+      - 'ADPSFC'
+    ua_plot_lvl: 
+      - 'P500'
+    ua_ob_subset:
+      - 'ADPUPA'
+    plot_stat:
+      - 'RMSE'
+      - 'TOTAL'
+      - 'BIAS_DIFF'
+  UGRD_VGRD:
+    line_type: 'vl1l2'
+    sfc_plot_lvl: 'Z10'
+    sfc_ob_subset: 
+      - 'ADPSFC'
+    ua_plot_lvl: 
+      - 'P500'
+      - 'P250'
+    ua_ob_subset:
+      - 'ADPUPA'
+    plot_stat:
+      - 'VECT_RMSE'
+      - 'TOTAL'
+      - 'MAG_BIAS_DIFF'
+
+# Forecast hours to include in dieoff plots
+fcst_lead_dieoff:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 6
+  - 12
+
+# Forecast hours to use for other verification plots (e.g., time series, vertical profiles)
+fcst_lead_other:
+  - 0
+  - 1
+  - 3

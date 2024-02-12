@@ -1,7 +1,7 @@
 
 # Link METplus output files into a structure that is useable by plot_driver.py
 
-verifDIR='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/spring_uas_35km'
+verifDIR='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/app_orion_OLD/winter'
 verif_types=("sfc" "upper_air")
 
 #---------------------------------------------------------------------------------------------------

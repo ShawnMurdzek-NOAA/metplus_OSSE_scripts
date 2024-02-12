@@ -16,6 +16,7 @@ import numpy as np
 import os
 import copy
 import matplotlib.pyplot as plt
+import yaml
 
 import metplus_plots as mp
 
@@ -27,52 +28,70 @@ import metplus_plots as mp
 # Dictionary of simulation information. First set of keys is the season. Second set of keys are tags 
 # for the output files. Third set are the labels for the legends of the plot. Each season will be 
 # placed in a separate directory
-parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/'
+parent_dir = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion'
 sim_dict = {}
 #for season in ['spring', 'winter']:
-for season in ['winter']:
+for season in ['spring']:
     sim_dict[season] = {}
-    for sim_type in ['syn_data', 'real_red']:
+    for sim_type in ['syn_data', 'real_red_data']:
         sim_dict[season][sim_type] = {}
-        for exp, c in zip(['ctrl', 'no_aircft', 'no_raob', 'no_sfc', 'no_psfc'], ['r', 'b', 'orange', 'gray', 'k']):
-            sim_dict[season][sim_type][exp] = {'dir':'%s/%s_sims/%s_%s' % (parent_dir, sim_type, season, exp),
+        for exp, c in zip(['ctrl', 'no_aircft', 'no_raob', 'no_sfc'], ['r', 'b', 'orange', 'gray']):
+            sim_dict[season][sim_type][exp] = {'dir':'%s/sims_%s/%s_%s' % (parent_dir, sim_type, season, exp),
                                                'color':c}
-            if (season == 'winter') and (exp == 'ctrl'):
-                sim_dict[season][sim_type][exp]['dir'] = '%s/%s_sims/%s_updated' % (parent_dir, sim_type, season)
-            elif (season == 'spring') and (exp == 'ctrl'):
-                sim_dict[season][sim_type][exp]['dir'] = '%s/%s_sims/%s' % (parent_dir, sim_type, season)
+            if exp == 'ctrl':
+                sim_dict[season][sim_type][exp]['dir'] = '%s/sims_%s/%s' % (parent_dir, sim_type, season)
     sim_dict[season]['ctrl'] = {}
-    for exp, c in zip(['real_red', 'syn_data'], ['r', 'b']):
+    for exp, c in zip(['real_red_data', 'syn_data'], ['r', 'b']):
         sim_dict[season]['ctrl'][exp] = {'color':c}
-        if season == 'winter':
-            sim_dict[season]['ctrl'][exp]['dir'] = '%s/%s_sims/%s_updated' % (parent_dir, exp, season)
-        elif season == 'spring':
-            sim_dict[season]['ctrl'][exp]['dir'] = '%s/%s_sims/%s' % (parent_dir, exp, season)
+        sim_dict[season]['ctrl'][exp]['dir'] = '%s/sims_%s/%s' % (parent_dir, exp, season)
 
-#sim_dict = {'spring':{'uas':{'ctrl':{'color':'r',
-#                                     'dir':'/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/spring'},
-#                             'UAS':{'color':'b',
-#                                    'dir':'/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/syn_data_sims/spring_uas_35km'}}}}
+sim_dict = {'winter':
+               {'check_wind_rot':
+                   {'syn_data_rot_perf':
+                       {'color':'b',
+                        'dir':'/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion/sims_syn_data/winter_tune_oberr_noGVF'},
+                    'syn_data_unrot_err':
+                       {'color':'g',
+                        'dir':'/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion_OLD/syn_data_sims/winter_updated'},
+                    'real_red':
+                       {'color':'r',
+                        'dir':'/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion/sims_real_red_data/winter'}}}}
+
+sim_dict = {'winter':
+               {'compare_real':
+                    {'real':
+                       {'color':'b',
+                        'dir':'/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion/sims_real_data/winter'},
+                     'real_prepbufr_decoder':
+                       {'color':'r',
+                        'dir':'/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion/sims_real_data/winter_prepbufr_decoder'}}}}
 
 # Verification type ('point_stat' or 'GridStat')
 verif_type = 'point_stat'
 file_prefix = 'point_stat'
 
 # Valid times and forecast lead times
-valid_times = {'winter':[dt.datetime(2022, 2, 1, 9) + dt.timedelta(hours=i) for i in range(159)],
-               'spring':[dt.datetime(2022, 4, 29, 21) + dt.timedelta(hours=i) for i in range(159)]}
-valid_times_ua = {'winter':[dt.datetime(2022, 2, 1, 12) + dt.timedelta(hours=i) for i in range(0, 156, 12)],
-                  'spring':[dt.datetime(2022, 4, 30, 12) + dt.timedelta(hours=i) for i in range(0, 144, 12)]}
-fcst_lead_dieoff = [0, 1, 2, 3, 6, 12]
-fcst_lead_other = [0, 1, 3]
+valid_times = {'winter':[dt.datetime(2022, 2, 1, 9) + dt.timedelta(hours=i) for i in range(7)],
+               'spring':[dt.datetime(2022, 4, 29, 21) + dt.timedelta(hours=i) for i in range(36)]}
+valid_times_ua = {'winter':[dt.datetime(2022, 2, 1, 12) + dt.timedelta(hours=i) for i in range(0, 36, 12)],
+                  'spring':[dt.datetime(2022, 4, 30, 0) + dt.timedelta(hours=i) for i in range(0, 36, 12)]}
+fcst_lead_dieoff = [0, 1]
+fcst_lead_other = [0, 1]
 
 # Initial times to exclude (usually owing to missing forecast data)
-itime_exclude = {'winter': [dt.datetime(2022, 2, 4, 20)],
+itime_exclude = {'winter': [dt.datetime(2022, 2, 1, 17),
+                            dt.datetime(2022, 2, 1, 18), 
+                            dt.datetime(2022, 2, 1, 22), 
+                            dt.datetime(2022, 2, 2, 14), 
+                            dt.datetime(2022, 2, 2, 15),
+                            dt.datetime(2022, 2, 2, 19),
+                            dt.datetime(2022, 2, 2, 20),
+                            dt.datetime(2022, 2, 2, 21)],
                  'spring': []}
 
 # Valid times to exclude (usually owing to missing obs data)
 vtime_exclude = {'winter': [],
-                 'spring': [dt.datetime(2022, 5, 5, 23)]}
+                 'spring': []}
 
 # Dictionary of plotting information. Program will loop over each variable (first set of keys), each
 # statistic ('plot_stat' key) and each ob_subset ('sfc_ob_subset' and 'ua_ob_subset'). For 

@@ -32,7 +32,7 @@ It is also assumed that the observations are originally in prepBUFR format and t
 5. Run using `sbatch run_metplus.sh`. Note that this script handles setting up the environment.
 6. Use the scripts in `utils` to analyze output.
 
-### Option 2 (preferred for grid-to-grid verification)
+### Option 2 (preferred option)
 
 1. Copy `make_submit_metplus_jobs.sh` to your run directory.
 2. Edit `make_submit_metplus_jobs.sh`. Only the section above the horizontal line should need editing.
