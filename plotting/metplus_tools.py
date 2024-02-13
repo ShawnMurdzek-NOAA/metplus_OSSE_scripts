@@ -17,7 +17,7 @@ import scipy.stats as ss
 # Functions
 #---------------------------------------------------------------------------------------------------
 
-def confidence_interval_mean(data, level=0.95):
+def confidence_interval_mean(data, level=0.95, acct_lag_corr=False):
     """
     Compute the confidence interval for the mean of a dataset
 
@@ -27,6 +27,11 @@ def confidence_interval_mean(data, level=0.95):
         Input data
     level : Float, optional
         Confidence level for the confidence interval
+    acct_lag_corr : Boolean, optional
+        Option to account to autocorrelated data by using the lag-1 autocorrelation when computing 
+        the standard error. Method is based on Wilks (2011), eqn 5.12 (note that this is slightly 
+        different from the equation used in MATS at GSL). Note that this assumes that the input 
+        data are "in order" (e.g., each data point is an hour after the previous data point).
 
     Returns
     -------
@@ -40,7 +45,14 @@ def confidence_interval_mean(data, level=0.95):
     std = np.std(data) 
     t_low = ss.t.ppf(0.5 * (1 - level), n - 1)
 
-    ci = (avg + (t_low * std / np.sqrt(n)), avg - (t_low * std / np.sqrt(n)))
+    # Compute standard error
+    if acct_lag_corr:
+        auto_corr = np.corrcoef(data[1:], data[:-1])[0, -1]
+    else:
+        auto_corr = 0
+    ste = std / (np.sqrt(n * (1 - auto_corr) / (1 + auto_corr)))
+
+    ci = (avg + (t_low * ste), avg - (t_low * ste))
 
     return ci
 
