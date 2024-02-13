@@ -155,7 +155,8 @@ def compute_stats(verif_df, line_type='sl1l2'):
     return new_df
 
 
-def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_lvl=0.95):
+def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_lvl=0.95,
+                            acct_lag_corr=False):
     """
     Compute statistics using all lines in a MET output DataFrame.
 
@@ -172,6 +173,8 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
         Option to draw confidence intervals
     ci_lvl : Float, optional
         Confidence interval level as a fraction
+    acct_lag_corr : Boolean, optional
+        Option to account for temporal autocorrelation when creating confidence intervals
 
     Returns
     -------
@@ -219,8 +222,12 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
 
         # Compute confidence intervals
         if ci:
+            # If accounting for temporal autocorrelation, ensure that values are in temporal order
+            if acct_lag_corr:
+                verif_df.sort_values('FCST_VALID_BEG', axis=0, inplace=True)
             for c in avg_col:
-                ci_vals = confidence_interval_mean(verif_df[c].values, level=ci_lvl)
+                ci_vals = confidence_interval_mean(verif_df[c].values, level=ci_lvl, 
+                                                   acct_lag_corr=acct_lag_corr)
                 new_df['low_%s' % c] = ci_vals[0]
                 new_df['high_%s' % c] = ci_vals[1]
 
