@@ -32,7 +32,7 @@ import pyDA_utils.bufr as bufr
 # Input prepBUFR CSV files
 #in_fnames = glob.glob('/work2/noaa/wrfruc/murdzek/nature_run_winter/obs/corr_errors_1st_iter_v2/err_csv/*.rap.fake.prepbufr.csv')
 in_fnames = glob.glob('/work2/noaa/wrfruc/murdzek/nature_run_spring/obs/corr_errors/err_csv/*.rap.fake.prepbufr.csv')
-in_fnames = ['/work2/noaa/wrfruc/murdzek/nature_run_winter/obs/corr_errors/err_csv/202202070000.rap.fake.prepbufr.csv']
+in_fnames = ['/work2/noaa/wrfruc/murdzek/nature_run_spring/obs/corr_errors/err_csv/202205050000.rap.fake.prepbufr.csv']
 
 # Output prepBUFR CSV files
 out_fnames = []
@@ -67,6 +67,14 @@ for i, (in_f, out_f) in enumerate(zip(in_fnames, out_fnames)):
                                         (csv_df['SID'] == sid)]['POB'] - p).idxmin()
                 if np.abs(csv_df.iloc[idx]['POB'] - p) <= tolerance:
                     csv_df.loc[idx, 'POB'] = p
+                
+                # If multiple entries for this pressure level, only keep the first one
+                idx = csv_df.loc[(csv_df['TYP'] == typ) &
+                                 (csv_df['SID'] == sid) &
+                                 (csv_df['POB'] == p)].index
+                for n, ind in enumerate(idx[1:]):
+                    csv_df.loc[ind, 'POB'] = p - (0.1 * (n+1))
+
     bufr.df_to_csv(csv_df, out_f)
 
 end = dt.datetime.now()
