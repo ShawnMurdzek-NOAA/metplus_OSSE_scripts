@@ -17,9 +17,9 @@ import scipy.stats as ss
 # Functions
 #---------------------------------------------------------------------------------------------------
 
-def confidence_interval_mean(data, level=0.95, acct_lag_corr=False):
+def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False):
     """
-    Compute the confidence interval for the mean of a dataset
+    Compute the confidence interval for the mean of a dataset using a t distribution
 
     Parameters
     ----------
@@ -53,6 +53,64 @@ def confidence_interval_mean(data, level=0.95, acct_lag_corr=False):
     ste = std / (np.sqrt(n * (1 - auto_corr) / (1 + auto_corr)))
 
     ci = (avg + (t_low * ste), avg - (t_low * ste))
+
+    return ci
+
+
+def confidence_interval_bootstrap_mean(data, level=0.95, bootstrap_kw={}):
+    """
+    Compute the confidence interval for the mean of a dataset using a bootstrap
+
+    Parameters
+    ----------
+    data : np.array
+        Input data
+    level : Float, optional
+        Confidence level for the confidence interval
+    bootstrap_kw : Dictionary, optional
+        Keyword to pass to bootstrap function
+
+    Returns
+    -------
+    ci : Tuple
+        Upper and lower bound of the confidence interval
+
+    """
+
+    out = ss.bootstrap((data,), np.mean, **bootstrap_kw)
+    ci = (out.confidence_interval.high, out.confidence_interval.low)
+
+    return ci
+
+
+def confidence_interval_mean(data, level=0.95, option='t_dist', ci_kw={}):
+    """
+    Compute the confidence interval for the mean of a dataset
+
+    Parameters
+    ----------
+    data : np.array
+        Input data
+    level : Float, optional
+        Confidence level for the confidence interval
+    option : String, optional
+        Method used to compute confidence interval ('t_dist' or 'bootstrap')
+    ci_kw : Dictionary, optional
+        Keywords passed to the confidence interval function
+
+    Returns
+    -------
+    ci : Tuple
+        Upper and lower bound of the confidence interval
+
+    """
+
+    if option == 't_dist':
+        ci = confidence_interval_t_mean(data, level=level, **ci_kw)
+    elif option == 'bootstrap':
+        ci = confidence_interval_bootstrap_mean(data, level=level, **ci_kw)
+    else:
+        print('confidence interval option {option} does not exist'.format(option=option))
 
     return ci
 
@@ -156,7 +214,7 @@ def compute_stats(verif_df, line_type='sl1l2'):
 
 
 def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_lvl=0.95,
-                            acct_lag_corr=False):
+                            ci_opt='t_dist', ci_kw={}):
     """
     Compute statistics using all lines in a MET output DataFrame.
 
@@ -173,8 +231,10 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
         Option to draw confidence intervals
     ci_lvl : Float, optional
         Confidence interval level as a fraction
-    acct_lag_corr : Boolean, optional
-        Option to account for temporal autocorrelation when creating confidence intervals
+    ci_opt : String, optional
+        Method used to create confidence intervals
+    ci_kw : Dictionary, optional
+        Additional keywords passed to confidence interval function
 
     Returns
     -------
@@ -227,7 +287,7 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
                 verif_df.sort_values('FCST_VALID_BEG', axis=0, inplace=True)
             for c in avg_col:
                 ci_vals = confidence_interval_mean(verif_df[c].values, level=ci_lvl, 
-                                                   acct_lag_corr=acct_lag_corr)
+                                                   option=ci_opt, ci_kw=ci_kw)
                 new_df['low_%s' % c] = ci_vals[0]
                 new_df['high_%s' % c] = ci_vals[1]
 

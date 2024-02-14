@@ -104,7 +104,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
 def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], 
                     file_prefix='point_stat', line_type='sl1l2', plot_var='TMP', plot_lvl='Z2', 
                     plot_stat='RMSE', ob_subset='ADPSFC', toggle_pts=True, out_tag='', 
-                    verbose=False, ax=None, ci=False, ci_lvl=0.95, acct_lag_corr=False,
+                    verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist', ci_kw=ci_kw,
                     mean_legend=True):
     """
     Plot die-off curves for surface verification
@@ -144,8 +144,10 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         Option to draw confidence intervals
     ci_lvl : Float, optional
         Confidence interval level as a fraction
-    acct_lag_corr : Boolean, optional
-        Option to account for temporal autocorrelation when creating confidence intervals
+    ci_opt : String, optional
+        Method used to create confidence intervals
+    ci_kw : Dictionary, optional
+        Additional keyword arguments passed to the confidence interval function
     mean_legend : Boolean, optional
         Option to plot the mean forecast statistic in the legend
 
@@ -186,7 +188,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
                                        (verif_df[key]['OBTYPE'] == ob_subset) &
                                        (verif_df[key]['FCST_LEAD'] == l*1e4)].copy()
             stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type, ci=ci, ci_lvl=ci_lvl,
-                                                  acct_lag_corr=acct_lag_corr)
+                                                  ci_opt=ci_opt, ci_kw=ci_kw)
             yplot.append(stats_df[plot_stat].values[0])
             if ci:
                 ci_low.append(stats_df['low_%s' % plot_stat].values[0])
@@ -223,8 +225,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
 
 def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat', line_type='sl1l2', 
                   plot_var='TMP', plot_stat='RMSE', ob_subset='ADPUPA', toggle_pts=True, out_tag='', 
-                  exclude_plvl=[], verbose=False, ax=None, ci=False, ci_lvl=0.95, 
-                  acct_lag_corr=False, mean_legend=True):
+                  exclude_plvl=[], verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist',
+                  ci_kw={}, mean_legend=True):
     """
     Plot vertical profiles for upper-air verification
 
@@ -263,8 +265,10 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         Option to draw confidence intervals
     ci_lvl : Float, optional
         Confidence interval level as a fraction
-    acct_lag_corr : Boolean, optional
-        Option to account for temporal autocorrelation when creating confidence intervals
+    ci_opt : String, optional
+        Method used to create confidence intervals
+    ci_kw : Dictionary, optional
+        Additional keyword arguments passed to the confidence interval function
     mean_legend : Boolean, optional
         Option to plot the mean forecast statistic in the legend
 
@@ -308,7 +312,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         for j, p in enumerate(prslev):
             prs_df = red_df.loc[red_df['FCST_LEV'] == ('P%d' % p)]
             stats_df = mt.compute_stats_entire_df(prs_df, line_type=line_type, ci=ci, ci_lvl=ci_lvl,
-                                                  acct_lag_corr=acct_lag_corr)
+                                                  ci_opt=ci_opt, ci_kw=ci_kw)
             xplot[j] = stats_df[plot_stat].values[0]
             if ci:
                 ci_low[j] = stats_df['low_%s' % plot_stat].values[0]
