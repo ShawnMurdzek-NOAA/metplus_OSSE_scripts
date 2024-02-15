@@ -104,7 +104,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
 def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], 
                     file_prefix='point_stat', line_type='sl1l2', plot_var='TMP', plot_lvl='Z2', 
                     plot_stat='RMSE', ob_subset='ADPSFC', toggle_pts=True, out_tag='', 
-                    verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist', ci_kw=ci_kw,
+                    verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist', ci_kw={},
                     mean_legend=True):
     """
     Plot die-off curves for surface verification
