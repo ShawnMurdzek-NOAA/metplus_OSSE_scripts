@@ -283,8 +283,7 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
         # Compute confidence intervals
         if ci:
             # If accounting for temporal autocorrelation, ensure that values are in temporal order
-            if acct_lag_corr:
-                verif_df.sort_values('FCST_VALID_BEG', axis=0, inplace=True)
+            verif_df.sort_values('FCST_VALID_BEG', axis=0, inplace=True)
             for c in avg_col:
                 ci_vals = confidence_interval_mean(verif_df[c].values, level=ci_lvl, 
                                                    option=ci_opt, ci_kw=ci_kw)
