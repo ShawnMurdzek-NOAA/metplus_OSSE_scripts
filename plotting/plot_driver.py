@@ -26,7 +26,7 @@ import metplus_plots as mp
 #---------------------------------------------------------------------------------------------------
 
 # Input YAML file name
-yaml_name = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/plots/app_orion/winter/ctrl/point_stat/plot_param.yml'
+yaml_name = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/plots/app_orion/winter/data_denial/plot_param.yml'
 with open(yaml_name, 'r') as fptr:
     param = yaml.safe_load(fptr)
 
@@ -141,7 +141,10 @@ for plot_var in plot_dict.keys():
                                      exclude_plvl=[],
                                      verbose=False)
                 plt.close()
-                vtimes = valid_times_ua
+                if valid_time_ua_step == 1:
+                    vtimes = valid_times_ua[ftime:]
+                else:
+                    vtimes = valid_times_ua
                 for t in itime_exclude:
                     t_adjust = t + dt.timedelta(hours=ftime)
                     if t_adjust in vtimes:
