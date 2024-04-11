@@ -23,7 +23,8 @@ import metplus_OSSE_scripts.plotting.metplus_tools as mt
 
 def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat', 
                         line_type='sl1l2', plot_var='TMP', plot_lvl='Z2', plot_stat='RMSE', 
-                        ob_subset='ADPSFC', toggle_pts=True, out_tag='', verbose=False):
+                        ob_subset='ADPSFC', toggle_pts=True, out_tag='', verbose=False,
+                        include_zero=False, figsize=(8, 6)):
     """
     Plot time series for surface verification
 
@@ -54,6 +55,10 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         String to add to the output file
     verbose : Boolean, optional
         Option to have verbose output from mt.read_ascii()
+    include_zero : Booean, optional
+        Option to include 0 in y axis
+    figsize : Tuple, optional
+        Figure size
 
     Returns
     -------
@@ -77,7 +82,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
 
     # Make plot
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
     for key in input_sims.keys():
         plot_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
                                     (verif_df[key]['FCST_LEV'] == plot_lvl) &
@@ -94,7 +99,9 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         ax.set_ylabel('%s %s %s (%s)' % (plot_lvl, plot_var, plot_stat, plot_df['FCST_UNITS'].values[0]), size=14)
     ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, ob_subset), size=18)
     ax.grid()
-    ax.legend()
+    ax.legend(fontsize=12)
+    if include_zero:
+        ax.set_ylim(bottom=0)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
     plt.savefig(output_file)
 
@@ -105,7 +112,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
                     file_prefix='point_stat', line_type='sl1l2', plot_var='TMP', plot_lvl='Z2', 
                     plot_stat='RMSE', ob_subset='ADPSFC', toggle_pts=True, out_tag='', 
                     verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist', ci_kw={},
-                    mean_legend=True):
+                    mean_legend=True, include_zero=False, figsize=(8, 6)):
     """
     Plot die-off curves for surface verification
 
@@ -150,6 +157,10 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         Additional keyword arguments passed to the confidence interval function
     mean_legend : Boolean, optional
         Option to plot the mean forecast statistic in the legend
+    include_zero : Booean, optional
+        Option to include 0 in y axis
+    figsize : Tuple, optional
+        Figure size
 
     Returns
     -------
@@ -173,7 +184,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     # Make plot
     save = False
     if ax == None:
-        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
         save = True
         output_file = ('%s_%s_%s_%s_%s_sfc_dieoff.png' % (plot_var, plot_lvl, plot_stat, ob_subset, out_tag))
     for key in input_sims.keys():
@@ -214,7 +225,9 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     ax.set_xlabel('lead time (hr)', size=14)
     ax.set_title('Die-Off, Verified Against %s' % ob_subset, size=18)
     ax.grid()
-    ax.legend()
+    ax.legend(fontsize=12)
+    if include_zero:
+        ax.set_ylim(bottom=0)
 
     if save:
         plt.savefig(output_file)
@@ -226,7 +239,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
 def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat', line_type='sl1l2', 
                   plot_var='TMP', plot_stat='RMSE', ob_subset='ADPUPA', toggle_pts=True, out_tag='', 
                   exclude_plvl=[], verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist',
-                  ci_kw={}, mean_legend=True):
+                  ci_kw={}, mean_legend=True, ylim=[1050, 80], include_zero=False, figsize=(7, 7)):
     """
     Plot vertical profiles for upper-air verification
 
@@ -271,6 +284,12 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         Additional keyword arguments passed to the confidence interval function
     mean_legend : Boolean, optional
         Option to plot the mean forecast statistic in the legend
+    ylim : List of floats, optional
+        Y-axis limits (hPa)
+    include_zero : Booean, optional
+        Option to include 0 in x axis
+    figsize : Tuple, optional
+        Figure size
 
     Returns
     -------
@@ -291,7 +310,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     # Make plot
     save = False
     if ax == None:
-        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(7, 7))
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
         save = True
         output_file = ('%s_%s_%s_%dhr_%s_ua_vprof.png' % 
                        (plot_var, plot_stat, ob_subset, fcst_lead, out_tag))
@@ -335,11 +354,13 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     else:
         ax.set_xlabel('%s %s (%s)' % (plot_var, plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
     ax.set_ylabel('pressure (hPa)', size=14)
-    ax.set_ylim([1050, 80])
+    ax.set_ylim(ylim)
     ax.set_yscale('log')
     ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, ob_subset), size=18)
     ax.grid()
-    ax.legend()
+    ax.legend(fontsize=12)
+    if include_zero:
+        ax.set_xlim(left=0)
 
     if save:
         plt.savefig(output_file)
@@ -351,7 +372,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
 def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc', 
                   file_prefix='point_stat', line_type='sl1l2', plot_var='TMP', plot_lvl1='Z2', 
                   plot_lvl2='Z2', plot_stat='RMSE', ob_subset='ADPSFC', toggle_pts=True, out_tag='', 
-                  verbose=False):
+                  verbose=False, include_zero=False, figsize=(8, 6)):
     """
     Plot sawtooth diagrams for surface or upper-air verification
 
@@ -388,6 +409,10 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
         String to add to the output file
     verbose : Boolean, optional
         Option to have verbose output from mt.read_ascii()
+    include_zero : Booean, optional
+        Option to include 0 in y axis
+    figsize : Tuple, optional
+        Figure size
 
     Returns
     -------
@@ -414,7 +439,7 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
             verif_df[key][itime] = mt.compute_stats(verif_df[key][itime], line_type=line_type)
 
     # Make plot
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(8, 6))
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
     for key in input_sims.keys():
         for j, itime in enumerate(init_times):
             tmp_df = verif_df[key][itime].loc[(verif_df[key][itime]['FCST_VAR'] == plot_var) &
@@ -450,7 +475,9 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
                                                   tmp_df['FCST_UNITS'].values[0]), size=14)
     ax.set_title('Verified Against %s' % ob_subset, size=18)
     ax.grid()
-    ax.legend()
+    ax.legend(fontsize=12)
+    if include_zero:
+        ax.set_ylim(bottom=0)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
     plt.savefig(output_file)
 
