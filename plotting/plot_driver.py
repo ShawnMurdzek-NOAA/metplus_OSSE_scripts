@@ -43,6 +43,7 @@ valid_time_ua_step = param['valid_time_ua_step']
 valid_time_ua_end_hr = param['valid_time_ua_end_hr']
 itime_exclude = param['itime_exclude']
 vtime_exclude = param['vtime_exclude']
+ci_kw = param['ci_kw']
 plot_dict = param['plot_dict']
 fcst_lead_dieoff = param['fcst_lead_dieoff']
 fcst_lead_other = param['fcst_lead_other']
@@ -71,11 +72,14 @@ print('--------------------')
 for subtyp in plot_dict['surface'].keys():
     os.system(f'mkdir -p {out_dir}/{subtyp}')
     for plot_var in plot_dict['surface'][subtyp].keys():
-        var_dict = plot_var['surface'][subtyp][plot_var]
+        var_dict = plot_dict['surface'][subtyp][plot_var]
         for plot_stat in var_dict['plot_stat']:
             print(f'creating plots for {subtyp} {plot_var} {plot_stat}')
             if plot_stat in ['BIAS_DIFF', 'MAG_BIAS_DIFF']:
                 var_dict['kwargs']['include_zero'] = False
+            ci_kw_copy = ci_kw.copy()
+            if plot_stat in ['TOTAL']:
+                ci_kw_copy['ci'] = False
             for ob_subset in var_dict['ob_subset']:
                 input_sims_sfc = copy.deepcopy(sim_dict)
                 for key in input_sims_sfc:
@@ -88,7 +92,8 @@ for subtyp in plot_dict['surface'].keys():
                                     toggle_pts=True,
                                     out_tag=out_tag,
                                     verbose=False,
-                                    **var_dict['kwargs'])
+                                    **var_dict['kwargs'],
+                                    **ci_kw_copy)
                 plt.close()
                 for ftime in fcst_lead_other:
                     vtimes = valid_times[ftime:]
@@ -109,7 +114,7 @@ for subtyp in plot_dict['surface'].keys():
                                             verbose=True,
                                             **var_dict['kwargs'])
                     plt.close()
-    os.system('mv *.png {out_dir}/{subtyp}/')
+    os.system(f'mv *.png {out_dir}/{subtyp}/')
 
 # Upper-air verification
 print()
@@ -118,15 +123,18 @@ print('----------------------')
 for subtyp in plot_dict['upper_air'].keys():
     os.system(f'mkdir -p {out_dir}/{subtyp}')
     for plot_var in plot_dict['upper_air'][subtyp].keys():
-        var_dict = plot_var['upper_air'][subtyp][plot_var]
+        var_dict = plot_dict['upper_air'][subtyp][plot_var]
         for plot_stat in var_dict['plot_stat']:
             print(f'creating plots for {subtyp} {plot_var} {plot_stat}')
             if plot_stat in ['BIAS_DIFF', 'MAG_BIAS_DIFF']:
                 var_dict['kwargs']['include_zero'] = False
+            ci_kw_copy = ci_kw.copy()
+            if plot_stat in ['TOTAL']:
+                ci_kw_copy['ci'] = False
             for ob_subset in var_dict['ob_subset']:
                 input_sims_ua = copy.deepcopy(sim_dict)
                 for key in input_sims_ua:
-                    input_sims_ua[key]['dir'] = input_sims_ua[key]['dir'].format(typ=verif_type, subtyp='upper_air')
+                    input_sims_ua[key]['dir'] = input_sims_ua[key]['dir'].format(typ=verif_type, subtyp=subtyp)
                 for lvl in var_dict['plot_lvl']:
                     _ = mp.plot_sfc_dieoff(input_sims_ua, valid_times_ua, 
                                         fcst_lead=fcst_lead_dieoff, 
@@ -137,7 +145,8 @@ for subtyp in plot_dict['upper_air'].keys():
                                         toggle_pts=True,
                                         out_tag=out_tag,
                                         verbose=False,
-                                        **var_dict['kwargs'])
+                                        **var_dict['kwargs'],
+                                        **ci_kw_copy)
                     plt.close()
                 for ftime in fcst_lead_other:
                     _ = mp.plot_ua_vprof(input_sims_ua, valid_times_ua, 
@@ -150,7 +159,8 @@ for subtyp in plot_dict['upper_air'].keys():
                                         exclude_plvl=[],
                                         verbose=False,
                                         ylim=var_dict['prs_limit'],
-                                        **var_dict['kwargs'])
+                                        **var_dict['kwargs'],
+                                        **ci_kw_copy)
                     plt.close()
                     if valid_time_ua_step == 1:
                         vtimes = valid_times_ua[ftime:]
@@ -175,11 +185,11 @@ for subtyp in plot_dict['upper_air'].keys():
                                                 verbose=True,
                                                 **var_dict['kwargs'])
                     plt.close()
-    os.system('mv *.png {out_dir}/{subtyp}/')
+    os.system(f'mv *.png {out_dir}/{subtyp}/')
 
 # Save code version information
-os.system('git log | head -n 8 >> {out_dir}/code_version.txt')
-os.system('git status >> {out_dir}/code_version.txt')
+os.system(f'git log | head -n 8 >> {out_dir}/code_version.txt')
+os.system(f'git status >> {out_dir}/code_version.txt')
 
 
 """

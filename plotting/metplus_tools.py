@@ -253,6 +253,11 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
 
         new_means = {}
         new_means['TOTAL'] = np.sum(verif_df['TOTAL'].values)
+
+        # Check to ensure that length of verif_df is not 0
+        if len(verif_df) == 0:
+            print('Warning: mt.compute_stats_entire_df: Length of verif_df = 0')
+
         for c in cols:
             new_means[c] = np.zeros(1)
             new_means[c][0] = (np.sum(verif_df[c].values * verif_df['TOTAL'].values) /
