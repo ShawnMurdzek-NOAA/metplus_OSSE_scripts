@@ -26,14 +26,13 @@ import metplus_plots as mp
 #---------------------------------------------------------------------------------------------------
 
 # Input YAML file name
-yaml_name = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/plots/app_orion/winter/data_denial/plot_param.yml'
+yaml_name = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/plots/rrfs-workflow_orion/winter/uas_all/plot_param.yml'
 with open(yaml_name, 'r') as fptr:
     param = yaml.safe_load(fptr)
 
 # Read in parameters
 sim_dict = param['sim_dict']
 verif_type = param['verif_type']
-file_prefix = param['file_prefix']
 out_dir = param['out_dir']
 out_tag = param['out_tag']
 valid_time_start = param['valid_time_start']
@@ -44,6 +43,7 @@ valid_time_ua_step = param['valid_time_ua_step']
 valid_time_ua_end_hr = param['valid_time_ua_end_hr']
 itime_exclude = param['itime_exclude']
 vtime_exclude = param['vtime_exclude']
+ci_kw = param['ci_kw']
 plot_dict = param['plot_dict']
 fcst_lead_dieoff = param['fcst_lead_dieoff']
 fcst_lead_other = param['fcst_lead_other']
@@ -65,112 +65,131 @@ if vtime_exclude == [None]:
 # Create Plots
 #---------------------------------------------------------------------------------------------------
 
-os.system('mkdir -p {d}'.format(d=out_dir))
-
-for plot_var in plot_dict.keys():
-    for plot_stat in plot_dict[plot_var]['plot_stat']:
-        print('creating plots for {v} {stat}'.format(v=plot_var, stat=plot_stat))
-
-        # Surface verification
-        for ob_subset in plot_dict[plot_var]['sfc_ob_subset']:
-            input_sims_sfc = copy.deepcopy(sim_dict)
-            for key in input_sims_sfc:
-                input_sims_sfc[key]['dir'] = input_sims_sfc[key]['dir'].format(typ=verif_type, subtyp='sfc')
-            _ = mp.plot_sfc_dieoff(input_sims_sfc, valid_times, 
-                                   fcst_lead=fcst_lead_dieoff, 
-                                   file_prefix=file_prefix,
-                                   line_type=plot_dict[plot_var]['line_type'],
-                                   plot_var=plot_var,
-                                   plot_lvl=plot_dict[plot_var]['sfc_plot_lvl'],
-                                   plot_stat=plot_stat,
-                                   ob_subset=ob_subset,
-                                   toggle_pts=True,
-                                   out_tag=out_tag,
-                                   verbose=False)
-            plt.close()
-            for ftime in fcst_lead_other:
-                vtimes = valid_times[ftime:]
-                for t in itime_exclude:
-                    t_adjust = t + dt.timedelta(hours=ftime)
-                    if t_adjust in vtimes:
-                        vtimes.remove(t_adjust)
-                for t in vtime_exclude:
-                    if t in vtimes:
-                        vtimes.remove(t)
-                _ = mp.plot_sfc_timeseries(input_sims_sfc, vtimes, 
-                                           fcst_lead=ftime, 
-                                           file_prefix=file_prefix,
-                                           line_type=plot_dict[plot_var]['line_type'],
-                                           plot_var=plot_var,
-                                           plot_lvl=plot_dict[plot_var]['sfc_plot_lvl'],
-                                           plot_stat=plot_stat,
-                                           ob_subset=ob_subset,
-                                           toggle_pts=False,
-                                           out_tag=out_tag,
-                                           verbose=True)
+# Surface verification
+print()
+print('Surface Verification')
+print('--------------------')
+for subtyp in plot_dict['surface'].keys():
+    os.system(f'mkdir -p {out_dir}/{subtyp}')
+    for plot_var in plot_dict['surface'][subtyp].keys():
+        var_dict = plot_dict['surface'][subtyp][plot_var]
+        for plot_stat in var_dict['plot_stat']:
+            print(f'creating plots for {subtyp} {plot_var} {plot_stat}')
+            if plot_stat in ['BIAS_DIFF', 'MAG_BIAS_DIFF']:
+                var_dict['kwargs']['include_zero'] = False
+            ci_kw_copy = ci_kw.copy()
+            if plot_stat in ['TOTAL']:
+                ci_kw_copy['ci'] = False
+            for ob_subset in var_dict['ob_subset']:
+                input_sims_sfc = copy.deepcopy(sim_dict)
+                for key in input_sims_sfc:
+                    input_sims_sfc[key]['dir'] = input_sims_sfc[key]['dir'].format(typ=verif_type, subtyp=subtyp)
+                _ = mp.plot_sfc_dieoff(input_sims_sfc, valid_times, 
+                                    fcst_lead=fcst_lead_dieoff, 
+                                    plot_var=plot_var,
+                                    plot_stat=plot_stat,
+                                    ob_subset=ob_subset,
+                                    toggle_pts=True,
+                                    out_tag=out_tag,
+                                    verbose=False,
+                                    **var_dict['kwargs'],
+                                    **ci_kw_copy)
                 plt.close()
+                for ftime in fcst_lead_other:
+                    vtimes = valid_times[ftime:]
+                    for t in itime_exclude:
+                        t_adjust = t + dt.timedelta(hours=ftime)
+                        if t_adjust in vtimes:
+                            vtimes.remove(t_adjust)
+                    for t in vtime_exclude:
+                        if t in vtimes:
+                            vtimes.remove(t)
+                    _ = mp.plot_sfc_timeseries(input_sims_sfc, vtimes, 
+                                            fcst_lead=ftime, 
+                                            plot_var=plot_var,
+                                            plot_stat=plot_stat,
+                                            ob_subset=ob_subset,
+                                            toggle_pts=False,
+                                            out_tag=out_tag,
+                                            verbose=True,
+                                            **var_dict['kwargs'])
+                    plt.close()
+    os.system(f'mv *.png {out_dir}/{subtyp}/')
 
-        # Upper-air verification   
-        for ob_subset in plot_dict[plot_var]['ua_ob_subset']:
-            input_sims_ua = copy.deepcopy(sim_dict)
-            for key in input_sims_ua:
-                input_sims_ua[key]['dir'] = input_sims_ua[key]['dir'].format(typ=verif_type, subtyp='upper_air')
-            for lvl in plot_dict[plot_var]['ua_plot_lvl']:
-                _ = mp.plot_sfc_dieoff(input_sims_ua, valid_times_ua, 
-                                       fcst_lead=fcst_lead_dieoff, 
-                                       file_prefix=file_prefix,
-                                       line_type=plot_dict[plot_var]['line_type'],
-                                       plot_var=plot_var,
-                                       plot_lvl=lvl,
-                                       plot_stat=plot_stat,
-                                       ob_subset=ob_subset,
-                                       toggle_pts=True,
-                                       out_tag=out_tag,
-                                       verbose=False)
-                plt.close()
-            for ftime in fcst_lead_other:
-                _ = mp.plot_ua_vprof(input_sims_ua, valid_times_ua, 
-                                     fcst_lead=ftime, 
-                                     file_prefix=file_prefix,
-                                     line_type=plot_dict[plot_var]['line_type'],
-                                     plot_var=plot_var,
-                                     plot_stat=plot_stat,
-                                     ob_subset=ob_subset,
-                                     toggle_pts=True,
-                                     out_tag=out_tag,
-                                     exclude_plvl=[],
-                                     verbose=False)
-                plt.close()
-                if valid_time_ua_step == 1:
-                    vtimes = valid_times_ua[ftime:]
-                else:
-                    vtimes = valid_times_ua
-                for t in itime_exclude:
-                    t_adjust = t + dt.timedelta(hours=ftime)
-                    if t_adjust in vtimes:
-                        vtimes.remove(t_adjust)
-                for t in vtime_exclude:
-                    if t in vtimes:
-                        vtimes.remove(t)
-                for lvl in plot_dict[plot_var]['ua_plot_lvl']:
-                    _ = mp.plot_sfc_timeseries(input_sims_ua, vtimes, 
-                                               fcst_lead=ftime, 
-                                               file_prefix=file_prefix,
-                                               line_type=plot_dict[plot_var]['line_type'],
-                                               plot_var=plot_var,
-                                               plot_lvl=lvl,
-                                               plot_stat=plot_stat,
-                                               ob_subset=ob_subset,
-                                               toggle_pts=False,
-                                               out_tag=out_tag,
-                                               verbose=True)
-                plt.close()
-
-os.system('mv *.png {d}/'.format(d=out_dir))
+# Upper-air verification
+print()
+print('Upper-Air Verification')
+print('----------------------')
+for subtyp in plot_dict['upper_air'].keys():
+    os.system(f'mkdir -p {out_dir}/{subtyp}')
+    for plot_var in plot_dict['upper_air'][subtyp].keys():
+        var_dict = plot_dict['upper_air'][subtyp][plot_var]
+        for plot_stat in var_dict['plot_stat']:
+            print(f'creating plots for {subtyp} {plot_var} {plot_stat}')
+            if plot_stat in ['BIAS_DIFF', 'MAG_BIAS_DIFF']:
+                var_dict['kwargs']['include_zero'] = False
+            ci_kw_copy = ci_kw.copy()
+            if plot_stat in ['TOTAL']:
+                ci_kw_copy['ci'] = False
+            for ob_subset in var_dict['ob_subset']:
+                input_sims_ua = copy.deepcopy(sim_dict)
+                for key in input_sims_ua:
+                    input_sims_ua[key]['dir'] = input_sims_ua[key]['dir'].format(typ=verif_type, subtyp=subtyp)
+                for lvl in var_dict['plot_lvl']:
+                    _ = mp.plot_sfc_dieoff(input_sims_ua, valid_times_ua, 
+                                        fcst_lead=fcst_lead_dieoff, 
+                                        plot_var=plot_var,
+                                        plot_lvl=lvl,
+                                        plot_stat=plot_stat,
+                                        ob_subset=ob_subset,
+                                        toggle_pts=True,
+                                        out_tag=out_tag,
+                                        verbose=False,
+                                        **var_dict['kwargs'],
+                                        **ci_kw_copy)
+                    plt.close()
+                for ftime in fcst_lead_other:
+                    _ = mp.plot_ua_vprof(input_sims_ua, valid_times_ua, 
+                                        fcst_lead=ftime, 
+                                        plot_var=plot_var,
+                                        plot_stat=plot_stat,
+                                        ob_subset=ob_subset,
+                                        toggle_pts=True,
+                                        out_tag=out_tag,
+                                        exclude_plvl=[],
+                                        verbose=False,
+                                        ylim=var_dict['prs_limit'],
+                                        **var_dict['kwargs'],
+                                        **ci_kw_copy)
+                    plt.close()
+                    if valid_time_ua_step == 1:
+                        vtimes = valid_times_ua[ftime:]
+                    else:
+                        vtimes = valid_times_ua
+                    for t in itime_exclude:
+                        t_adjust = t + dt.timedelta(hours=ftime)
+                        if t_adjust in vtimes:
+                            vtimes.remove(t_adjust)
+                    for t in vtime_exclude:
+                        if t in vtimes:
+                            vtimes.remove(t)
+                    for lvl in var_dict['plot_lvl']:
+                        _ = mp.plot_sfc_timeseries(input_sims_ua, vtimes, 
+                                                fcst_lead=ftime, 
+                                                plot_var=plot_var,
+                                                plot_lvl=lvl,
+                                                plot_stat=plot_stat,
+                                                ob_subset=ob_subset,
+                                                toggle_pts=False,
+                                                out_tag=out_tag,
+                                                verbose=True,
+                                                **var_dict['kwargs'])
+                    plt.close()
+    os.system(f'mv *.png {out_dir}/{subtyp}/')
 
 # Save code version information
-os.system('git log | head -n 8 >> {d}/code_version.txt'.format(d=out_dir))
-os.system('git status >> {d}/code_version.txt'.format(d=out_dir))
+os.system(f'git log | head -n 8 >> {out_dir}/code_version.txt')
+os.system(f'git status >> {out_dir}/code_version.txt')
 
 
 """
