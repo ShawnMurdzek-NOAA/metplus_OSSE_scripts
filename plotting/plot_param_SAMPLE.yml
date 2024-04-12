@@ -4,26 +4,34 @@
 #
 #===================================================================================================
 
-# Verification type and prefix ('point_stat' or GridStat')
-verif_type: 'point_stat'
-file_prefix: 'point_stat'
+# Verification type ('point_stat' or GridStat')
+verif_type: 'GridStat'
 
 # Simulations to plot.
 # First set of keys are the simulation names
 # In the directory names...
 #     {typ} = Verification type ('point_stat' or 'GridStat')
-#     {subtyp} = Verification subtype ('sfc' or 'upper_air')
+#     {subtyp} = Verification subtype
 sim_dict:
-  real_red_data:
-    color: 'r'
-    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion/sims_real_red_data/winter/{subtyp}/2022020109/output/{typ}'
-  syn_data:
+  ctrl:
+    color: 'k'
+    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter/{subtyp}/output/{typ}'
+  uas_150km:
     color: 'b'
-    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion/sims_syn_data/winter/{subtyp}/2022020109/output/{typ}'
+    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter_uas_150km/{subtyp}/output/{typ}'
+  uas_100km:
+    color: 'gray'
+    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter_uas_100km/{subtyp}/output/{typ}'
+  uas_75km:
+    color: 'orange'
+    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter_uas_75km/{subtyp}/output/{typ}'
+  uas_35km:
+    color: 'r'
+    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter_uas_35km/{subtyp}/output/{typ}'
 
 # Output directory and output tag
-out_dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/plots/app_orion/winter/ctrl/point_stat'
-out_tag: 'ctrl'
+out_dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/plots/rrfs-workflow_orion/winter/uas_all/'
+out_tag: 'uas_all'
 
 # Valid times for verification
 # Use the following format for start times: YYYY-MM-DD HH:MM:SS (no quotes are needed)
@@ -32,62 +40,198 @@ out_tag: 'ctrl'
 valid_time_start: 2022-02-01 09:00:00
 valid_time_step: 1
 valid_time_end_hr: 159 
-valid_time_ua_start: 2022-02-01 12:00:00
-valid_time_ua_step: 12
-valid_time_ua_end_hr: 156
+valid_time_ua_start: 2022-02-01 09:00:00
+valid_time_ua_step: 1
+valid_time_ua_end_hr: 159
 
 # Initial time and valid times to exclude (b/c, e.g., missing data)
 # Use the following format: YYYY-MM-DD HH:MM:SS (no quotes are needed)
 itime_exclude:
-  - 
+  - 2022-02-04 13:00:00
+  - 2022-02-04 18:00:00 
+  - 2022-02-04 19:00:00 
+  - 2022-02-04 20:00:00 
 vtime_exclude:
   - 
 
+# Confidence interval keywords (applied to all vertical profile and dieoff plots)
+ci_kw:
+  ci: True
+  ci_lvl: 0.95
+  ci_opt: 'bootstrap'
+  ci_kw:
+    bootstrap_kw:
+      n_resamples: 10000
+
 # Plotting options.
-# First set of keys: Variables to perfor, verification for
-# Second set of keys: Plotting options for that variable
+# First set of keys: Verification class ('surface' or 'upper_air'). This controls what types of plots are made
+# Second set of keys: Verification subtype (matches {subtyp} in sim_dict)
+# Third set of keys: Variables to perform verification for
+# Fourth set of keys: Plotting options for that variable
 # NOTE: For grid-to-grid verification against the NR, ob_subset should be 'NR'
 plot_dict:
-  TMP:
-    line_type: 'sl1l2'
-    sfc_plot_lvl: 'Z2'
-    sfc_ob_subset: 
-      - 'ADPSFC'
-    ua_plot_lvl: 
-      - 'P500'
-    ua_ob_subset:
-      - 'ADPUPA'
-    plot_stat:
-      - 'RMSE'
-      - 'TOTAL'
-      - 'BIAS_DIFF'
-  SPFH:
-    line_type: 'sl1l2'
-    sfc_plot_lvl: 'Z2'
-    sfc_ob_subset: 
-      - 'ADPSFC'
-    ua_plot_lvl: 
-      - 'P500'
-    ua_ob_subset:
-      - 'ADPUPA'
-    plot_stat:
-      - 'RMSE'
-      - 'TOTAL'
-      - 'BIAS_DIFF'
-  UGRD_VGRD:
-    line_type: 'vl1l2'
-    sfc_plot_lvl: 'Z10'
-    sfc_ob_subset: 
-      - 'ADPSFC'
-    ua_plot_lvl: 
-      - 'P500'
-      - 'P250'
-    ua_ob_subset:
-      - 'ADPUPA'
-    plot_stat:
-      - 'VECT_RMSE'
-      - 'TOTAL'
-      - 'MAG_BIAS_DIFF'
+  surface:
+    sfc:
+      TMP:
+        ob_subset: 
+          - 'NR'
+        plot_stat:
+          - 'RMSE'
+          - 'TOTAL'
+          - 'BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          line_type: 'sl1l2'
+          plot_lvl: 'Z2'
+          include_zero: False
+      SPFH:
+        ob_subset: 
+          - 'NR'
+        plot_stat:
+          - 'RMSE'
+          - 'TOTAL'
+          - 'BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          line_type: 'sl1l2'
+          plot_lvl: 'Z2'
+          include_zero: False
+      UGRD_VGRD:
+        ob_subset: 
+          - 'NR'
+        plot_stat:
+          - 'VECT_RMSE'
+          - 'TOTAL'
+          - 'MAG_BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          line_type: 'vl1l2'
+          plot_lvl: 'Z10'
+          include_zero: False
+    additional_2D:
+      HPBL:
+        ob_subset: 
+          - 'NR'
+        plot_stat:
+          - 'RMSE'
+          - 'TOTAL'
+          - 'BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_UGRD_vs_NR_UGRD'
+          line_type: 'sl1l2'
+          plot_lvl: 'Z0'
+          include_zero: False
+      UGRD_VGRD:
+        ob_subset: 
+          - 'NR'
+        plot_stat:
+          - 'VECT_RMSE'
+          - 'TOTAL'
+          - 'MAG_BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_UGRD_vs_NR_UGRD'
+          line_type: 'vl1l2'
+          plot_lvl: 'Z80'
+          include_zero: False
+  upper_air:
+    upper_air:
+      TMP:
+        plot_lvl: 
+          - 'P500'
+        ob_subset:
+          - 'NR'
+        prs_limit:
+          - 1050
+          - 80
+        plot_stat:
+          - 'RMSE'
+          - 'TOTAL'
+          - 'BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          line_type: 'sl1l2'
+          include_zero: False
+      SPFH:
+        plot_lvl: 
+          - 'P500'
+        ob_subset:
+          - 'NR'
+        prs_limit:
+          - 1050
+          - 80
+        plot_stat:
+          - 'RMSE'
+          - 'TOTAL'
+          - 'BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          line_type: 'sl1l2'
+          include_zero: False
+      UGRD_VGRD:
+        plot_lvl: 
+          - 'P500'
+        ob_subset:
+          - 'NR'
+        prs_limit:
+          - 1050
+          - 80
+        plot_stat:
+          - 'VECT_RMSE'
+          - 'TOTAL'
+          - 'MAG_BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          line_type: 'vl1l2'
+          include_zero: False
+    lower_atm:
+      TMP:
+        plot_lvl: 
+          - 'P900'
+        ob_subset:
+          - 'NR'
+        prs_limit:
+          - 1015
+          - 585
+        plot_stat:
+          - 'RMSE'
+          - 'TOTAL'
+          - 'BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          line_type: 'sl1l2'
+          include_zero: False
+      SPFH:
+        plot_lvl: 
+          - 'P900' 
+        ob_subset:
+          - 'NR'
+        prs_limit:
+          - 1015
+          - 585
+        plot_stat:
+          - 'RMSE'
+          - 'TOTAL'
+          - 'BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          line_type: 'sl1l2'
+          include_zero: False
+      UGRD_VGRD:
+        plot_lvl: 
+          - 'P900'
+        ob_subset:
+          - 'NR'
+        prs_limit:
+          - 1015
+          - 585
+        plot_stat:
+          - 'VECT_RMSE'
+          - 'TOTAL'
+          - 'MAG_BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          line_type: 'vl1l2'
+          include_zero: False
 
 # Forecast hours to include in dieoff plots
 fcst_lead_dieoff:
@@ -103,3 +247,4 @@ fcst_lead_other:
   - 0
   - 1
   - 3
+  - 6
