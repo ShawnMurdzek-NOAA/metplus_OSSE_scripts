@@ -19,7 +19,7 @@ machine="orion"
 
 # Remove old temporary files
 tmp_files=( in_files.txt out_files.txt 
-            run_ceil_preprocess.sh metplus_${machine}.env regrid.out )
+            run_ceil_preprocess.sh regrid.out )
 for f in ${tmp_files[@]}; do
   if [ -f ${f} ]; then
     rm ${f}
@@ -42,8 +42,6 @@ done
 # Run regrid data plane pipeline
 echo 'Running run_ceil_preprocess.sh...'
 cp ${script_dir}/ceil/run_ceil_preprocess.sh .
-cp ${script_dir}/metplus_${machine}.env .
-cp ${script_dir}/py_${machine}.env .
 bash run_ceil_preprocess.sh > regrid.out
 err=$?
 if [ ${err} -gt 0 ]; then
@@ -64,7 +62,7 @@ done
 
 # Check output
 echo
-source ./py_${machine}.env
+source ${script_dir}/py_${machine}.env
 for i in ${!tmp_in[@]}; do
   python compare_grib_nc_ceil.py ${tmp_in[i]} ${tmp_out[i]} > py_test${i}.out
   py_err=`tail -1 py_test${i}.out`
