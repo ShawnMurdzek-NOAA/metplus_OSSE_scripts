@@ -13,6 +13,7 @@ step=160  # Recommended for PointStat
 fcst_name='osse_spring_ctrl'
 fcst_dir='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_app_orion/spring'
 obs_dir='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_pt_obs/app_orion/obs_syn_with_errors/spring/output/pb2nc'
+mask_dir='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/NR_output/severe_wx_mask/spring'  # If needed
 
 metplusDIR='/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts'
 verif_templates=("${metplusDIR}/PointStat_sfc.conf" "${metplusDIR}/PointStat_ua.conf")
@@ -45,6 +46,7 @@ while [ ${end} -le ${INIT_END} ]; do
     sed -i "s={VALID_END}=${end}=" ${dir}/${conf_fname}
     sed -i "s={FCST_DIR}=${fcst_dir}=" ${dir}/${conf_fname}
     sed -i "s={OBS_DIR}=${obs_dir}=" ${dir}/${conf_fname}
+    sed -i "s={MASK_DIR}=${mask_dir}=" ${dir}/${conf_fname}
     sed -i "s={FCST_NAME}=${fcst_name}=" ${dir}/${conf_fname}
 
     # Rewrite the OUTPUT_BASE directory in the user config file

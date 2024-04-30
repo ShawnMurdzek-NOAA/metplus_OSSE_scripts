@@ -6,6 +6,7 @@ METplus is a wrapper for the Model Evaluation Tools (MET) package. MET is a very
 
 - `ceil/`: Directory containing various scripts for ceiling verification.
 - `plotting/`: Directory containing various plotting scripts. For plotting, it is recommended to use `plotting/plot_driver.py` with a YAML file similar to `plotting/plot_param_SAMPLE.yml`.
+- `severe_wx_env/`: Directory containing various scripts for severe weather environment verification (i.e., verification of CAPE, CIN, SRH, etc when MUCAPE > 50 J/kg).
 - `test/`: Directory containing various tests for the METplus helper functions.
 - `utils/`: Directory containing various scripts that might be helpful.
 - `make_submit_metplus_jobs.sh`: Helper script to make METplus configuration files and submit job scripts. A new set of configuration files and job scripts is created every 12 hours in model time. These jobs should be small enough to finish within the maximum allowed walltime (8 hours).
@@ -49,6 +50,7 @@ For the following verification types, use the following configuration files (`.c
 
 - `GridStat_2D.conf`: Grid-to-grid verification using the GridStat tool for 80-m winds and PBL height.
 - `GridStat_lower_atm.conf`: Upper-air grid-to-grid verification using the GridStat tool. Verification statistics are generated for T, Q, and winds every 25 hPa between 1000 and 600 hPa.
+- `GridStat_precip_radar.conf`: Grid-to-grid verification using the GridStat tool for 1-hr precipitation totals and composite reflectivity. Verification uses contingency table metrics with various thresholds.
 - `GridStat_sfc.conf`: Surface grid-to-grid verification using the GridStat tool. Verification statistics are generated for 2-m T, 2-m Q, and 10-m winds.
 - `GridStat_ua.conf`: Upper-air grid-to-grid verification using the GridStat tool. Verification statistics are generated for T, Q, and winds at mandatory pressure levels between 1000 and 100 hPa.
 - `PointStat_sfc.conf`: Surface verification using the PointStat tool. Verification statistics are generated for 2-m T, 2-m Q, and 10-m winds. Both ADPSFC and SFCSHP platforms are used. 
@@ -62,6 +64,13 @@ Ceiling verification is a bit more convoluted than the verification types listed
 1. Use `ceil/make_input_run_preprocess_ceil_NR.sh` to convert NR ceilings to m AGL. This will likely require copying the script to your work directory, editing the top portion, and running.
 2. Use `ceil/make_input_run_preprocess_ceil_RRFS.sh` to convert RRFS ceilings to m AGL. This will likely require copying the script to your work directory, editing the top portion, and running.
 3. Use `make_submit_metplus_jobs.sh` to run the ceiling verification (template: `ceil/GridStat_ceil.conf`). These steps are the same as "Option 2" in the "General Instructions" section above.
+
+#### Severe Weather Environment Verification
+
+Severe weather environment verification first requires the creation of mask using gen\_vx\_mask that identifies regions where MUCAPE > 50 J/kg in the nature run. This mask can then be used to perform GridStat verification only using regions where MUCAPE > 50 J/kg. The general steps for severe weather environment verification are as follows:
+
+1. Use `severe_wx_env/make_input_run_preprocess_severe_NR.sh` to create the MUCAPE mask from the nature run output. This will likely require copying the script to your work directory, editing the top portion, and running.
+2. Use `make_submit_metplus_jobs.sh` to run the severe weather environment verification (template: `severe_wx_env/GridStat_severe_wx_env.conf`). These steps are the same as "Option 2" in the "General Instructions" section above. Note that this configuration file uses GRIB records to extract various severe weather fields, and that these records might change depending on the UPP version being used.
 
 ## Useful Documentation
 
