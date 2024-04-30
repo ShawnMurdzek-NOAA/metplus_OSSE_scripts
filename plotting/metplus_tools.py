@@ -173,6 +173,32 @@ def read_ascii(fnames, verbose=True):
     return verif_df
 
 
+def subset_verif_df(df, param):
+    """
+    Select rows from a verification DataFrame that meet certain conditions
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        MET verification output
+    param : dictionary
+        Row conditions. Key = column name, value = column value
+
+    Returns
+    -------
+    subset_df : pd.DataFrame
+        Copy of the input DataFrame with certain rows selected
+
+    """
+
+    cond = np.ones(len(df), dtype=bool)
+    for k in param.keys():
+        cond = cond * (df[k] == param[k])
+    subset_df = df.loc[cond, :].copy()
+
+    return subset_df
+
+
 def compute_stats(verif_df, line_type='sl1l2'):
     """
     Compute additional statistics for MET output.
