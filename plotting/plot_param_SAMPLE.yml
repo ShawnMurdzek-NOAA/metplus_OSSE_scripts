@@ -15,44 +15,31 @@ verif_type: 'GridStat'
 sim_dict:
   ctrl:
     color: 'k'
-    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter/{subtyp}/output/{typ}'
-  uas_150km:
-    color: 'b'
-    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter_uas_150km/{subtyp}/output/{typ}'
-  uas_100km:
-    color: 'gray'
-    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter_uas_100km/{subtyp}/output/{typ}'
-  uas_75km:
-    color: 'orange'
-    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter_uas_75km/{subtyp}/output/{typ}'
-  uas_35km:
-    color: 'r'
-    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/winter_uas_35km/{subtyp}/output/{typ}'
+    dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/spring/{subtyp}/output/{typ}'
 
 # Output directory and output tag
-out_dir: '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/plots/rrfs-workflow_orion/winter/uas_all/'
-out_tag: 'uas_all'
+out_dir: '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/plotting/tmp_test'
+out_tag: 'test'
 
 # Valid times for verification
 # Use the following format for start times: YYYY-MM-DD HH:MM:SS (no quotes are needed)
 # "step" is in hrs
 # "ua" refers to upper-air verification
-valid_time_start: 2022-02-01 09:00:00
+valid_time_start: 2022-04-29 21:00:00
 valid_time_step: 1
 valid_time_end_hr: 159 
-valid_time_ua_start: 2022-02-01 09:00:00
+valid_time_ua_start: 2022-04-29 21:00:00
 valid_time_ua_step: 1
 valid_time_ua_end_hr: 159
 
 # Initial time and valid times to exclude (b/c, e.g., missing data)
 # Use the following format: YYYY-MM-DD HH:MM:SS (no quotes are needed)
 itime_exclude:
-  - 2022-02-04 13:00:00
-  - 2022-02-04 18:00:00 
-  - 2022-02-04 19:00:00 
-  - 2022-02-04 20:00:00 
+  - 2022-05-06 09:00:00
+  - 2022-05-06 10:00:00
+  - 2022-05-06 11:00:00
 vtime_exclude:
-  - 
+  - 2022-05-01 00:00:00 
 
 # Confidence interval keywords (applied to all vertical profile and dieoff plots)
 ci_kw:
@@ -68,7 +55,7 @@ ci_kw:
 # Second set of keys: Verification subtype (matches {subtyp} in sim_dict)
 # Third set of keys: Variables to perform verification for
 # Fourth set of keys: Plotting options for that variable
-# NOTE: For grid-to-grid verification against the NR, ob_subset should be 'NR'
+# NOTE: For grid-to-grid verification against the NR, OBTYPE should be 'NR'
 plot_dict:
   surface:
     sfc:
@@ -82,22 +69,9 @@ plot_dict:
           line_type: 'sl1l2'
           include_zero: False
           plot_param:
-            ob_subset: 'NR'
-            plot_lvl: 'Z2'
-            plot_var: 'TMP'
-      SPFH:
-        plot_stat:
-          - 'RMSE'
-          - 'TOTAL'
-          - 'BIAS_DIFF'
-        kwargs:
-          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
-          line_type: 'sl1l2'
-          include_zero: False
-          plot_param:
-            ob_subset: 'NR'
-            plot_lvl: 'Z2'
-            plot_var: 'SPFH'
+            OBTYPE: 'NR'
+            FCST_LEV: 'Z2'
+            FCST_VAR: 'TMP'
       UGRD_VGRD:
         plot_stat:
           - 'VECT_RMSE'
@@ -108,9 +82,9 @@ plot_dict:
           line_type: 'vl1l2'
           include_zero: False
           plot_param:
-            ob_subset: 'NR'
-            plot_lvl: 'Z10'
-            plot_var: 'UGRD_VGRD'
+            OBTYPE: 'NR'
+            FCST_LEV: 'Z10'
+            FCST_VAR: 'UGRD_VGRD'
     additional_2D:
       HPBL:
         plot_stat:
@@ -122,41 +96,40 @@ plot_dict:
           line_type: 'sl1l2'
           include_zero: False
           plot_param:
-            ob_subset: 'NR'
-            plot_lvl: 'Z0'
-            plot_var: 'HPBL'
-      UGRD_VGRD:
-        plot_stat:
-          - 'VECT_RMSE'
-          - 'TOTAL'
-          - 'MAG_BIAS_DIFF'
-        kwargs:
-          file_prefix: 'grid_stat_FV3_UGRD_vs_NR_UGRD'
-          line_type: 'vl1l2'
-          include_zero: False
-          plot_param:
-            ob_subset: 'NR'
-            plot_lvl: 'Z80'
-            plot_var: 'UGRD_VGRD'
-  upper_air:
-    upper_air:
-      TMP:
-        plot_lvl: 
-          - 'P500'
-        prs_limit:
-          - 1050
-          - 80
+            OBTYPE: 'NR'
+            FCST_LEV: 'Z0'
+            FCST_VAR: 'HPBL'
+    severe_wx_env:
+      SBCAPE:
         plot_stat:
           - 'RMSE'
           - 'TOTAL'
           - 'BIAS_DIFF'
         kwargs:
-          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          file_prefix: 'grid_stat_FV3_vs_NR'
           line_type: 'sl1l2'
           include_zero: False
           plot_param:
-            ob_subset: 'NR'
-            plot_var: 'TMP'
+            OBTYPE: 'NR'
+            FCST_LEV: 'Z0'
+            FCST_VAR: 'CAPE'
+            VX_MASK: 'data_mask'
+      01SRH:
+        plot_stat:
+          - 'RMSE'
+          - 'TOTAL'
+          - 'BIAS_DIFF'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_vs_NR'
+          line_type: 'sl1l2'
+          include_zero: False
+          plot_param:
+            OBTYPE: 'NR'
+            FCST_LEV: 'R923'
+            FCST_VAR: 'HLCY'
+            VX_MASK: 'data_mask'
+  upper_air:
+    upper_air:
       SPFH:
         plot_lvl: 
           - 'P500'
@@ -172,8 +145,8 @@ plot_dict:
           line_type: 'sl1l2'
           include_zero: False
           plot_param:
-            ob_subset: 'NR'
-            plot_var: 'SPFH'
+            OBTYPE: 'NR'
+            FCST_VAR: 'SPFH'
       UGRD_VGRD:
         plot_lvl: 
           - 'P500'
@@ -189,8 +162,8 @@ plot_dict:
           line_type: 'vl1l2'
           include_zero: False
           plot_param:
-            ob_subset: 'NR'
-            plot_var: 'UGRD_VGRD'
+            OBTYPE: 'NR'
+            FCST_VAR: 'UGRD_VGRD'
     lower_atm:
       TMP:
         plot_lvl: 
@@ -207,42 +180,8 @@ plot_dict:
           line_type: 'sl1l2'
           include_zero: False
           plot_param:
-            ob_subset: 'NR'
-            plot_var: 'TMP'
-      SPFH:
-        plot_lvl: 
-          - 'P900' 
-        prs_limit:
-          - 1015
-          - 585
-        plot_stat:
-          - 'RMSE'
-          - 'TOTAL'
-          - 'BIAS_DIFF'
-        kwargs:
-          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
-          line_type: 'sl1l2'
-          include_zero: False
-          plot_param:
-            ob_subset: 'NR'
-            plot_var: 'SPFH'
-      UGRD_VGRD:
-        plot_lvl: 
-          - 'P900'
-        prs_limit:
-          - 1015
-          - 585
-        plot_stat:
-          - 'VECT_RMSE'
-          - 'TOTAL'
-          - 'MAG_BIAS_DIFF'
-        kwargs:
-          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
-          line_type: 'vl1l2'
-          include_zero: False
-          plot_param:
-            ob_subset: 'NR'
-            plot_var: 'UGRD_VGRD'
+            OBTYPE: 'NR'
+            FCST_VAR: 'TMP'
 
 # Forecast hours to include in dieoff plots
 fcst_lead_dieoff:
@@ -256,6 +195,4 @@ fcst_lead_dieoff:
 # Forecast hours to use for other verification plots (e.g., time series, vertical profiles)
 fcst_lead_other:
   - 0
-  - 1
   - 3
-  - 6

@@ -26,7 +26,7 @@ import metplus_plots as mp
 #---------------------------------------------------------------------------------------------------
 
 # Input YAML file name
-yaml_name = '/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/plots/rrfs-workflow_orion/winter/uas_all/plot_param.yml'
+yaml_name = '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/plotting/plot_param_SAMPLE.yml'
 with open(yaml_name, 'r') as fptr:
     param = yaml.safe_load(fptr)
 
@@ -131,7 +131,7 @@ for subtyp in plot_dict['upper_air'].keys():
             for key in input_sims_ua:
                 input_sims_ua[key]['dir'] = input_sims_ua[key]['dir'].format(typ=verif_type, subtyp=subtyp)
             for lvl in var_dict['plot_lvl']:
-                var_dict_lvl['kwargs']['plot_lvl'] = lvl
+                var_dict_lvl['kwargs']['plot_param']['FCST_LEV'] = lvl
                 _ = mp.plot_sfc_dieoff(input_sims_ua, valid_times_ua, 
                                     fcst_lead=fcst_lead_dieoff, 
                                     plot_stat=plot_stat,
@@ -165,7 +165,7 @@ for subtyp in plot_dict['upper_air'].keys():
                     if t in vtimes:
                         vtimes.remove(t)
                 for lvl in var_dict['plot_lvl']:
-                    var_dict_lvl['kwargs']['plot_lvl'] = lvl
+                    var_dict_lvl['kwargs']['plot_param']['FCST_LEV'] = lvl
                     _ = mp.plot_sfc_timeseries(input_sims_ua, vtimes, 
                                             fcst_lead=ftime, 
                                             plot_stat=plot_stat,
