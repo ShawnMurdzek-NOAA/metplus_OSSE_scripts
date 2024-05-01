@@ -80,40 +80,35 @@ for subtyp in plot_dict['surface'].keys():
             ci_kw_copy = ci_kw.copy()
             if plot_stat in ['TOTAL']:
                 ci_kw_copy['ci'] = False
-            for ob_subset in var_dict['ob_subset']:
-                input_sims_sfc = copy.deepcopy(sim_dict)
-                for key in input_sims_sfc:
-                    input_sims_sfc[key]['dir'] = input_sims_sfc[key]['dir'].format(typ=verif_type, subtyp=subtyp)
-                _ = mp.plot_sfc_dieoff(input_sims_sfc, valid_times, 
-                                    fcst_lead=fcst_lead_dieoff, 
-                                    plot_var=plot_var,
-                                    plot_stat=plot_stat,
-                                    ob_subset=ob_subset,
-                                    toggle_pts=True,
-                                    out_tag=out_tag,
-                                    verbose=False,
-                                    **var_dict['kwargs'],
-                                    **ci_kw_copy)
+            input_sims_sfc = copy.deepcopy(sim_dict)
+            for key in input_sims_sfc:
+                input_sims_sfc[key]['dir'] = input_sims_sfc[key]['dir'].format(typ=verif_type, subtyp=subtyp)
+            _ = mp.plot_sfc_dieoff(input_sims_sfc, valid_times, 
+                                fcst_lead=fcst_lead_dieoff, 
+                                plot_stat=plot_stat,
+                                toggle_pts=True,
+                                out_tag=out_tag,
+                                verbose=False,
+                                **var_dict['kwargs'],
+                                **ci_kw_copy)
+            plt.close()
+            for ftime in fcst_lead_other:
+                vtimes = valid_times[ftime:]
+                for t in itime_exclude:
+                    t_adjust = t + dt.timedelta(hours=ftime)
+                    if t_adjust in vtimes:
+                        vtimes.remove(t_adjust)
+                for t in vtime_exclude:
+                    if t in vtimes:
+                        vtimes.remove(t)
+                _ = mp.plot_sfc_timeseries(input_sims_sfc, vtimes, 
+                                        fcst_lead=ftime, 
+                                        plot_stat=plot_stat,
+                                        toggle_pts=False,
+                                        out_tag=out_tag,
+                                        verbose=True,
+                                        **var_dict['kwargs'])
                 plt.close()
-                for ftime in fcst_lead_other:
-                    vtimes = valid_times[ftime:]
-                    for t in itime_exclude:
-                        t_adjust = t + dt.timedelta(hours=ftime)
-                        if t_adjust in vtimes:
-                            vtimes.remove(t_adjust)
-                    for t in vtime_exclude:
-                        if t in vtimes:
-                            vtimes.remove(t)
-                    _ = mp.plot_sfc_timeseries(input_sims_sfc, vtimes, 
-                                            fcst_lead=ftime, 
-                                            plot_var=plot_var,
-                                            plot_stat=plot_stat,
-                                            ob_subset=ob_subset,
-                                            toggle_pts=False,
-                                            out_tag=out_tag,
-                                            verbose=True,
-                                            **var_dict['kwargs'])
-                    plt.close()
     os.system(f'mv *.png {out_dir}/{subtyp}/')
 
 # Upper-air verification
@@ -124,6 +119,7 @@ for subtyp in plot_dict['upper_air'].keys():
     os.system(f'mkdir -p {out_dir}/{subtyp}')
     for plot_var in plot_dict['upper_air'][subtyp].keys():
         var_dict = plot_dict['upper_air'][subtyp][plot_var]
+        var_dict_lvl = copy.deepcopy(plot_dict['upper_air'][subtyp][plot_var])
         for plot_stat in var_dict['plot_stat']:
             print(f'creating plots for {subtyp} {plot_var} {plot_stat}')
             if plot_stat in ['BIAS_DIFF', 'MAG_BIAS_DIFF']:
@@ -131,60 +127,53 @@ for subtyp in plot_dict['upper_air'].keys():
             ci_kw_copy = ci_kw.copy()
             if plot_stat in ['TOTAL']:
                 ci_kw_copy['ci'] = False
-            for ob_subset in var_dict['ob_subset']:
-                input_sims_ua = copy.deepcopy(sim_dict)
-                for key in input_sims_ua:
-                    input_sims_ua[key]['dir'] = input_sims_ua[key]['dir'].format(typ=verif_type, subtyp=subtyp)
+            input_sims_ua = copy.deepcopy(sim_dict)
+            for key in input_sims_ua:
+                input_sims_ua[key]['dir'] = input_sims_ua[key]['dir'].format(typ=verif_type, subtyp=subtyp)
+            for lvl in var_dict['plot_lvl']:
+                var_dict_lvl['kwargs']['plot_lvl'] = lvl
+                _ = mp.plot_sfc_dieoff(input_sims_ua, valid_times_ua, 
+                                    fcst_lead=fcst_lead_dieoff, 
+                                    plot_stat=plot_stat,
+                                    toggle_pts=True,
+                                    out_tag=out_tag,
+                                    verbose=False,
+                                    **var_dict_lvl['kwargs'],
+                                    **ci_kw_copy)
+                plt.close()
+            for ftime in fcst_lead_other:
+                _ = mp.plot_ua_vprof(input_sims_ua, valid_times_ua, 
+                                    fcst_lead=ftime, 
+                                    plot_stat=plot_stat,
+                                    toggle_pts=True,
+                                    out_tag=out_tag,
+                                    exclude_plvl=[],
+                                    verbose=False,
+                                    ylim=var_dict['prs_limit'],
+                                    **var_dict['kwargs'],
+                                    **ci_kw_copy)
+                plt.close()
+                if valid_time_ua_step == 1:
+                    vtimes = valid_times_ua[ftime:]
+                else:
+                    vtimes = valid_times_ua
+                for t in itime_exclude:
+                    t_adjust = t + dt.timedelta(hours=ftime)
+                    if t_adjust in vtimes:
+                        vtimes.remove(t_adjust)
+                for t in vtime_exclude:
+                    if t in vtimes:
+                        vtimes.remove(t)
                 for lvl in var_dict['plot_lvl']:
-                    _ = mp.plot_sfc_dieoff(input_sims_ua, valid_times_ua, 
-                                        fcst_lead=fcst_lead_dieoff, 
-                                        plot_var=plot_var,
-                                        plot_lvl=lvl,
-                                        plot_stat=plot_stat,
-                                        ob_subset=ob_subset,
-                                        toggle_pts=True,
-                                        out_tag=out_tag,
-                                        verbose=False,
-                                        **var_dict['kwargs'],
-                                        **ci_kw_copy)
-                    plt.close()
-                for ftime in fcst_lead_other:
-                    _ = mp.plot_ua_vprof(input_sims_ua, valid_times_ua, 
-                                        fcst_lead=ftime, 
-                                        plot_var=plot_var,
-                                        plot_stat=plot_stat,
-                                        ob_subset=ob_subset,
-                                        toggle_pts=True,
-                                        out_tag=out_tag,
-                                        exclude_plvl=[],
-                                        verbose=False,
-                                        ylim=var_dict['prs_limit'],
-                                        **var_dict['kwargs'],
-                                        **ci_kw_copy)
-                    plt.close()
-                    if valid_time_ua_step == 1:
-                        vtimes = valid_times_ua[ftime:]
-                    else:
-                        vtimes = valid_times_ua
-                    for t in itime_exclude:
-                        t_adjust = t + dt.timedelta(hours=ftime)
-                        if t_adjust in vtimes:
-                            vtimes.remove(t_adjust)
-                    for t in vtime_exclude:
-                        if t in vtimes:
-                            vtimes.remove(t)
-                    for lvl in var_dict['plot_lvl']:
-                        _ = mp.plot_sfc_timeseries(input_sims_ua, vtimes, 
-                                                fcst_lead=ftime, 
-                                                plot_var=plot_var,
-                                                plot_lvl=lvl,
-                                                plot_stat=plot_stat,
-                                                ob_subset=ob_subset,
-                                                toggle_pts=False,
-                                                out_tag=out_tag,
-                                                verbose=True,
-                                                **var_dict['kwargs'])
-                    plt.close()
+                    var_dict_lvl['kwargs']['plot_lvl'] = lvl
+                    _ = mp.plot_sfc_timeseries(input_sims_ua, vtimes, 
+                                            fcst_lead=ftime, 
+                                            plot_stat=plot_stat,
+                                            toggle_pts=False,
+                                            out_tag=out_tag,
+                                            verbose=True,
+                                            **var_dict_lvl['kwargs'])
+                plt.close()
     os.system(f'mv *.png {out_dir}/{subtyp}/')
 
 # Save code version information

@@ -10,5 +10,8 @@ real_data_pt_ob_verif
 # Swap files
 *.swp
 
+# Files created by VSCode
+.DS_Store
+
 # pycache
 __pycache__

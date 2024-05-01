@@ -217,7 +217,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
                     label=llabel)
         else:
             ax.plot(fcst_lead, yplot, linestyle='-', c=input_sims[key]['color'], label=llabel)
-        ii ci:
+        if ci:
             for j, fl in enumerate(fcst_lead):
                 ax.plot([fl, fl], [ci_low[j], ci_high[j]], linestyle='-', marker='_', lw=0.5, 
                         c=input_sims[key]['color'])
@@ -359,7 +359,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     if plot_stat == 'TOTAL':
         ax.set_xlabel('number', size=14)
     else:
-        ax.set_xlabel('%s %s (%s)' % (plot_parm['FCST_VAR'], plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
+        ax.set_xlabel('%s %s (%s)' % (plot_param['FCST_VAR'], plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
     ax.set_ylabel('pressure (hPa)', size=14)
     ax.set_ylim(ylim)
     ax.set_yscale('log')
