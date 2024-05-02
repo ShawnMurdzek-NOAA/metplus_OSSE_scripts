@@ -13,6 +13,7 @@ import matplotlib.dates as mdates
 import pandas as pd
 import numpy as np
 import datetime as dt
+import copy
 
 import metplus_OSSE_scripts.plotting.metplus_tools as mt
 
@@ -22,8 +23,9 @@ import metplus_OSSE_scripts.plotting.metplus_tools as mt
 #---------------------------------------------------------------------------------------------------
 
 def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat', 
-                        line_type='sl1l2', plot_var='TMP', plot_lvl='Z2', plot_stat='RMSE', 
-                        ob_subset='ADPSFC', toggle_pts=True, out_tag='', verbose=False,
+                        line_type='sl1l2', 
+                        plot_param={'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'},
+                        plot_stat='RMSE', toggle_pts=True, out_tag='', verbose=False,
                         include_zero=False, figsize=(8, 6)):
     """
     Plot time series for surface verification
@@ -41,21 +43,17 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         Prefix of METplus output files
     line_type : String, optional
         METplus line type
-    plot_var : String, optional
-        Variable to plot from the METplus output
-    plot_lvl : String, optional
-        Variable vertical level
+    plot_param : dictionary, optional
+        Parameters used to select which rows from the MET output to plot
     plot_stat : String, optional
         Forecast statistic to plot
-    ob_subset : String, optional
-        Observation subset to use for verification
     toggle_pts : Boolean, optional
         Turn individual points on or off
     out_tag : String, optional
         String to add to the output file
     verbose : Boolean, optional
         Option to have verbose output from mt.read_ascii()
-    include_zero : Booean, optional
+    include_zero : Boolean, optional
         Option to include 0 in y axis
     figsize : Tuple, optional
         Figure size
@@ -67,8 +65,16 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
 
     """
 
+    # Define default plot_param
+    plot_param_local = copy.deepcopy(plot_param)
+    param_default = {'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'}   
+    for k in param_default.keys():
+        if k not in plot_param_local:
+            plot_param_local[k] = param_default[k]
+
+    # Output file name
     output_file = ('%s_%s_%s_%s_%dhr_%s_sfc_timeseries.png' % 
-                   (plot_var, plot_lvl, plot_stat, ob_subset, fcst_lead, out_tag))
+                   (plot_param_local['FCST_VAR'], plot_param_local['FCST_LEV'], plot_stat, plot_param_local['OBTYPE'], fcst_lead, out_tag))
 
     # Read in data
     verif_df = {}
@@ -84,9 +90,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     # Make plot
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
     for key in input_sims.keys():
-        plot_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
-                                    (verif_df[key]['FCST_LEV'] == plot_lvl) &
-                                    (verif_df[key]['OBTYPE'] == ob_subset)].copy()
+        plot_df = mt.subset_verif_df(verif_df[key], plot_param_local)
         if toggle_pts:
             ax.plot(valid_times, plot_df[plot_stat], linestyle='-', marker='o', c=input_sims[key]['color'],
                     label='%s (mean = %.6f)' % (key, np.mean(plot_df[plot_stat])))
@@ -96,8 +100,8 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     if plot_stat == 'TOTAL':
         ax.set_ylabel('number', size=14)
     else:
-        ax.set_ylabel('%s %s %s (%s)' % (plot_lvl, plot_var, plot_stat, plot_df['FCST_UNITS'].values[0]), size=14)
-    ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, ob_subset), size=18)
+        ax.set_ylabel('%s %s %s (%s)' % (plot_param_local['FCST_LEV'], plot_param_local['FCST_VAR'], plot_stat, plot_df['FCST_UNITS'].values[0]), size=14)
+    ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, plot_param_local['OBTYPE']), size=18)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
@@ -109,8 +113,9 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
 
 
 def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], 
-                    file_prefix='point_stat', line_type='sl1l2', plot_var='TMP', plot_lvl='Z2', 
-                    plot_stat='RMSE', ob_subset='ADPSFC', toggle_pts=True, out_tag='', 
+                    file_prefix='point_stat', line_type='sl1l2', 
+                    plot_param={'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'}, 
+                    plot_stat='RMSE', toggle_pts=True, out_tag='', 
                     verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist', ci_kw={},
                     mean_legend=True, include_zero=False, figsize=(8, 6)):
     """
@@ -121,7 +126,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     input_sims : Dictionary
         METplus output files. Key is simulation name (used in the legend). The value is another
         dictionary containing 'dir' (METplus output directory) and 'color'. Dictionary can also
-        conatin 'subset', which overrides the "ob_subset" keyword argument, and 'prefix', which
+        conatin 'subset', which overrides "OBTYPE" in plot_param, and 'prefix', which
         overrides the "file_prefix" keyword argument.
     valid_times : List of dt.datetime objects
         Forecast valid times
@@ -131,14 +136,10 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         Prefix of METplus output files. Can also be set in input_sims dictionary.
     line_type : String, optional
         METplus line type
-    plot_var : String, optional
-        Variable to plot from the METplus output
-    plot_lvl : String, optional
-        Variable vertical level
+    plot_param : dictionary, optional
+        Parameters used to select which rows from the MET output to plot
     plot_stat : String, optional
         Forecast statistic to plot
-    ob_subset : String, optional
-        Observation subset to use for verification. Can also be set in the input_sims dictionary.
     toggle_pts : Boolean, optional
         Turn inidvidual points on or off
     out_tag : String, optional
@@ -169,6 +170,13 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
 
     """
 
+    # Define default plot_param
+    plot_param_local = copy.deepcopy(plot_param)
+    param_default = {'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'}   
+    for k in param_default.keys():
+        if k not in plot_param_local:
+            plot_param_local[k] = param_default[k]
+
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
@@ -186,18 +194,16 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     if ax == None:
         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
         save = True
-        output_file = ('%s_%s_%s_%s_%s_sfc_dieoff.png' % (plot_var, plot_lvl, plot_stat, ob_subset, out_tag))
+        output_file = ('%s_%s_%s_%s_%s_sfc_dieoff.png' % (plot_param_local['FCST_VAR'], plot_param_local['FCST_LEV'], plot_stat, plot_param_local['OBTYPE'], out_tag))
     for key in input_sims.keys():
         yplot = []
         ci_low = []
         ci_high = []
         if 'subset' in input_sims[key].keys(): 
-            ob_subset = input_sims[key]['subset']
+            plot_param_local['OBTYPE'] = input_sims[key]['subset']
         for l in fcst_lead:
-            red_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
-                                       (verif_df[key]['FCST_LEV'] == plot_lvl) &
-                                       (verif_df[key]['OBTYPE'] == ob_subset) &
-                                       (verif_df[key]['FCST_LEAD'] == l*1e4)].copy()
+            plot_param_local['FCST_LEAD'] = l*1e4
+            red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
             stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type, ci=ci, ci_lvl=ci_lvl,
                                                   ci_opt=ci_opt, ci_kw=ci_kw)
             yplot.append(stats_df[plot_stat].values[0])
@@ -221,9 +227,9 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     if plot_stat == 'TOTAL':
         ax.set_ylabel('number', size=14)
     else:
-        ax.set_ylabel('%s %s %s (%s)' % (plot_lvl, plot_var, plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
+        ax.set_ylabel('%s %s %s (%s)' % (plot_param_local['FCST_LEV'], plot_param_local['FCST_VAR'], plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
     ax.set_xlabel('lead time (hr)', size=14)
-    ax.set_title('Die-Off, Verified Against %s' % ob_subset, size=18)
+    ax.set_title('Die-Off, Verified Against %s' % plot_param_local['OBTYPE'], size=18)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
@@ -237,7 +243,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
 
 
 def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat', line_type='sl1l2', 
-                  plot_var='TMP', plot_stat='RMSE', ob_subset='ADPUPA', toggle_pts=True, out_tag='', 
+                  plot_param={'FCST_VAR':'TMP', 'OBTYPE':'ADPUPA'}, plot_stat='RMSE', 
+                  toggle_pts=True, out_tag='', 
                   exclude_plvl=[], verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist',
                   ci_kw={}, mean_legend=True, ylim=[1050, 80], include_zero=False, figsize=(7, 7)):
     """
@@ -248,7 +255,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     input_sims : Dictionary
         METplus output files. Key is simulation name (used in the legend). The value is another
         dictionary containing 'dir' (METplus output directory) and 'color'. Dictionary can also
-        conatin 'subset', which overrides the "ob_subset" keyword argument, and 'prefix', which
+        conatin 'subset', which overrides "OBTYPE" in plot_param, and 'prefix', which
         overrides the "file_prefix" keyword argument.
     valid_times : List of dt.datetime objects
         Forecast valid times
@@ -258,12 +265,10 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         Prefix of METplus output files. Can also be set in input_sims dictionary.
     line_type : String, optional
         METplus line type
-    plot_var : String, optional
-        Variable to plot from the METplus output
+    plot_param : dictionary, optional
+        Parameters used to select which rows from the MET output to plot
     plot_stat : String, optional
         Forecast statistic to plot
-    ob_subset : String, optional
-        Observation subset to use for verification. Can also be set in input_sims dictionary.
     toggle_pts : Boolean, optional
         Turn inidvidual points on or off
     out_tag : String, optional
@@ -298,6 +303,13 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
 
     """
 
+    # Define default plot_param
+    plot_param_local = copy.deepcopy(plot_param)
+    param_default = {'FCST_VAR':'TMP', 'OBTYPE':'ADPUPA'}   
+    for k in param_default.keys():
+        if k not in plot_param_local:
+            plot_param_local[k] = param_default[k]
+
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
@@ -313,12 +325,11 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
         save = True
         output_file = ('%s_%s_%s_%dhr_%s_ua_vprof.png' % 
-                       (plot_var, plot_stat, ob_subset, fcst_lead, out_tag))
+                       (plot_param_local['FCST_VAR'], plot_stat, plot_param_local['OBTYPE'], fcst_lead, out_tag))
     for key in input_sims.keys():
         if 'subset' in input_sims[key].keys(): 
-            ob_subset = input_sims[key]['subset']
-        red_df = verif_df[key].loc[(verif_df[key]['FCST_VAR'] == plot_var) &
-                                   (verif_df[key]['OBTYPE'] == ob_subset)].copy()
+            plot_param_local['OBTYPE'] = input_sims[key]['subset']
+        red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
         prslev = [int(s[1:]) for s in np.unique(red_df['FCST_LEV'].values)]
         if len(exclude_plvl) > 0:
             for p in exclude_plvl:
@@ -352,11 +363,11 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     if plot_stat == 'TOTAL':
         ax.set_xlabel('number', size=14)
     else:
-        ax.set_xlabel('%s %s (%s)' % (plot_var, plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
+        ax.set_xlabel('%s %s (%s)' % (plot_param_local['FCST_VAR'], plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
     ax.set_ylabel('pressure (hPa)', size=14)
     ax.set_ylim(ylim)
     ax.set_yscale('log')
-    ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, ob_subset), size=18)
+    ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, plot_param_local['OBTYPE']), size=18)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
@@ -370,8 +381,9 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
 
 
 def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc', 
-                  file_prefix='point_stat', line_type='sl1l2', plot_var='TMP', plot_lvl1='Z2', 
-                  plot_lvl2='Z2', plot_stat='RMSE', ob_subset='ADPSFC', toggle_pts=True, out_tag='', 
+                  file_prefix='point_stat', line_type='sl1l2', 
+                  plot_param={'FCST_VAR':'TMP', 'OBTYPE':'ADPSFC'},
+                  plot_lvl1='Z2', plot_lvl2='Z2', plot_stat='RMSE', toggle_pts=True, out_tag='', 
                   verbose=False, include_zero=False, figsize=(8, 6)):
     """
     Plot sawtooth diagrams for surface or upper-air verification
@@ -391,8 +403,8 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
         Prefix of METplus output files
     line_type : String, optional
         METplus line type
-    plot_var : String, optional
-        Variable to plot from the METplus output
+    plot_param : dictionary, optional
+        Parameters used to select which rows from the MET output to plot
     plot_lvl1 : String, optional
         Variable vertical level
     plot_lvl2 : String, optional
@@ -401,8 +413,6 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
         which the averaging is performed and plot_lvl1 should be the minimum value.
     plot_stat : String, optional
         Forecast statistic to plot
-    ob_subset : String, optional
-        Observation subset to use for verification
     toggle_pts : Boolean, optional
         Turn inidvidual points on or off
     out_tag : String, optional
@@ -421,8 +431,15 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
 
     """
 
+    # Define default plot_param
+    plot_param_local = copy.deepcopy(plot_param)
+    param_default = {'FCST_VAR':'TMP', 'OBTYPE':'ADPSFC'}   
+    for k in param_default.keys():
+        if k not in plot_param_local:
+            plot_param_local[k] = param_default[k]
+
     output_file = ('%s_%s_%s_%s_%s_sawtooth.png' %
-                   (plot_var, plot_stat, ob_subset, out_tag, verif_type))
+                   (plot_param_local['FCST_VAR'], plot_stat, plot_param_local['OBTYPE'], out_tag, verif_type))
 
     # Read in data
     verif_df = {}
@@ -442,8 +459,7 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
     for key in input_sims.keys():
         for j, itime in enumerate(init_times):
-            tmp_df = verif_df[key][itime].loc[(verif_df[key][itime]['FCST_VAR'] == plot_var) &
-                                              (verif_df[key][itime]['OBTYPE'] == ob_subset)].copy()
+            tmp_df = mt.subset_verif_df(verif_df[key][itime], plot_param_local)
             if plot_lvl1 == plot_lvl2:
                 plot_df = tmp_df.loc[tmp_df['FCST_LEV'] == plot_lvl1].copy()
             else:
@@ -469,11 +485,11 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
         ax.set_ylabel('number', size=14)
     else:
         if plot_lvl1 == plot_lvl2:
-            ax.set_ylabel('%s %s %s (%s)' % (plot_lvl1, plot_var, plot_stat, tmp_df['FCST_UNITS'].values[0]), size=14)
+            ax.set_ylabel('%s %s %s (%s)' % (plot_lvl1, plot_param_local['FCST_VAR'], plot_stat, tmp_df['FCST_UNITS'].values[0]), size=14)
         else:
-            ax.set_ylabel('%s$-$%s %s %s (%s)' % (plot_lvl1, plot_lvl2, plot_var, plot_stat,
+            ax.set_ylabel('%s$-$%s %s %s (%s)' % (plot_lvl1, plot_lvl2, plot_param_local['FCST_VAR'], plot_stat,
                                                   tmp_df['FCST_UNITS'].values[0]), size=14)
-    ax.set_title('Verified Against %s' % ob_subset, size=18)
+    ax.set_title('Verified Against %s' % plot_param_local['OBTYPE'], size=18)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:

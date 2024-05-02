@@ -2,6 +2,9 @@
 # This is a temporary directory that should be removed soon
 real_data_pt_ob_verif
 
+# Other temporary directories
+tmp_test
+
 # Image files
 *.png
 *.pdf
@@ -9,6 +12,9 @@ real_data_pt_ob_verif
 
 # Swap files
 *.swp
+
+# Files created by VSCode
+.DS_Store
 
 # pycache
 __pycache__
