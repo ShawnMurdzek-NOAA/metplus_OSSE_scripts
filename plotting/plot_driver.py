@@ -26,7 +26,7 @@ import metplus_plots as mp
 #---------------------------------------------------------------------------------------------------
 
 # Input YAML file name
-yaml_name = '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/plotting/plot_param_SAMPLE.yml'
+yaml_name = '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/plotting/plot_param.yml'
 with open(yaml_name, 'r') as fptr:
     param = yaml.safe_load(fptr)
 

@@ -239,7 +239,7 @@ def compute_stats(verif_df, line_type='sl1l2'):
     return new_df
 
 
-def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_lvl=0.95,
+def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=False, ci=False, ci_lvl=0.95,
                             ci_opt='t_dist', ci_kw={}):
     """
     Compute statistics using all lines in a MET output DataFrame.
@@ -252,7 +252,8 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
         MET output line type
     agg : Boolean, optional
         Option to compute statistics by aggregating the partial sums. This is the more "correct"
-        method, but is not compatible with confidence intervals
+        method, but is not compatible with confidence intervals. Currently only available for
+        'sl1l2' and 'vl1l2' line_type.
     ci : Boolean, optional
         Option to draw confidence intervals
     ci_lvl : Float, optional
@@ -269,7 +270,7 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
 
     """
 
-    if (agg and not ci):
+    if (agg and not ci) and (line_type in ['sl1l2', 'vl1l2']):
  
         # Update means to include all lines in the input DataFrame
         cols = []
@@ -297,19 +298,33 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
     else:
 
         # Compute statistics first, then average
-        cols_old = verif_df.columns
-        verif_df = compute_stats(verif_df, line_type=line_type) 
-        cols_new = verif_df.columns
+        verif_df = compute_stats(verif_df, line_type=line_type)
         new_means = {}
         avg_col = []
-        new_means['TOTAL'] = np.sum(verif_df['TOTAL'].values)
-        for c in cols_new:
-            if c not in cols_old:
+        for c in verif_df.columns:
+            if (type(verif_df[c].values[0]) != str) and (len(np.unique(verif_df[c].values)) > 1): 
                 avg_col.append(c)
                 new_means[c] = np.zeros(1)
                 new_means[c][0] = np.mean(verif_df[c].values)
+        new_means['TOTAL'] = np.sum(verif_df['TOTAL'].values)
+        if 'TOTAL' in avg_col:
+            avg_col.remove('TOTAL')
 
-        new_df = pd.DataFrame(new_means)
+        #cols_old = verif_df.columns
+        #verif_df = compute_stats(verif_df, line_type=line_type) 
+        #cols_new = verif_df.columns
+        #new_means = {}
+        #avg_col = []
+        #new_means['TOTAL'] = np.sum(verif_df['TOTAL'].values)
+        #print(cols_new)  # SSM DEBUG
+        #for c in cols_new:
+        #    if c not in cols_old:
+        #        print(c)  # SSM DEBUG
+        #        avg_col.append(c)
+        #        new_means[c] = np.zeros(1)
+        #        new_means[c][0] = np.mean(verif_df[c].values)
+
+        #new_df = pd.DataFrame(new_means)
 
         # Compute confidence intervals
         if ci:
@@ -318,8 +333,10 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=True, ci=False, ci_
             for c in avg_col:
                 ci_vals = confidence_interval_mean(verif_df[c].values, level=ci_lvl, 
                                                    option=ci_opt, ci_kw=ci_kw)
-                new_df['low_%s' % c] = ci_vals[0]
-                new_df['high_%s' % c] = ci_vals[1]
+                new_means['low_%s' % c] = np.array([ci_vals[0]])
+                new_means['high_%s' % c] = np.array([ci_vals[1]])
+
+        new_df = pd.DataFrame(new_means)
 
     return new_df
 

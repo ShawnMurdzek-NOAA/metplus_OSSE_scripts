@@ -25,21 +25,23 @@ out_tag: 'test'
 # Use the following format for start times: YYYY-MM-DD HH:MM:SS (no quotes are needed)
 # "step" is in hrs
 # "ua" refers to upper-air verification
-valid_time_start: 2022-04-29 21:00:00
+#valid_time_start: 2022-04-29 21:00:00
+valid_time_start: 2022-05-01 21:00:00
 valid_time_step: 1
-valid_time_end_hr: 159 
-valid_time_ua_start: 2022-04-29 21:00:00
+#valid_time_end_hr: 159 
+valid_time_end_hr: 48
+#valid_time_ua_start: 2022-04-29 21:00:00
+valid_time_ua_start: 2022-05-01 21:00:00
 valid_time_ua_step: 1
-valid_time_ua_end_hr: 159
+#valid_time_ua_end_hr: 159
+valid_time_ua_end_hr: 48
 
 # Initial time and valid times to exclude (b/c, e.g., missing data)
 # Use the following format: YYYY-MM-DD HH:MM:SS (no quotes are needed)
 itime_exclude:
-  - 2022-05-06 09:00:00
-  - 2022-05-06 10:00:00
-  - 2022-05-06 11:00:00
+  - 
 vtime_exclude:
-  - 2022-05-01 00:00:00 
+  -  
 
 # Confidence interval keywords (applied to all vertical profile and dieoff plots)
 ci_kw:
@@ -58,6 +60,39 @@ ci_kw:
 # NOTE: For grid-to-grid verification against the NR, OBTYPE should be 'NR'
 plot_dict:
   surface:
+    precip_radar:
+      APCP_gt0.997:
+        plot_stat:
+          - 'CSI'
+          - 'FBIAS'
+          - 'TOTAL'
+          - 'PODY'
+          - 'FAR'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_vs_NR'
+          line_type: 'cts'
+          include_zero: False
+          plot_param:
+            OBTYPE: 'NR'
+            FCST_LEV: 'A01'
+            FCST_VAR: 'APCP_01'
+            FCST_THRESH: '>0.997'
+      REFC_gt35:
+        plot_stat:
+          - 'CSI'
+          - 'FBIAS'
+          - 'TOTAL'
+          - 'PODY'
+          - 'FAR'
+        kwargs:
+          file_prefix: 'grid_stat_FV3_vs_NR'
+          line_type: 'cts'
+          include_zero: False
+          plot_param:
+            OBTYPE: 'NR'
+            FCST_LEV: 'L0'
+            FCST_VAR: 'REFC'
+            FCST_THRESH: '>35'
     sfc:
       TMP:
         plot_stat:
@@ -185,7 +220,6 @@ plot_dict:
 
 # Forecast hours to include in dieoff plots
 fcst_lead_dieoff:
-  - 0
   - 1
   - 2
   - 3
@@ -194,5 +228,5 @@ fcst_lead_dieoff:
 
 # Forecast hours to use for other verification plots (e.g., time series, vertical profiles)
 fcst_lead_other:
-  - 0
+  - 1
   - 3
