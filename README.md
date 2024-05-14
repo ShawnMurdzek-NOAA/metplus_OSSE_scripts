@@ -5,15 +5,13 @@ METplus is a wrapper for the Model Evaluation Tools (MET) package. MET is a very
 ## Contents
 
 - `ceil/`: Directory containing various scripts for ceiling verification.
+- `env/`: Directory containing various environment-related files. When porting to a new machine, only files in here should need to be changed.
 - `plotting/`: Directory containing various plotting scripts. For plotting, it is recommended to use `plotting/plot_driver.py` with a YAML file similar to `plotting/plot_param_SAMPLE.yml`.
 - `severe_wx_env/`: Directory containing various scripts for severe weather environment verification (i.e., verification of CAPE, CIN, SRH, etc when MUCAPE > 50 J/kg).
 - `test/`: Directory containing various tests for the METplus helper functions.
 - `utils/`: Directory containing various scripts that might be helpful.
 - `make_submit_metplus_jobs.sh`: Helper script to make METplus configuration files and submit job scripts. A new set of configuration files and job scripts is created every 12 hours in model time. These jobs should be small enough to finish within the maximum allowed walltime (8 hours).
-- `metplus_orion.env`: File containing the METplus environment used on Orion.
-- `py_orion.env`: File containing the Python environment used for various METplus helper functions on Orion.
 - `run_metplus.sh`: Main driver to run METplus.
-- `smurdzek_orion.conf`: Configuration file containing the input and output directories.
 
 ## Assumptions
 
