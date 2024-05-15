@@ -4,6 +4,10 @@ METplus Plotting Driver
 If using GridStat output, use the link_GridStat_output.sh script to organize the METplus output
 files into the proper format first before running this script.
 
+Input Parameters
+----------------
+    argv[1] : Input YAML file
+
 shawn.s.murdzek@noaa.gov
 """
 
@@ -17,8 +21,9 @@ import os
 import copy
 import matplotlib.pyplot as plt
 import yaml
+import sys
 
-import metplus_plots as mp
+import metplus_OSSE_scripts.plotting.metplus_plots as mp
 
 
 #---------------------------------------------------------------------------------------------------
@@ -26,7 +31,10 @@ import metplus_plots as mp
 #---------------------------------------------------------------------------------------------------
 
 # Input YAML file name
-yaml_name = '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/plots/precip_radar/plot_param.yml'
+if len(sys.argv) > 1:
+    yaml_name = sys.argv[1]
+else:
+    yaml_name = '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/plots/precip_radar/plot_param.yml'
 with open(yaml_name, 'r') as fptr:
     param = yaml.safe_load(fptr)
 
