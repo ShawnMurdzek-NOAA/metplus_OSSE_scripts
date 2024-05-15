@@ -1,0 +1,789 @@
+Wed May 15 09:09:54 CDT 2024
+05/15 14:10:16.484 metplus (config_metplus.py:102) INFO: Starting METplus configuration setup.
+05/15 14:10:16.487 metplus (config_metplus.py:230) INFO: Parsing config file: /apps/contrib/MET/METplus/METplus-5.0.1/parm/metplus_config/defaults.conf
+05/15 14:10:16.488 metplus (config_metplus.py:230) INFO: Parsing config file: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/GridStat_precip_radar.conf
+05/15 14:10:16.489 metplus (config_metplus.py:230) INFO: Parsing config file: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/user.conf
+05/15 14:10:16.491 metplus (config_metplus.py:304) INFO: Adding LOG_TIMESTAMP='20240515141016'
+05/15 14:10:16.491 metplus (config_metplus.py:335) INFO: Replace LOG_METPLUS with '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/logs/metplus.log.20240515141016'
+05/15 14:10:16.494Z metplus INFO: Running METplus v5.0.1 as user smurdzek(9605) with command: /apps/contrib/MET/METplus/METplus-5.0.1/ush/run_metplus.py -c ./GridStat_precip_radar.conf -c ./user.conf
+05/15 14:10:16.494Z metplus INFO: Log file: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/logs/metplus.log.20240515141016
+05/15 14:10:16.494Z metplus INFO: METplus Base: /apps/contrib/MET/METplus/METplus-5.0.1
+05/15 14:10:16.494Z metplus INFO: Final Conf: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/metplus_final.conf.20240515141016
+05/15 14:10:16.495Z metplus INFO: Config Input: /apps/contrib/MET/METplus/METplus-5.0.1/parm/metplus_config/defaults.conf
+05/15 14:10:16.495Z metplus INFO: Config Input: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/GridStat_precip_radar.conf
+05/15 14:10:16.495Z metplus INFO: Config Input: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/user.conf
+05/15 14:10:16.503Z metplus INFO: ****************************************
+05/15 14:10:16.503Z metplus INFO: * Running METplus GridStatWrapper
+05/15 14:10:16.503Z metplus INFO: *  at init time: 2022-04-29 21:00
+05/15 14:10:16.503Z metplus INFO: ****************************************
+05/15 14:10:16.504Z metplus INFO: Processing forecast lead 0 hours
+05/15 14:10:16.605Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:10:16.606Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:10:16.606Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:10:16.606Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:10:16.606Z metplus INFO: FCST_TIME=000
+05/15 14:10:16.606Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:10:16.606Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:10:16.607Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:10:16.607Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:10:16.607Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:10:16.607Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:10:16.607Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:10:16.607Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:10:16.607Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:10:16.608Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:10:16.608Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:10:16.608Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:10:16.608Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:10:16.608Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:10:16.608Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:10:16.608Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:10:16.609Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:10:16.609Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:10:16.609Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:10:16.609Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:10:16.609Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:10:16.609Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:10:16.609Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:10:16.610Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:10:16.610Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:10:16.610Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:10:16.610Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:10:16.610Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:10:16.610Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:10:16.611Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:10:16.611Z metplus INFO: MODEL=FV3
+05/15 14:10:16.611Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:10:16.611Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:10:16.611Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:10:16.611Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:10:16.611Z metplus INFO: OBTYPE=NR
+05/15 14:10:16.612Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:10:16.612Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:10:16.612Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:10:16.612Z metplus INFO: VERIF_MASK=[]
+05/15 14:10:16.613Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f000.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292100_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+05/15 14:11:00.480Z metplus INFO: Processing forecast lead 1 hour
+05/15 14:11:00.561Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:11:00.561Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:11:00.561Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:11:00.561Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:11:00.561Z metplus INFO: FCST_TIME=001
+05/15 14:11:00.562Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:11:00.562Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:11:00.562Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:11:00.562Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:11:00.562Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:11:00.562Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:11:00.562Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:11:00.563Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:11:00.563Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:11:00.563Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:11:00.563Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:11:00.563Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:11:00.563Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:11:00.564Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:11:00.564Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:11:00.564Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:11:00.564Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:11:00.564Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:11:00.564Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:11:00.564Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:11:00.564Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:11:00.564Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:11:00.565Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:11:00.565Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:11:00.565Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:11:00.565Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:11:00.565Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:11:00.565Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:11:00.565Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:11:00.565Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:11:00.565Z metplus INFO: MODEL=FV3
+05/15 14:11:00.566Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:11:00.566Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:11:00.566Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:11:00.566Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:11:00.566Z metplus INFO: OBTYPE=NR
+05/15 14:11:00.566Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:11:00.566Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:11:00.566Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:11:00.566Z metplus INFO: VERIF_MASK=[]
+05/15 14:11:00.567Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f001.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+05/15 14:11:48.231Z metplus INFO: Processing forecast lead 2 hours
+05/15 14:11:48.330Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:11:48.331Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:11:48.331Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:11:48.331Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:11:48.331Z metplus INFO: FCST_TIME=002
+05/15 14:11:48.331Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:11:48.332Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:11:48.332Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:11:48.332Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:11:48.332Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:11:48.332Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:11:48.332Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:11:48.333Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:11:48.333Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:11:48.333Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:11:48.333Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:11:48.333Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:11:48.333Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:11:48.333Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:11:48.334Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:11:48.334Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:11:48.334Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:11:48.334Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:11:48.334Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:11:48.334Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:11:48.334Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:11:48.335Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:11:48.335Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:11:48.335Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:11:48.335Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:11:48.335Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:11:48.335Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:11:48.335Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:11:48.336Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:11:48.336Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:11:48.336Z metplus INFO: MODEL=FV3
+05/15 14:11:48.336Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:11:48.336Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:11:48.336Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:11:48.336Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:11:48.337Z metplus INFO: OBTYPE=NR
+05/15 14:11:48.337Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:11:48.337Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:11:48.337Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:11:48.337Z metplus INFO: VERIF_MASK=[]
+05/15 14:11:48.338Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f002.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+05/15 14:12:36.002Z metplus INFO: Processing forecast lead 3 hours
+05/15 14:12:36.036Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:12:36.036Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:12:36.037Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:12:36.037Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:12:36.037Z metplus INFO: FCST_TIME=003
+05/15 14:12:36.037Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:12:36.037Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:12:36.037Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:12:36.038Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:12:36.038Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:12:36.038Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:12:36.038Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:12:36.038Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:12:36.038Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:12:36.039Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:12:36.039Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:12:36.039Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:12:36.039Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:12:36.039Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:12:36.039Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:12:36.039Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:12:36.040Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:12:36.040Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:12:36.040Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:12:36.040Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:12:36.040Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:12:36.040Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:12:36.040Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:12:36.041Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:12:36.041Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:12:36.041Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:12:36.041Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:12:36.041Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:12:36.041Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:12:36.041Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:12:36.041Z metplus INFO: MODEL=FV3
+05/15 14:12:36.041Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:12:36.041Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:12:36.042Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:12:36.042Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:12:36.042Z metplus INFO: OBTYPE=NR
+05/15 14:12:36.042Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:12:36.042Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:12:36.042Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:12:36.042Z metplus INFO: VERIF_MASK=[]
+05/15 14:12:36.042Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f003.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300000_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+05/15 14:13:06.088Z metplus INFO: Processing forecast lead 6 hours
+05/15 14:13:06.140Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:13:06.140Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:13:06.140Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:13:06.140Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:13:06.140Z metplus INFO: FCST_TIME=006
+05/15 14:13:06.141Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:13:06.141Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:13:06.141Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:13:06.141Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:13:06.141Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:13:06.141Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:13:06.141Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:13:06.142Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:13:06.142Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:13:06.142Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:13:06.142Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:13:06.142Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:13:06.142Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:13:06.142Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:13:06.143Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:13:06.143Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:13:06.143Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:13:06.143Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:13:06.143Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:13:06.143Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:13:06.144Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:13:06.144Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:13:06.144Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:13:06.144Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:13:06.144Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:13:06.144Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:13:06.144Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:13:06.145Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:13:06.145Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:13:06.145Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:13:06.145Z metplus INFO: MODEL=FV3
+05/15 14:13:06.145Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:13:06.145Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:13:06.145Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:13:06.145Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:13:06.145Z metplus INFO: OBTYPE=NR
+05/15 14:13:06.146Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:13:06.146Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:13:06.146Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:13:06.146Z metplus INFO: VERIF_MASK=[]
+05/15 14:13:06.146Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f006.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+05/15 14:13:25.990Z metplus INFO: Processing forecast lead 12 hours
+05/15 14:13:26.037Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:13:26.037Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:13:26.038Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:13:26.038Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:13:26.038Z metplus INFO: FCST_TIME=012
+05/15 14:13:26.038Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:13:26.038Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:13:26.038Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:13:26.039Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:13:26.039Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:13:26.039Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:13:26.039Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:13:26.039Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:13:26.039Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:13:26.039Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:13:26.040Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:13:26.040Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:13:26.040Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:13:26.040Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:13:26.040Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:13:26.040Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:13:26.041Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:13:26.041Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:13:26.041Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:13:26.041Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:13:26.041Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:13:26.041Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:13:26.041Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:13:26.042Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:13:26.042Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:13:26.042Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:13:26.042Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:13:26.042Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:13:26.042Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:13:26.042Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:13:26.042Z metplus INFO: MODEL=FV3
+05/15 14:13:26.042Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:13:26.042Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:13:26.042Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:13:26.042Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:13:26.042Z metplus INFO: OBTYPE=NR
+05/15 14:13:26.043Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:13:26.043Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:13:26.043Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:13:26.043Z metplus INFO: VERIF_MASK=[]
+05/15 14:13:26.043Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f012.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300900_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+05/15 14:13:49.075Z metplus INFO: ****************************************
+05/15 14:13:49.076Z metplus INFO: * Running METplus GridStatWrapper
+05/15 14:13:49.076Z metplus INFO: *  at init time: 2022-04-29 22:00
+05/15 14:13:49.076Z metplus INFO: ****************************************
+05/15 14:13:49.078Z metplus INFO: Processing forecast lead 0 hours
+05/15 14:13:49.180Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:13:49.181Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:13:49.181Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:13:49.181Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:13:49.181Z metplus INFO: FCST_TIME=000
+05/15 14:13:49.181Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:13:49.181Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:13:49.182Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:13:49.182Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:13:49.182Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:13:49.182Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:13:49.182Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:13:49.182Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:13:49.183Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:13:49.183Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:13:49.183Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:13:49.183Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:13:49.183Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:13:49.183Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:13:49.183Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:13:49.183Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:13:49.184Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:13:49.184Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:13:49.184Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:13:49.184Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:13:49.184Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:13:49.184Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:13:49.184Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:13:49.184Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:13:49.185Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:13:49.185Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:13:49.185Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:13:49.185Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:13:49.185Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:13:49.185Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:13:49.185Z metplus INFO: MODEL=FV3
+05/15 14:13:49.186Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:13:49.186Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:13:49.186Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:13:49.186Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:13:49.186Z metplus INFO: OBTYPE=NR
+05/15 14:13:49.186Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:13:49.186Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:13:49.186Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:13:49.187Z metplus INFO: VERIF_MASK=[]
+05/15 14:13:49.187Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f000.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+05/15 14:14:30.256Z metplus INFO: Processing forecast lead 1 hour
+05/15 14:14:30.326Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:14:30.326Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:14:30.327Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:14:30.327Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:14:30.327Z metplus INFO: FCST_TIME=001
+05/15 14:14:30.327Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:14:30.327Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:14:30.327Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:14:30.328Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:14:30.328Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:14:30.328Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:14:30.328Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:14:30.328Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:14:30.328Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:14:30.329Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:14:30.329Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:14:30.329Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:14:30.329Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:14:30.329Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:14:30.329Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:14:30.329Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:14:30.330Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:14:30.330Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:14:30.330Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:14:30.330Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:14:30.330Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:14:30.330Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:14:30.330Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:14:30.330Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:14:30.330Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:14:30.330Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:14:30.331Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:14:30.331Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:14:30.331Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:14:30.331Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:14:30.331Z metplus INFO: MODEL=FV3
+05/15 14:14:30.331Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:14:30.331Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:14:30.331Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:14:30.331Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:14:30.331Z metplus INFO: OBTYPE=NR
+05/15 14:14:30.332Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:14:30.332Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:14:30.332Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:14:30.332Z metplus INFO: VERIF_MASK=[]
+05/15 14:14:30.332Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f001.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+05/15 14:15:19.200Z metplus INFO: Processing forecast lead 2 hours
+05/15 14:15:19.238Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:15:19.239Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:15:19.239Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:15:19.239Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:15:19.239Z metplus INFO: FCST_TIME=002
+05/15 14:15:19.239Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:15:19.239Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:15:19.240Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:15:19.240Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:15:19.240Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:15:19.240Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:15:19.240Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:15:19.240Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:15:19.240Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:15:19.240Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:15:19.241Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:15:19.241Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:15:19.241Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:15:19.241Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:15:19.241Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:15:19.241Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:15:19.241Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:15:19.241Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:15:19.242Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:15:19.242Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:15:19.242Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:15:19.242Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:15:19.242Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:15:19.242Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:15:19.242Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:15:19.242Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:15:19.243Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:15:19.243Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:15:19.243Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:15:19.243Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:15:19.243Z metplus INFO: MODEL=FV3
+05/15 14:15:19.243Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:15:19.243Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:15:19.243Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:15:19.243Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:15:19.244Z metplus INFO: OBTYPE=NR
+05/15 14:15:19.244Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:15:19.244Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:15:19.244Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:15:19.244Z metplus INFO: VERIF_MASK=[]
+05/15 14:15:19.245Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f002.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300000_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+05/15 14:15:45.078Z metplus INFO: Processing forecast lead 3 hours
+05/15 14:15:45.130Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:15:45.130Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:15:45.131Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:15:45.131Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:15:45.131Z metplus INFO: FCST_TIME=003
+05/15 14:15:45.131Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:15:45.131Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:15:45.131Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:15:45.131Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:15:45.132Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:15:45.132Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:15:45.132Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:15:45.132Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:15:45.132Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:15:45.132Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:15:45.132Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:15:45.133Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:15:45.133Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:15:45.133Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:15:45.133Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:15:45.133Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:15:45.133Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:15:45.134Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:15:45.134Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:15:45.134Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:15:45.134Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:15:45.134Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:15:45.134Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:15:45.134Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:15:45.135Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:15:45.135Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:15:45.135Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:15:45.135Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:15:45.135Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:15:45.135Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:15:45.135Z metplus INFO: MODEL=FV3
+05/15 14:15:45.136Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:15:45.136Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:15:45.136Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:15:45.136Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:15:45.136Z metplus INFO: OBTYPE=NR
+05/15 14:15:45.136Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:15:45.136Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:15:45.137Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:15:45.137Z metplus INFO: VERIF_MASK=[]
+05/15 14:15:45.137Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f003.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300100_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+05/15 14:16:09.172Z metplus INFO: Processing forecast lead 6 hours
+05/15 14:16:09.229Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:16:09.229Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:16:09.230Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:16:09.230Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:16:09.230Z metplus INFO: FCST_TIME=006
+05/15 14:16:09.230Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:16:09.230Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:16:09.230Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:16:09.231Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:16:09.231Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:16:09.231Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:16:09.231Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:16:09.231Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:16:09.231Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:16:09.231Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:16:09.232Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:16:09.232Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:16:09.232Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:16:09.232Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:16:09.232Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:16:09.232Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:16:09.232Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:16:09.232Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:16:09.233Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:16:09.233Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:16:09.233Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:16:09.233Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:16:09.233Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:16:09.233Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:16:09.233Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:16:09.233Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:16:09.234Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:16:09.234Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:16:09.234Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:16:09.234Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:16:09.234Z metplus INFO: MODEL=FV3
+05/15 14:16:09.234Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:16:09.234Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:16:09.234Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:16:09.234Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:16:09.235Z metplus INFO: OBTYPE=NR
+05/15 14:16:09.235Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:16:09.235Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:16:09.235Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:16:09.235Z metplus INFO: VERIF_MASK=[]
+05/15 14:16:09.236Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f006.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300400_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+05/15 14:16:39.076Z metplus INFO: Processing forecast lead 12 hours
+05/15 14:16:39.472Z metplus (command_builder.py:257) ERROR: (command_builder.py:656) Could not find FCST_INPUT file /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f012.conus_3km.grib2 using template rrfs.{init?fmt=%Y%m%d}/{init?fmt=%H}/rrfs.t{init?fmt=%H}z.prslev.f{lead?fmt=%3H}.conus_3km.grib2
+05/15 14:16:39.473Z metplus INFO: ****************************************
+05/15 14:16:39.473Z metplus INFO: * Running METplus GridStatWrapper
+05/15 14:16:39.473Z metplus INFO: *  at init time: 2022-04-29 23:00
+05/15 14:16:39.473Z metplus INFO: ****************************************
+05/15 14:16:39.474Z metplus INFO: Processing forecast lead 0 hours
+05/15 14:16:39.542Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:16:39.542Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:16:39.543Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:16:39.543Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:16:39.543Z metplus INFO: FCST_TIME=000
+05/15 14:16:39.543Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:16:39.543Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:16:39.543Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:16:39.544Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:16:39.544Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:16:39.544Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:16:39.544Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:16:39.544Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:16:39.544Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:16:39.544Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:16:39.545Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:16:39.545Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:16:39.545Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:16:39.545Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:16:39.545Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:16:39.545Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:16:39.545Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:16:39.546Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:16:39.546Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:16:39.546Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:16:39.546Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:16:39.546Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:16:39.546Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:16:39.546Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:16:39.547Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:16:39.547Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:16:39.547Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:16:39.547Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:16:39.547Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:16:39.547Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:16:39.547Z metplus INFO: MODEL=FV3
+05/15 14:16:39.548Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:16:39.548Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:16:39.548Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:16:39.548Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:16:39.548Z metplus INFO: OBTYPE=NR
+05/15 14:16:39.548Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:16:39.548Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:16:39.549Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:16:39.549Z metplus INFO: VERIF_MASK=[]
+05/15 14:16:39.549Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f000.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+05/15 14:16:58.776Z metplus INFO: Processing forecast lead 1 hour
+05/15 14:16:58.826Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:16:58.827Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:16:58.827Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:16:58.827Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:16:58.827Z metplus INFO: FCST_TIME=001
+05/15 14:16:58.827Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:16:58.827Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:16:58.827Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:16:58.828Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:16:58.828Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:16:58.828Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:16:58.828Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:16:58.828Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:16:58.828Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:16:58.829Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:16:58.829Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:16:58.829Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:16:58.829Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:16:58.829Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:16:58.829Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:16:58.829Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:16:58.830Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:16:58.830Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:16:58.830Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:16:58.830Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:16:58.830Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:16:58.830Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:16:58.830Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:16:58.831Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:16:58.831Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:16:58.831Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:16:58.831Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:16:58.831Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:16:58.831Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:16:58.831Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:16:58.832Z metplus INFO: MODEL=FV3
+05/15 14:16:58.832Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:16:58.832Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:16:58.832Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:16:58.832Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:16:58.832Z metplus INFO: OBTYPE=NR
+05/15 14:16:58.832Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:16:58.833Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:16:58.833Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:16:58.833Z metplus INFO: VERIF_MASK=[]
+05/15 14:16:58.834Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f001.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300000_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+05/15 14:17:20.067Z metplus INFO: Processing forecast lead 2 hours
+05/15 14:17:20.114Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:17:20.114Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:17:20.114Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:17:20.114Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:17:20.114Z metplus INFO: FCST_TIME=002
+05/15 14:17:20.115Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:17:20.115Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:17:20.115Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:17:20.115Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:17:20.115Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:17:20.115Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:17:20.115Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:17:20.116Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:17:20.116Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:17:20.116Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:17:20.116Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:17:20.116Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:17:20.116Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:17:20.116Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:17:20.117Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:17:20.117Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:17:20.117Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:17:20.117Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:17:20.117Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:17:20.117Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:17:20.117Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:17:20.117Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:17:20.118Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:17:20.118Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:17:20.118Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:17:20.118Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:17:20.118Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:17:20.118Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:17:20.118Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:17:20.118Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:17:20.119Z metplus INFO: MODEL=FV3
+05/15 14:17:20.119Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:17:20.119Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:17:20.119Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:17:20.119Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:17:20.119Z metplus INFO: OBTYPE=NR
+05/15 14:17:20.119Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:17:20.119Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:17:20.119Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:17:20.120Z metplus INFO: VERIF_MASK=[]
+05/15 14:17:20.120Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f002.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300100_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+05/15 14:17:41.556Z metplus INFO: Processing forecast lead 3 hours
+05/15 14:17:41.601Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:17:41.602Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:17:41.602Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:17:41.602Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:17:41.602Z metplus INFO: FCST_TIME=003
+05/15 14:17:41.602Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:17:41.602Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:17:41.603Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:17:41.603Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:17:41.603Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:17:41.603Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:17:41.603Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:17:41.603Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:17:41.603Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:17:41.604Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:17:41.604Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:17:41.604Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:17:41.604Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:17:41.604Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:17:41.604Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:17:41.604Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:17:41.605Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:17:41.605Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:17:41.605Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:17:41.605Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:17:41.605Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:17:41.605Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:17:41.605Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:17:41.605Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:17:41.606Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:17:41.606Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:17:41.606Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:17:41.606Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:17:41.606Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:17:41.606Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:17:41.606Z metplus INFO: MODEL=FV3
+05/15 14:17:41.606Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:17:41.607Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:17:41.607Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:17:41.607Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:17:41.607Z metplus INFO: OBTYPE=NR
+05/15 14:17:41.607Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:17:41.607Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:17:41.607Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:17:41.607Z metplus INFO: VERIF_MASK=[]
+05/15 14:17:41.608Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f003.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+05/15 14:18:04.284Z metplus INFO: Processing forecast lead 6 hours
+05/15 14:18:04.352Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:18:04.352Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:18:04.352Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:18:04.352Z metplus INFO: FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:18:04.352Z metplus INFO: FCST_TIME=006
+05/15 14:18:04.353Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:18:04.353Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:18:04.353Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:18:04.353Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:18:04.353Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:18:04.354Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:18:04.354Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:18:04.354Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:18:04.354Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:18:04.354Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:18:04.354Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:18:04.355Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:18:04.355Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:18:04.355Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:18:04.355Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:18:04.355Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:18:04.355Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:18:04.355Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:18:04.356Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:18:04.356Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:18:04.356Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:18:04.356Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:18:04.356Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+05/15 14:18:04.356Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:18:04.356Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:18:04.356Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+05/15 14:18:04.357Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+05/15 14:18:04.357Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:18:04.357Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:18:04.357Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+05/15 14:18:04.357Z metplus INFO: MODEL=FV3
+05/15 14:18:04.357Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:18:04.357Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:18:04.357Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:18:04.357Z metplus INFO: OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+05/15 14:18:04.357Z metplus INFO: OBTYPE=NR
+05/15 14:18:04.357Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:18:04.357Z metplus INFO: OUTPUT_PREFIX=FV3_vs_NR
+05/15 14:18:04.358Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:18:04.358Z metplus INFO: VERIF_MASK=[]
+05/15 14:18:04.358Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f006.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300500_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+05/15 14:18:28.010Z metplus INFO: Processing forecast lead 12 hours
+05/15 14:18:28.119Z metplus (command_builder.py:257) ERROR: (command_builder.py:656) Could not find FCST_INPUT file /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f012.conus_3km.grib2 using template rrfs.{init?fmt=%Y%m%d}/{init?fmt=%H}/rrfs.t{init?fmt=%H}z.prslev.f{lead?fmt=%3H}.conus_3km.grib2
+05/15 14:18:28.124Z metplus.GridStat (run_util.py:153) ERROR: GridStat had 2 errors.
+05/15 14:18:28.127Z metplus INFO: Overwrite final conf here: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/metplus_final.conf.20240515141016
+05/15 14:18:28.130Z metplus (run_util.py:203) ERROR: METplus has finished running as user smurdzek(9605) but had 2 errors.
+05/15 14:18:28.130Z metplus INFO: Check the log file for more information: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/logs/metplus.log.20240515141016
+Running METplus 5.0.1
+Starting METplus v5.0.1
+Wed May 15 09:18:30 CDT 2024
