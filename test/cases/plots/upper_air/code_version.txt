@@ -1,0 +1,126 @@
+commit 7c430565f028a5b78894dcb77958db9bca55bb8f
+Merge: a4ca1ba e1425c4
+Author: ShawnMurdzek-NOAA <113145197+ShawnMurdzek-NOAA@users.noreply.github.com>
+Date:   Wed May 15 07:55:19 2024 -0600
+
+    Merge pull request #6 from ShawnMurdzek-NOAA/main
+    
+    Update develop to match main
+# On branch develop
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   metplus_plots.py
+#	modified:   plot_driver.py
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	../test/cases/
+no changes added to commit (use "git add" and/or "git commit -a")
+commit cebf4967708dfcc5a983bab9699df7a3197b44ec
+Author: Shawn Murdzek <shawn.s.murdzek@noaa.gov>
+Date:   Wed May 15 10:45:24 2024 -0500
+
+    Add sample plots
+
+commit 2868556a2440d8015367310c88a8e41234e73b4f
+Author: Shawn Murdzek <shawn.s.murdzek@noaa.gov>
+# On branch develop
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   ../test/cases/plots/upper_air/code_version.txt
+#	modified:   ../test/cases/plots/upper_air/plot_param.yml
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_BIAS_DIFF_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_BIAS_DIFF_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_P500_BIAS_DIFF_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_P500_RMSE_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_RMSE_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_RMSE_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_BIAS_DIFF_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_BIAS_DIFF_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_P500_BIAS_DIFF_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_P500_RMSE_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_RMSE_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_RMSE_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_MAG_BIAS_DIFF_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_MAG_BIAS_DIFF_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_P500_MAG_BIAS_DIFF_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_P500_VECT_RMSE_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_VECT_RMSE_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_VECT_RMSE_3hr_test_vprof.png
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+commit cebf4967708dfcc5a983bab9699df7a3197b44ec
+Author: Shawn Murdzek <shawn.s.murdzek@noaa.gov>
+Date:   Wed May 15 10:45:24 2024 -0500
+
+    Add sample plots
+
+commit 2868556a2440d8015367310c88a8e41234e73b4f
+Author: Shawn Murdzek <shawn.s.murdzek@noaa.gov>
+# On branch develop
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   ../test/cases/plots/upper_air/code_version.txt
+#	modified:   ../test/cases/plots/upper_air/plot_param.yml
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_BIAS_DIFF_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_BIAS_DIFF_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_P500_BIAS_DIFF_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_P500_RMSE_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_RMSE_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_RMSE_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_BIAS_DIFF_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_BIAS_DIFF_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_P500_BIAS_DIFF_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_P500_RMSE_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_RMSE_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_RMSE_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_MAG_BIAS_DIFF_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_MAG_BIAS_DIFF_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_P500_MAG_BIAS_DIFF_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_P500_VECT_RMSE_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_VECT_RMSE_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_VECT_RMSE_3hr_test_vprof.png
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+commit cebf4967708dfcc5a983bab9699df7a3197b44ec
+Author: Shawn Murdzek <shawn.s.murdzek@noaa.gov>
+Date:   Wed May 15 10:45:24 2024 -0500
+
+    Add sample plots
+
+commit 2868556a2440d8015367310c88a8e41234e73b4f
+Author: Shawn Murdzek <shawn.s.murdzek@noaa.gov>
+# On branch develop
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   ../test/cases/plots/upper_air/code_version.txt
+#	modified:   ../test/cases/plots/upper_air/plot_param.yml
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_BIAS_DIFF_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_BIAS_DIFF_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_P500_BIAS_DIFF_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_P500_RMSE_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_RMSE_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_SPFH_RMSE_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_BIAS_DIFF_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_BIAS_DIFF_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_P500_BIAS_DIFF_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_P500_RMSE_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_RMSE_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_TMP_RMSE_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_MAG_BIAS_DIFF_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_MAG_BIAS_DIFF_3hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_P500_MAG_BIAS_DIFF_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_P500_VECT_RMSE_test_dieoff.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_VECT_RMSE_1hr_test_vprof.png
+#	modified:   ../test/cases/plots/upper_air/upper_air/NR_UGRD_VGRD_VECT_RMSE_3hr_test_vprof.png
+#
+no changes added to commit (use "git add" and/or "git commit -a")

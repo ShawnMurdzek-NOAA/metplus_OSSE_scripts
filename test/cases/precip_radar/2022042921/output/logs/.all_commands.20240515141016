@@ -1,0 +1,800 @@
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=000
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="000"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f000.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292100_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=001
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="001"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f001.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=002
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="002"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f002.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=003
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="003"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f003.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300000_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=006
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="006"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f006.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=012
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="012"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/21/rrfs.t21z.prslev.f012.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300900_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042921
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=000
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="000"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f000.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=001
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="001"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f001.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=002
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="002"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f002.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300000_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=003
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="003"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f003.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300100_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=006
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="006"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/22/rrfs.t22z.prslev.f006.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300400_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042922
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=000
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="000"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f000.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220429/wrfprs_202204292300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=001
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="001"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f001.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300000_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=002
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="002"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f002.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300100_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=003
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="003"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f003.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+
+ENVIRONMENT FOR NEXT COMMAND: 
+CLIMO_MEAN_FILE=
+CLIMO_STDEV_FILE=
+FCST_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+FCST_TIME=006
+INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+METPLUS_CENSOR_THRESH=
+METPLUS_CENSOR_VAL=
+METPLUS_CLIMO_CDF_DICT=
+METPLUS_CLIMO_MEAN_DICT=
+METPLUS_CLIMO_STDEV_DICT=
+METPLUS_DESC=desc = "osse_spring_ctrl_new";
+METPLUS_DISTANCE_MAP_DICT=
+METPLUS_FCST_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_FCST_FILE_TYPE=
+METPLUS_FOURIER_DICT=
+METPLUS_GRID_WEIGHT_FLAG=
+METPLUS_HSS_EC_VALUE=
+METPLUS_INTERP_DICT=
+METPLUS_MASK_DICT=
+METPLUS_MET_CONFIG_OVERRIDES=
+METPLUS_MODEL=model = "FV3";
+METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+METPLUS_NBRHD_SHAPE=shape = SQUARE;
+METPLUS_NBRHD_WIDTH=width = [1];
+METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+METPLUS_NC_PAIRS_VAR_NAME=
+METPLUS_OBS_FIELD=field = [{ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];
+METPLUS_OBS_FILE_TYPE=
+METPLUS_OBTYPE=obtype = "NR";
+METPLUS_OUTPUT_FLAG_DICT=output_flag = {ctc = BOTH;cts = BOTH;}
+METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_vs_NR";
+METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+METPLUS_SEEPS_P1_THRESH=
+MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp
+MODEL=FV3
+NEIGHBORHOOD_COV_THRESH=[>=0.5]
+NEIGHBORHOOD_SHAPE=SQUARE
+NEIGHBORHOOD_WIDTH=1
+OBS_FIELD={ name="APCP"; level="A01"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name="REFC"; level="L0"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }
+OBTYPE=NR
+OMP_NUM_THREADS=1
+OUTPUT_PREFIX=FV3_vs_NR
+REGRID_TO_GRID=FCST
+VERIF_MASK=[]
+COPYABLE ENVIRONMENT FOR NEXT COMMAND: 
+export CLIMO_MEAN_FILE=""; export CLIMO_STDEV_FILE=""; export FCST_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export FCST_TIME="006"; export INPUT_BASE="/work2/noaa/wrfruc/murdzek/"; export METPLUS_CENSOR_THRESH=""; export METPLUS_CENSOR_VAL=""; export METPLUS_CLIMO_CDF_DICT=""; export METPLUS_CLIMO_MEAN_DICT=""; export METPLUS_CLIMO_STDEV_DICT=""; export METPLUS_DESC="desc = \"osse_spring_ctrl_new\";"; export METPLUS_DISTANCE_MAP_DICT=""; export METPLUS_FCST_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_FCST_FILE_TYPE=""; export METPLUS_FOURIER_DICT=""; export METPLUS_GRID_WEIGHT_FLAG=""; export METPLUS_HSS_EC_VALUE=""; export METPLUS_INTERP_DICT=""; export METPLUS_MASK_DICT=""; export METPLUS_MET_CONFIG_OVERRIDES=""; export METPLUS_MODEL="model = \"FV3\";"; export METPLUS_NBRHD_COV_THRESH="cov_thresh = [>=0.5];"; export METPLUS_NBRHD_SHAPE="shape = SQUARE;"; export METPLUS_NBRHD_WIDTH="width = [1];"; export METPLUS_NC_PAIRS_FLAG_DICT="nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}"; export METPLUS_NC_PAIRS_VAR_NAME=""; export METPLUS_OBS_FIELD="field = [{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }];"; export METPLUS_OBS_FILE_TYPE=""; export METPLUS_OBTYPE="obtype = \"NR\";"; export METPLUS_OUTPUT_FLAG_DICT="output_flag = {ctc = BOTH;cts = BOTH;}"; export METPLUS_OUTPUT_PREFIX="output_prefix = \"FV3_vs_NR\";"; export METPLUS_REGRID_DICT="regrid = {to_grid = FCST;method = NEAREST;}"; export METPLUS_SEEPS_P1_THRESH=""; export MET_TMP_DIR="/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/tmp"; export MODEL="FV3"; export NEIGHBORHOOD_COV_THRESH="[>=0.5]"; export NEIGHBORHOOD_SHAPE="SQUARE"; export NEIGHBORHOOD_WIDTH="1"; export OBS_FIELD="{ name=\"APCP\"; level=\"A01\"; cat_thresh=[ gt0.249,gt0.997,gt1.994,gt4.985,gt9.97,gt19.94,gt49.85,gt74.775,gt99.7 ]; },{ name=\"REFC\"; level=\"L0\"; cat_thresh=[ gt15,gt20,gt25,gt30,gt35,gt40,gt45 ]; }"; export OBTYPE="NR"; export OMP_NUM_THREADS="1"; export OUTPUT_PREFIX="FV3_vs_NR"; export REGRID_TO_GRID="FCST"; export VERIF_MASK="[]"; 
+COMMAND:
+/apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220429/23/rrfs.t23z.prslev.f006.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300500_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/precip_radar/2022042921/output/GridStat/2022042923
+

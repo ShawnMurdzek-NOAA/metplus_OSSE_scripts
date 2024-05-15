@@ -26,7 +26,7 @@ import metplus_plots as mp
 #---------------------------------------------------------------------------------------------------
 
 # Input YAML file name
-yaml_name = '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/plotting/plot_param.yml'
+yaml_name = '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/plots/precip_radar/plot_param.yml'
 with open(yaml_name, 'r') as fptr:
     param = yaml.safe_load(fptr)
 
@@ -54,11 +54,17 @@ valid_times = [valid_time_start + dt.timedelta(hours=i)
 valid_times_ua = [valid_time_ua_start + dt.timedelta(hours=i) 
                   for i in range(0, valid_time_ua_end_hr, valid_time_ua_step)]
 
-# Change exclude times to empty lists
+# Change initial and exclude times to empty lists
 if itime_exclude == [None]:
     itime_exclude = []
 if vtime_exclude == [None]:
     vtime_exclude = []
+
+# Change surface or upper-air verification to empty dictionaries if no entries
+if plot_dict['surface'] == None:
+    plot_dict['surface'] = {}
+if plot_dict['upper_air'] == None:
+    plot_dict['upper_air'] = {}
 
 
 #---------------------------------------------------------------------------------------------------

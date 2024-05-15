@@ -73,8 +73,10 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
             plot_param_local[k] = param_default[k]
 
     # Output file name
-    output_file = ('%s_%s_%s_%s_%dhr_%s_sfc_timeseries.png' % 
-                   (plot_param_local['FCST_VAR'], plot_param_local['FCST_LEV'], plot_stat, plot_param_local['OBTYPE'], fcst_lead, out_tag))
+    param_str = ''
+    for k in plot_param_local.keys():
+        param_str = param_str + f'{plot_param_local[k]}_'
+    output_file = f"{param_str}{plot_stat}_{fcst_lead}hr_{out_tag}_timeseries.png"
 
     # Read in data
     verif_df = {}
@@ -101,12 +103,18 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         ax.set_ylabel('number', size=14)
     else:
         ax.set_ylabel('%s %s %s (%s)' % (plot_param_local['FCST_LEV'], plot_param_local['FCST_VAR'], plot_stat, plot_df['FCST_UNITS'].values[0]), size=14)
-    ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, plot_param_local['OBTYPE']), size=18)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
         ax.set_ylim(bottom=0)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
+
+    param_key = list(plot_param_local.keys())
+    for k in ['FCST_LEV', 'FCST_VAR']:
+        param_key.remove(k)
+    ttl_list = [f'{k}: {plot_param_local[k]}' for k in param_key]
+    ax.set_title(f"{fcst_lead}-hr Forecast\n{',  '.join(ttl_list)}", size=18)
+
     plt.savefig(output_file)
 
     return verif_df
@@ -194,7 +202,10 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     if ax == None:
         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
         save = True
-        output_file = ('%s_%s_%s_%s_%s_sfc_dieoff.png' % (plot_param_local['FCST_VAR'], plot_param_local['FCST_LEV'], plot_stat, plot_param_local['OBTYPE'], out_tag))
+        param_str = ''
+        for k in plot_param_local.keys():
+            param_str = param_str + f'{plot_param_local[k]}_'
+        output_file = f"{param_str}{plot_stat}_{out_tag}_dieoff.png"
     for key in input_sims.keys():
         yplot = []
         ci_low = []
@@ -229,11 +240,16 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     else:
         ax.set_ylabel('%s %s %s (%s)' % (plot_param_local['FCST_LEV'], plot_param_local['FCST_VAR'], plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
     ax.set_xlabel('lead time (hr)', size=14)
-    ax.set_title('Die-Off, Verified Against %s' % plot_param_local['OBTYPE'], size=18)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
         ax.set_ylim(bottom=0)
+
+    param_key = list(plot_param_local.keys())
+    for k in ['FCST_LEV', 'FCST_VAR', 'FCST_LEAD']:
+        param_key.remove(k)
+    ttl_list = [f'{k}: {plot_param_local[k]}' for k in param_key]
+    ax.set_title(f"Die-Off\n{',  '.join(ttl_list)}", size=18)
 
     if save:
         plt.savefig(output_file)
@@ -324,8 +340,10 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     if ax == None:
         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
         save = True
-        output_file = ('%s_%s_%s_%dhr_%s_ua_vprof.png' % 
-                       (plot_param_local['FCST_VAR'], plot_stat, plot_param_local['OBTYPE'], fcst_lead, out_tag))
+        param_str = ''
+        for k in plot_param_local.keys():
+            param_str = param_str + f'{plot_param_local[k]}_'
+        output_file = f"{param_str}{plot_stat}_{fcst_lead}hr_{out_tag}_vprof.png"
     for key in input_sims.keys():
         if 'subset' in input_sims[key].keys(): 
             plot_param_local['OBTYPE'] = input_sims[key]['subset']
@@ -367,11 +385,16 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     ax.set_ylabel('pressure (hPa)', size=14)
     ax.set_ylim(ylim)
     ax.set_yscale('log')
-    ax.set_title('%d-hr Forecast, Verified Against %s' % (fcst_lead, plot_param_local['OBTYPE']), size=18)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
         ax.set_xlim(left=0)
+
+    param_key = list(plot_param_local.keys())
+    for k in ['FCST_VAR']:
+        param_key.remove(k)
+    ttl_list = [f'{k}: {plot_param_local[k]}' for k in param_key]
+    ax.set_title(f"{fcst_lead}-hr Foercast\n{',  '.join(ttl_list)}", size=18)
 
     if save:
         plt.savefig(output_file)
@@ -438,8 +461,10 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
         if k not in plot_param_local:
             plot_param_local[k] = param_default[k]
 
-    output_file = ('%s_%s_%s_%s_%s_sawtooth.png' %
-                   (plot_param_local['FCST_VAR'], plot_stat, plot_param_local['OBTYPE'], out_tag, verif_type))
+    param_str = ''
+    for k in plot_param_local.keys():
+        param_str = param_str + f'{plot_param_local[k]}_'
+    output_file = f"{param_str}{plot_stat}_{out_tag}_{verif_type}_sawtooth.png"
 
     # Read in data
     verif_df = {}
@@ -489,12 +514,18 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
         else:
             ax.set_ylabel('%s$-$%s %s %s (%s)' % (plot_lvl1, plot_lvl2, plot_param_local['FCST_VAR'], plot_stat,
                                                   tmp_df['FCST_UNITS'].values[0]), size=14)
-    ax.set_title('Verified Against %s' % plot_param_local['OBTYPE'], size=18)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
         ax.set_ylim(bottom=0)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
+
+    param_key = list(plot_param_local.keys())
+    for k in ['FCST_VAR']:
+        param_key.remove(k)
+    ttl_list = [f'{k}: {plot_param_local[k]}' for k in param_key]
+    ax.set_title(',  '.join(ttl_list), size=18)
+
     plt.savefig(output_file)
 
     return verif_df

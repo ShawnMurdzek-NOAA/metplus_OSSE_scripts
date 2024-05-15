@@ -13,11 +13,18 @@ METplus is a wrapper for the Model Evaluation Tools (MET) package. MET is a very
 - `make_submit_metplus_jobs.sh`: Helper script to make METplus configuration files and submit job scripts. A new set of configuration files and job scripts is created every 12 hours in model time. These jobs should be small enough to finish within the maximum allowed walltime (8 hours).
 - `run_metplus.sh`: Main driver to run METplus.
 
+## Supported Machines
+
+Only the following machines are currently supported:
+
+- Orion (MSU)
+- Hercules (MSU)
+
+Other machines can be used, but METplus would need to be installed if it is not already and various machine-specific files would need to be added to `env/`. A list of machines that already have METplus installed can be found [here](https://dtcenter.org/community-code/metplus/metplus-5-0-existing-builds).
+
 ## Assumptions
 
-It is assumed that the user is performing verification on MSU's Orion machine. Other machines can be used, but the environment would need to be modified and METplus would need to be installed if it is not already. A list of machines that already have METplus installed can be found [here](https://dtcenter.org/community-code/metplus/metplus-5-0-existing-builds).
-
-It is also assumed that the observations are originally in prepBUFR format and that the forecasts are grib2 files in UPP format.
+It is assumed that the observations are originally in prepBUFR format and that the forecasts are grib2 files in UPP format.
 
 ## Running METplus
 
@@ -30,13 +37,16 @@ It is also assumed that the observations are originally in prepBUFR format and t
 3. Edit `run_metplus.sh` to include the proper MET tool configuration file.
 4. Edit the MET tool configuration file.
 5. Run using `sbatch run_metplus.sh`. Note that this script handles setting up the environment.
-6. Use the scripts in `utils` to analyze output.
+6. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
+7. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
 
 #### Option 2 (preferred option)
 
 1. Copy `make_submit_metplus_jobs.sh` to your run directory.
 2. Edit `make_submit_metplus_jobs.sh`. Only the section above the horizontal line should need editing.
 3. Run using `bash make_submit_metplus_jobs.sh`. This will create the configuration files for METplus and submit the slurm jobs.
+4. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
+5. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
 
 NOTE: To run PointStat, obs must first be converted from prepBUFR to netCDF using PB2NC. 
 
