@@ -58,7 +58,7 @@ plot_dict:
   surface:
   upper_air:
     upper_air:
-      TMP:
+      TMP: &tmp_ua
         plot_lvl:
           - 'P500'
         prs_limit:
@@ -68,7 +68,7 @@ plot_dict:
           - 'RMSE'
           - 'TOTAL'
           - 'BIAS_DIFF'
-        kwargs:
+        kwargs: &tmp_ua_kwargs
           file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
           line_type: 'sl1l2'
           include_zero: False
@@ -76,36 +76,21 @@ plot_dict:
             OBTYPE: 'NR'
             FCST_VAR: 'TMP'
       SPFH:
-        plot_lvl:
-          - 'P500'
-        prs_limit:
-          - 1050
-          - 80
-        plot_stat:
-          - 'RMSE'
-          - 'TOTAL'
-          - 'BIAS_DIFF'
+        <<: *tmp_ua
         kwargs:
-          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
-          line_type: 'sl1l2'
-          include_zero: False
+          <<: *tmp_ua_kwargs
           plot_param:
             OBTYPE: 'NR'
             FCST_VAR: 'SPFH'
       UGRD_VGRD:
-        plot_lvl:
-          - 'P500'
-        prs_limit:
-          - 1050
-          - 80
+        <<: *tmp_ua
         plot_stat:
           - 'VECT_RMSE'
           - 'TOTAL'
           - 'MAG_BIAS_DIFF'
         kwargs:
-          file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
+          <<: *tmp_ua_kwargs
           line_type: 'vl1l2'
-          include_zero: False
           plot_param:
             OBTYPE: 'NR'
             FCST_VAR: 'UGRD_VGRD'

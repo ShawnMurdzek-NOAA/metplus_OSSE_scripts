@@ -38,7 +38,7 @@ It is assumed that the observations are originally in prepBUFR format and that t
 4. Edit the MET tool configuration file.
 5. Run using `sbatch run_metplus.sh`. Note that this script handles setting up the environment.
 6. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
-7. Create plots using `plotting/plot_driver.py`, which uses `plotting/plot_param.yml` as the input file. Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
+7. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
 
 #### Option 2 (preferred option)
 
@@ -46,7 +46,7 @@ It is assumed that the observations are originally in prepBUFR format and that t
 2. Edit `make_submit_metplus_jobs.sh`. Only the section above the horizontal line should need editing.
 3. Run using `bash make_submit_metplus_jobs.sh`. This will create the configuration files for METplus and submit the slurm jobs.
 4. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
-5. Create plots using `plotting/plot_driver.py`, which uses `plotting/plot_param.yml` as the input file. Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
+5. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
 
 NOTE: To run PointStat, obs must first be converted from prepBUFR to netCDF using PB2NC. 
 

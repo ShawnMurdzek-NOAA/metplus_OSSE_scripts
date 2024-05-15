@@ -57,14 +57,14 @@ ci_kw:
 plot_dict:
   surface:
     precip_radar:
-      APCP_gt0.997:
+      APCP_gt0.997: &acp
         plot_stat:
           - 'CSI'
           - 'FBIAS'
           - 'TOTAL'
           - 'PODY'
           - 'FAR'
-        kwargs:
+        kwargs: &acp_kwargs
           file_prefix: 'grid_stat_FV3_vs_NR'
           line_type: 'cts'
           include_zero: False
@@ -74,32 +74,18 @@ plot_dict:
             FCST_VAR: 'APCP_01'
             FCST_THRESH: '>0.997'
       REFC_gt15:
-        plot_stat:
-          - 'CSI'
-          - 'FBIAS'
-          - 'TOTAL'
-          - 'PODY'
-          - 'FAR'
+        <<: *acp
         kwargs:
-          file_prefix: 'grid_stat_FV3_vs_NR'
-          line_type: 'cts'
-          include_zero: False
+          <<: *acp_kwargs
           plot_param:
             OBTYPE: 'NR'
             FCST_LEV: 'L0'
             FCST_VAR: 'REFC'
             FCST_THRESH: '>15'
       REFC_gt35:
-        plot_stat:
-          - 'CSI'
-          - 'FBIAS'
-          - 'TOTAL'
-          - 'PODY'
-          - 'FAR'
+        <<: *acp
         kwargs:
-          file_prefix: 'grid_stat_FV3_vs_NR'
-          line_type: 'cts'
-          include_zero: False
+          <<: *acp_kwargs
           plot_param:
             OBTYPE: 'NR'
             FCST_LEV: 'L0'
