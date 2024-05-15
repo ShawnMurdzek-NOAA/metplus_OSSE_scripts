@@ -5,11 +5,6 @@ real_data_pt_ob_verif
 # Other temporary directories
 tmp_test
 
-# Image files
-*.png
-*.pdf
-*.jpg
-
 # Swap files
 *.swp
 
