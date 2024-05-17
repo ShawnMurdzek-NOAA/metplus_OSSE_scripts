@@ -191,8 +191,8 @@ for subtyp in plot_dict['upper_air'].keys():
     os.system(f'mv *.png {out_dir}/{subtyp}/')
 
 # Save code version information
-os.system(f'git log | head -n 8 >> {out_dir}/code_version.txt')
-os.system(f'git status >> {out_dir}/code_version.txt')
+#os.system(f'git log | head -n 8 >> {out_dir}/code_version.txt')
+#os.system(f'git status >> {out_dir}/code_version.txt')
 
 
 """
