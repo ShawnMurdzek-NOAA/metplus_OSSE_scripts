@@ -12,8 +12,9 @@ script_dir=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts
 # Option to clean up afterwards
 clean=1
 
-# Machine (options: orion)
-machine="orion"
+# Machine (options: orion, hercules)
+machine="hercules"
+partition=${machine}
 
 #----------------------------------------------------------------------
 
@@ -42,6 +43,8 @@ done
 # Run regrid data plane pipeline
 echo 'Running run_ceil_preprocess.sh...'
 cp ${script_dir}/ceil/run_ceil_preprocess.sh .
+sed -i "s/{PARTITION}/${partition}/" run_ceil_preprocess.sh
+sed -i "s/{MACHINE}/${machine}/" run_ceil_preprocess.sh
 bash run_ceil_preprocess.sh > regrid.out
 err=$?
 if [ ${err} -gt 0 ]; then
@@ -62,7 +65,7 @@ done
 
 # Check output
 echo
-source ${script_dir}/py_${machine}.env
+source ${script_dir}/env/py_${machine}.env
 for i in ${!tmp_in[@]}; do
   python compare_grib_nc_ceil.py ${tmp_in[i]} ${tmp_out[i]} > py_test${i}.out
   py_err=`tail -1 py_test${i}.out`
