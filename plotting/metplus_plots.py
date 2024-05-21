@@ -394,7 +394,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     for k in ['FCST_VAR']:
         param_key.remove(k)
     ttl_list = [f'{k}: {plot_param_local[k]}' for k in param_key]
-    ax.set_title(f"{fcst_lead}-hr Foercast\n{',  '.join(ttl_list)}", size=18)
+    ax.set_title(f"{fcst_lead}-hr Forecast\n{',  '.join(ttl_list)}", size=18)
 
     if save:
         plt.savefig(output_file)
