@@ -2,14 +2,15 @@
 # Make input and output file lists for RRFS output (each RRFS forecast length will have its own subdirectory)
 # Submit ceiling preprocess jobs
 
-parentDIR=/work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/winter/NCO_dirs/ptmp/prod
+machine=hercules
+partition=${machine}
+
+parentDIR=/work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring_no_aircft/NCO_dirs/ptmp/prod
 fcst_len=(000 001 002 003 006 012)
 script_dir=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts  # Path to metplus_OSSE_scripts
 
 in_fname='in_files.txt'
 out_fname='out_files.txt'
-
-#---------------------------------------------------------------------------------------------------
 
 for flen in ${fcst_len[@]}; do
 
@@ -47,6 +48,8 @@ for flen in ${fcst_len[@]}; do
   # Submit job to preprocess ceilings
   cp ${script_dir}/ceil/run_ceil_preprocess.sh ./${out_dir}/
   cd ${out_dir}
+  sed -i "s/{PARTITION}/${partition}/" run_ceil_preprocess.sh
+  sed -i "s/{MACHINE}/${machine}/" run_ceil_preprocess.sh
   sbatch run_ceil_preprocess.sh
   cd ..
 
