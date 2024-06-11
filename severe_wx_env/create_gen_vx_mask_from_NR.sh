@@ -19,8 +19,8 @@ for i in ${!in_files[@]}; do
   echo "input file = ${in_files[i]}"
 
   # Run gen_vx_mask
-  source ${script_dir}/metplus_${machine}.env
-  /apps/contrib/MET/11.0.1/bin/gen_vx_mask \
+  source ${script_dir}/env/metplus_${machine}.env
+  gen_vx_mask \
     ${in_files[i]} \
     ${in_files[i]} \
     ${out_files[i]} \
