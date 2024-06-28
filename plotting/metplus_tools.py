@@ -161,7 +161,7 @@ def read_ascii(fnames, verbose=True):
     raw_dfs = []
     for f in fnames:
         try:
-            df = pd.read_csv(f, delim_whitespace=True)
+            df = pd.read_csv(f, sep='\s+')
             if len(df) > 0:
                 raw_dfs.append(df)
         except FileNotFoundError:
