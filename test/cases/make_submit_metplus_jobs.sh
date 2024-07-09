@@ -1,6 +1,6 @@
 
 # HPC machine (options: 'hercules' or 'orion')
-machine='orion'
+machine='{{MACHINE}}'
 
 # Looping uses INIT times rather than VALID times
 # To prevent weird things from happening, ensure that $VALID_BEG is within $step of $INIT_BEG
@@ -26,8 +26,8 @@ user_template="${metplusDIR}/env/smurdzek_${machine}.conf"
 slurm_template="${metplusDIR}/run_metplus.sh"
 
 # SBATCH parameters
-allocation='rtrr'
-partition=${machine}
+allocation='{{ALLOCATION}}'
+partition='{{PARTITION}}'
 
 #---------------------------------------------------------------------------------------------------
 
