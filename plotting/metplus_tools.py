@@ -17,7 +17,7 @@ import scipy.stats as ss
 # Functions
 #---------------------------------------------------------------------------------------------------
 
-def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False):
+def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False, mats_ste=False):
     """
     Compute the confidence interval for the mean of a dataset using a t distribution
 
@@ -32,6 +32,10 @@ def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False):
         the standard error. Method is based on Wilks (2011), eqn 5.12 (note that this is slightly 
         different from the equation used in MATS at GSL). Note that this assumes that the input 
         data are "in order" (e.g., each data point is an hour after the previous data point).
+    mats_ste : Boolean, optional
+        Option to use the MATS formulation for standard error when accounting for temporal
+        autocorrelation. For information on the MATS method, see here:
+        https://ruc.noaa.gov/stats/vertical/StdErrorcalculationonEMBverificationpages/StdErrorcalculationonEMBverificationpages.html
 
     Returns
     -------
@@ -50,7 +54,10 @@ def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False):
         auto_corr = np.corrcoef(data[1:], data[:-1])[0, -1]
     else:
         auto_corr = 0
-    ste = std / (np.sqrt(n * (1 - auto_corr) / (1 + auto_corr)))
+    if mats_ste:
+        ste = std / (np.sqrt((n - 1) * (1 - auto_corr)))
+    else:
+        ste = std / (np.sqrt(n * (1 - auto_corr) / (1 + auto_corr)))
 
     ci = (avg + (t_low * ste), avg - (t_low * ste))
 
