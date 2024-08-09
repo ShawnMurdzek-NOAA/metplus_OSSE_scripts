@@ -385,10 +385,10 @@ def compute_stats_vert_avg(verif_df, vcoord='P', vmin=100, vmax=1000, line_type=
                                   np.unique(red_df['FCST_VAR'].values),
                                   np.unique(red_df['OBTYPE'].values))).T.reshape(-1, 4)
     for i in range(combos.shape[0]):
-        subset = verif_df.loc[(red_df['FCST_LEAD'] == combos[i, 0]) &
-                              (red_df['FCST_VALID_BEG'] == combos[i, 1]) &
-                              (red_df['FCST_VAR'] == combos[i, 2]) &
-                              (red_df['OBTYPE'] == combos[i, 3])].copy()
+        subset = red_df.loc[(red_df['FCST_LEAD'] == combos[i, 0]) &
+                            (red_df['FCST_VALID_BEG'] == combos[i, 1]) &
+                            (red_df['FCST_VAR'] == combos[i, 2]) &
+                            (red_df['OBTYPE'] == combos[i, 3])].copy()
         tmp_df = compute_stats_entire_df(subset, line_type=line_type)
         dfs.append(tmp_df)
 
