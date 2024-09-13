@@ -7,6 +7,7 @@
 
 machine=orion
 script_dir=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts  # Path to metplus_OSSE_scripts
+landmask_file=/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/NR_output/land_mask/NR_landmask.nc
 in_files=(`cat in_files.txt`)
 out_files=(`cat out_files.txt`)
 
@@ -21,13 +22,14 @@ for i in ${!in_files[@]}; do
   # Run gen_vx_mask
   source ${script_dir}/env/metplus_${machine}.env
   gen_vx_mask \
-    ${in_files[i]} \
+    ${landmask_file} \
     ${in_files[i]} \
     ${out_files[i]} \
     -type data \
     -mask_field 'name="CAPE"; level="R643";' \
-    -thresh 'gt50'
-
+    -thresh 'gt50' \
+    -intersection
+ 
 done
 
 date
