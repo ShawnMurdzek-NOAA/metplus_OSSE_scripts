@@ -32,21 +32,23 @@ It is assumed that the observations are originally in prepBUFR format and that t
 
 #### Option 1
 
-1. Copy `run_metplus.sh`, `metplus_orion.env`, `smurdzek_orion.conf`, and the desired MET tool configuration file (e.g., `PB2NC.conf`) to your run directory.
-2. Edit `smurdzek_orion.conf` to have the proper input and output directories.
-3. Edit `run_metplus.sh` to include the proper MET tool configuration file.
-4. Edit the MET tool configuration file.
-5. Run using `sbatch run_metplus.sh`. Note that this script handles setting up the environment.
-6. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
-7. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
+1. Create a landmask using `utils/create_gen_vx_landmask_from_NR.sh`.
+2. Copy `run_metplus.sh`, `metplus_orion.env`, `smurdzek_orion.conf`, and the desired MET tool configuration file (e.g., `PB2NC.conf`) to your run directory.
+3. Edit `smurdzek_orion.conf` to have the proper input and output directories.
+4. Edit `run_metplus.sh` to include the proper MET tool configuration file.
+5. Edit the MET tool configuration file.
+6. Run using `sbatch run_metplus.sh`. Note that this script handles setting up the environment.
+7. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
+8. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
 
 #### Option 2 (preferred option)
 
-1. Copy `make_submit_metplus_jobs.sh` to your run directory.
-2. Edit `make_submit_metplus_jobs.sh`. Only the section above the horizontal line should need editing.
-3. Run using `bash make_submit_metplus_jobs.sh`. This will create the configuration files for METplus and submit the slurm jobs.
-4. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
-5. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
+1. Create a landmask using `utils/create_gen_vx_landmask_from_NR.sh`.
+2. Copy `make_submit_metplus_jobs.sh` to your run directory.
+3. Edit `make_submit_metplus_jobs.sh`. Only the section above the horizontal line should need editing.
+4. Run using `bash make_submit_metplus_jobs.sh`. This will create the configuration files for METplus and submit the slurm jobs.
+5. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
+6. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
 
 NOTE: To run PointStat, obs must first be converted from prepBUFR to netCDF using PB2NC. 
 
