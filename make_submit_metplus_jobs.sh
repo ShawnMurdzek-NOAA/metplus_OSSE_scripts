@@ -16,7 +16,7 @@ step=12    # Recommended for GridStat
 fcst_name='osse_spring_ctrl_new'
 fcst_dir='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring'
 obs_dir='/work2/noaa/wrfruc/murdzek/nature_run_spring/UPP'
-mask_dir='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/NR_output/severe_wx_mask/spring'  # If needed
+mask_dir='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/NR_output/land_mask'  # If needed
 
 metplusDIR='/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts'
 verif_templates=("${metplusDIR}/GridStat_2D.conf")
