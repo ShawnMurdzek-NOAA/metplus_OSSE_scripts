@@ -16,7 +16,8 @@ step=12    # Recommended for GridStat
 fcst_name='osse_spring_ctrl_new'
 fcst_dir='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring'
 obs_dir='/work2/noaa/wrfruc/murdzek/nature_run_spring/UPP'
-mask_dir='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/NR_output/land_mask'  # If needed
+mask_file='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/NR_output/USA_mask/NR_USAmask.nc'
+mask_dir='/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/NR_output/severe_wx_mask/spring' # If necessary. Only one of [mask_file, mask_dir] are used
 
 metplusDIR='/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts'
 verif_templates=("${metplusDIR}/GridStat_2D.conf")
@@ -52,6 +53,7 @@ while [ ${end} -le ${INIT_END} ]; do
     sed -i "s={VALID_END}=${end}=" ${dir}/${conf_fname}
     sed -i "s={FCST_DIR}=${fcst_dir}=" ${dir}/${conf_fname}
     sed -i "s={OBS_DIR}=${obs_dir}=" ${dir}/${conf_fname}
+    sed -i "s={MASK_FILE}=${mask_file}=" ${dir}/${conf_fname}
     sed -i "s={MASK_DIR}=${mask_dir}=" ${dir}/${conf_fname}
     sed -i "s={FCST_NAME}=${fcst_name}=" ${dir}/${conf_fname}
 

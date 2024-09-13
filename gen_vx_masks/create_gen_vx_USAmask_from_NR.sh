@@ -1,15 +1,16 @@
 #!/bin/sh
 
 #SBATCH -A rtrr
-#SBATCH -t 05:00:00
+#SBATCH -t 01:00:00
 #SBATCH --ntasks=1
 #SBATCH --partition=orion
 
 machine=orion
 script_dir=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts  # Path to metplus_OSSE_scripts
-init_mask_file=/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/NR_output/USA_mask/NR_USAmask.nc
-in_files=(`cat in_files.txt`)
-out_files=(`cat out_files.txt`)
+shapefile=/home/smurdzek/.local/share/cartopy/shapefiles/natural_earth/cultural/ne_50m_admin_0_countries.shp
+shape_num=16
+in_files=(/work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220501/wrfprs_202205010000_er.grib2)
+out_files=(NR_USAmask.nc)
 
 date
 
@@ -22,14 +23,12 @@ for i in ${!in_files[@]}; do
   # Run gen_vx_mask
   source ${script_dir}/env/metplus_${machine}.env
   gen_vx_mask \
-    ${init_mask_file} \
     ${in_files[i]} \
+    ${shapefile} \
     ${out_files[i]} \
-    -type data \
-    -mask_field 'name="CAPE"; level="R643";' \
-    -thresh 'gt50' \
-    -intersection
- 
+    -type shape \
+    -shapeno ${shape_num}
+
 done
 
 date
