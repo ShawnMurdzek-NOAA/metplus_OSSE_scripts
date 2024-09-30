@@ -246,6 +246,60 @@ def compute_stats(verif_df, line_type='sl1l2'):
     return new_df
 
 
+def compute_stats_diff(verif_df1, verif_df2, var=['RMSE'], compute_kw={}, 
+                       match=['FCST_LEAD', 'FCST_VAR', 'FCST_VALID_BEG', 'FCST_LEV', 'FCST_UNITS', 'VX_MASK']):
+    """
+    Compute pairwise difference statistics between two verification DataFrames
+
+    Parameters
+    ----------
+    verif_df1 : pd.DataFrame
+        DataFrame with MET output from read_ascii() for the first simulation
+    verif_df2 : pd.DataFrame
+        DataFrame with MET output from read_ascii() for the second simulation
+    var : list of strings, optional
+        Variables to take differences of
+    compute_kw : dictionary, optional
+        Keyword arguments passed to mt.compute_stats
+    match : list of strings, optional
+        Fields that must match to perform a pairwise difference
+
+    Returns
+    -------
+    diff_df : pd.DataFrame
+        DataFrame with differences
+
+    """
+
+    # Compute additional statistics for each line
+    verif_df1_stats = compute_stats(verif_df1, **compute_kw)
+    verif_df2_stats = compute_stats(verif_df2, **compute_kw)
+
+    # Create dictionary to save differences in
+    diff_dict = {'DESC':[]}
+    for v in var:
+        diff_dict[v] = []
+    for m in match:
+        diff_dict[m] = []
+    
+    # Compute differences
+    for i in range(len(verif_df1_stats)):
+        cond = {}
+        for m in match:
+            cond[m] = verif_df1_stats.iloc[i][m]
+        subset2 = subset_verif_df(verif_df2_stats, cond)
+        if len(subset2) == 1:
+            diff_dict['DESC'].append(f"{verif_df1_stats.iloc[i]['DESC']} - {subset2['DESC'].values[0]}")
+            for m in match:
+                diff_dict[m].append(cond[m])
+            for v in var:
+                diff_dict[v].append(verif_df1_stats.iloc[i][v] - subset2[v].values[0])
+
+    diff_df = pd.DataFrame.from_dict(diff_dict)
+
+    return diff_df
+
+
 def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=False, ci=False, ci_lvl=0.95,
                             ci_opt='t_dist', ci_kw={}):
     """

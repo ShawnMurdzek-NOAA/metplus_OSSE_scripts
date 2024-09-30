@@ -1,8 +1,8 @@
 
 # Link METplus output files into a structure that is useable by plot_driver.py
 
-verifDIR='/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases'
-verif_types=("precip_radar" "upper_air")
+verifDIR='/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/truth/'
+verif_types=("precip_radar" "upper_air" "upper_air_uas")
 
 #---------------------------------------------------------------------------------------------------
 
