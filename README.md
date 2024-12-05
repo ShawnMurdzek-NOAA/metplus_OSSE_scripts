@@ -27,6 +27,16 @@ Other machines can be used, but METplus would need to be installed if it is not 
 
 It is assumed that the observations are originally in prepBUFR format and that the forecasts are grib2 files in UPP format.
 
+### A Note Regarding Wind Vector Directions
+
+Model output may contain either grid-relative or Earth-relative coordinates for vector winds. MET will automatically rotate forecast model winds from grid-relative to Earth-relative if needed as long as the forecast model output is in GRIB format (for more information, see this [discussion](https://github.com/dtcenter/METplus/discussions/2370)). To check whether grid-relative winds are being rotated properly, set `LOG_MET_VERBOSITY = 5` and check for the following line in the log files:
+
+```
+Rotating U and V wind components from grid-relative to earth-relative.
+```
+
+Keep in mind that MET DOES NOT automatically rotate winds in the "truth" dataset. So the nature run output used for verification must have Earth-relative winds. To check whether the winds in a GRIB file are grid-relative or Earth-relative, run the following command: `wgrib2 -vector_dir <fname>`. Earth-relative winds will appear as "winds(N/S)". The wgrib2 utility can be used to rotate winds so they are Earth-relative.
+
 ## Running METplus
 
 ### General Instructions
