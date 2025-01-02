@@ -22,8 +22,41 @@ import metplus_OSSE_scripts.plotting.metplus_tools as mt
 # Functions
 #---------------------------------------------------------------------------------------------------
 
+def diff_plot_prep(input_sims, diff_kw, line_type):
+    """
+    Determine the name of the ctrl simulation and add line_type to diff_kw
+
+    Parameters
+    ----------
+    input_sims : Dictionary
+        METplus output files. Key is simulation name (used in the legend). The value is another
+        dictionary containing 'dir' (METplus output directory), 'color', and 'ctrl'.
+    diff_kw : Dictionary
+        Keyword arguments passed to compute_stats_diff()
+    line_type : String
+        METplus line type
+
+    Returns
+    -------
+    ctrl_name : String
+        Name of the control simulation
+    diff_kw : Dictionary
+        Keyword arguments passed to compute_stats_diff() with line_type added
+
+    """
+
+    for sim in input_sims:
+        if input_sims[sim]['ctrl']:
+            ctrl_name = sim
+    if 'compute_kw' not in diff_kw:
+        diff_kw['compute_kw'] = {}
+    diff_kw['compute_kw']['line_type'] = line_type
+
+    return ctrl_name, diff_kw
+
+
 def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat', 
-                        line_type='sl1l2', 
+                        line_type='sl1l2', diffs=False, include_ctrl=True, diff_kw={},
                         plot_param={'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'},
                         plot_stat='RMSE', toggle_pts=True, out_tag='', verbose=False,
                         include_zero=False, figsize=(8, 6)):
@@ -34,7 +67,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     ----------
     input_sims : Dictionary
         METplus output files. Key is simulation name (used in the legend). The value is another
-        dictionary containing 'dir' (METplus output directory) and 'color'.
+        dictionary containing 'dir' (METplus output directory), 'color', and 'ctrl'.
     valid_times : List of dt.datetime objects
         Forecast valid times
     fcst_lead : Integer, optional
@@ -43,6 +76,13 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         Prefix of METplus output files
     line_type : String, optional
         METplus line type
+    diffs : Boolean, optional
+        Option to plot differences between the input_sims with ctrl = True and all other simulations
+    include_ctrl : Boolean, optional
+        Option to include the control simulation when plotting differences between experiments and 
+        the control
+    diff_kw : Dictionary, optional
+        Keyword arguments passed to compute_stats_diff()
     plot_param : dictionary, optional
         Parameters used to select which rows from the MET output to plot
     plot_stat : String, optional
@@ -74,6 +114,10 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         param_str = param_str + f'{plot_param_local[k]}_'
     output_file = f"{param_str}{plot_stat}_{fcst_lead}hr_{out_tag}_timeseries.png"
 
+    # If computing differences, determine control simulation name and add line_type to diff_kw
+    if diffs:
+        ctrl_name, diff_kw = diff_plot_prep(input_sims, diff_kw, line_type)
+
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
@@ -83,11 +127,15 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         verif_df[key] = mt.read_ascii(fnames, verbose=verbose)
 
         # Compute derived statistics
-        verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
+        if diffs and (key != ctrl_name):
+            verif_df[key] = mt.compute_stats_diff(verif_df[key], verif_df[ctrl_name], **diff_kw)
+        else:
+            verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
 
     # Make plot
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
     for key in input_sims.keys():
+        if diffs and not include_ctrl and (key == ctrl_name): continue
         plot_df = mt.subset_verif_df(verif_df[key], plot_param_local)
         ylabel = f"{plot_df['FCST_LEV'].values[0]} {plot_df['FCST_VAR'].values[0]} {plot_stat} ({plot_df['FCST_UNITS'].values[0]})"
         if toggle_pts:
@@ -120,6 +168,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
 
 def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], 
                     file_prefix='point_stat', line_type='sl1l2', 
+                    diffs=False, include_ctrl=True, diff_kw={},
                     plot_param={'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'}, 
                     plot_stat='RMSE', toggle_pts=True, out_tag='', 
                     verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist', ci_kw={},
@@ -142,6 +191,13 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         Prefix of METplus output files. Can also be set in input_sims dictionary.
     line_type : String, optional
         METplus line type
+    diffs : Boolean, optional
+        Option to plot differences between the input_sims with ctrl = True and all other simulations
+    include_ctrl : Boolean, optional
+        Option to include the control simulation when plotting differences between experiments and
+        the control
+    diff_kw : Dictionary, optional
+        Keyword arguments passed to compute_stats_diff()
     plot_param : dictionary, optional
         Parameters used to select which rows from the MET output to plot
     plot_stat : String, optional
@@ -179,6 +235,10 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     # Make a copy of plot_param
     plot_param_local = copy.deepcopy(plot_param)
 
+    # If computing differences, determine control simulation name and add line_type to diff_kw
+    if diffs:
+        ctrl_name, diff_kw = diff_plot_prep(input_sims, diff_kw, line_type)
+
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
@@ -201,6 +261,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
             param_str = param_str + f'{plot_param_local[k]}_'
         output_file = f"{param_str}{plot_stat}_{out_tag}_dieoff.png"
     for key in input_sims.keys():
+        if diffs and not include_ctrl and (key == ctrl_name): continue
         yplot = []
         ci_low = []
         ci_high = []
@@ -209,9 +270,15 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         for l in fcst_lead:
             plot_param_local['FCST_LEAD'] = l*1e4
             red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
+            if diffs and (key != ctrl_name):
+                red_df_ctrl = mt.subset_verif_df(verif_df[ctrl_name], plot_param_local)
+                stats_df = mt.compute_stats_entire_df(red_df, red_df_ctrl, line_type=line_type, 
+                                                      diff_kw=diff_kw, ci=ci, ci_lvl=ci_lvl,
+                                                      ci_opt=ci_opt, ci_kw=ci_kw)
+            else:
+                stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type, ci=ci, ci_lvl=ci_lvl,
+                                                      ci_opt=ci_opt, ci_kw=ci_kw)
             ylabel = f"{red_df['FCST_LEV'].values[0]} {red_df['FCST_VAR'].values[0]} {plot_stat} ({red_df['FCST_UNITS'].values[0]})"
-            stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type, ci=ci, ci_lvl=ci_lvl,
-                                                  ci_opt=ci_opt, ci_kw=ci_kw)
             yplot.append(stats_df[plot_stat].values[0])
             if ci:
                 ci_low.append(stats_df['low_%s' % plot_stat].values[0])
@@ -255,6 +322,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
 
 
 def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat', line_type='sl1l2', 
+                  diffs=False, include_ctrl=True, diff_kw={},
                   plot_param={'FCST_VAR':'TMP', 'OBTYPE':'ADPUPA'}, plot_stat='RMSE', 
                   toggle_pts=True, out_tag='', 
                   exclude_plvl=[], verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist',
@@ -277,6 +345,13 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         Prefix of METplus output files. Can also be set in input_sims dictionary.
     line_type : String, optional
         METplus line type
+    diffs : Boolean, optional
+        Option to plot differences between the input_sims with ctrl = True and all other simulations
+    include_ctrl : Boolean, optional
+        Option to include the control simulation when plotting differences between experiments and
+        the control
+    diff_kw : Dictionary, optional
+        Keyword arguments passed to compute_stats_diff()
     plot_param : dictionary, optional
         Parameters used to select which rows from the MET output to plot
     plot_stat : String, optional
@@ -318,6 +393,10 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     # Make a copy of plot_param
     plot_param_local = copy.deepcopy(plot_param)
 
+    # If computing differences, determine control simulation name and add line_type to diff_kw
+    if diffs:
+        ctrl_name, diff_kw = diff_plot_prep(input_sims, diff_kw, line_type)
+
     # Read in data
     verif_df = {}
     for key in input_sims.keys():
@@ -337,6 +416,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
             param_str = param_str + f'{plot_param_local[k]}_'
         output_file = f"{param_str}{plot_stat}_{fcst_lead}hr_{out_tag}_vprof.png"
     for key in input_sims.keys():
+        if diffs and not include_ctrl and (key == ctrl_name): continue
         if 'subset' in input_sims[key].keys(): 
             plot_param_local['OBTYPE'] = input_sims[key]['subset']
         red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
@@ -352,8 +432,15 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         ci_high = np.zeros(prslev.shape)
         for j, p in enumerate(prslev):
             prs_df = red_df.loc[red_df['FCST_LEV'] == ('P%d' % p)]
-            stats_df = mt.compute_stats_entire_df(prs_df, line_type=line_type, ci=ci, ci_lvl=ci_lvl,
-                                                  ci_opt=ci_opt, ci_kw=ci_kw)
+            if diffs and (key != ctrl_name):
+                prs_df_ctrl = mt.subset_verif_df(verif_df[ctrl_name], plot_param_local)
+                stats_df = mt.compute_stats_entire_df(prs_df, prs_df_ctrl, line_type=line_type, 
+                                                      diff_kw=diff_kw, ci=ci, ci_lvl=ci_lvl,
+                                                      ci_opt=ci_opt, ci_kw=ci_kw)
+            else:
+                stats_df = mt.compute_stats_entire_df(prs_df, line_type=line_type, ci=ci, 
+                                                      ci_lvl=ci_lvl,
+                                                      ci_opt=ci_opt, ci_kw=ci_kw)
             xplot[j] = stats_df[plot_stat].values[0]
             if ci:
                 ci_low[j] = stats_df['low_%s' % plot_stat].values[0]
