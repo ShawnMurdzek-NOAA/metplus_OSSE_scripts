@@ -1,0 +1,1 @@
+/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/truth//precip_radar/2022043006/output/GridStat/2022043008/./grid_stat_FV3_vs_NR_060000L_20220430_140000V_ctc.txt

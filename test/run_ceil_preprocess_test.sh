@@ -13,7 +13,7 @@ script_dir=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts
 clean=1
 
 # Machine (options: orion, hercules)
-machine="hercules"
+machine="orion"
 partition=${machine}
 
 #----------------------------------------------------------------------

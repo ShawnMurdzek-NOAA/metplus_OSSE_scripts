@@ -3,7 +3,7 @@
 real_data_pt_ob_verif
 
 # Other temporary directories
-tmp_test
+tmp
 
 # Swap files
 *.swp

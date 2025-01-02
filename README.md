@@ -6,6 +6,7 @@ METplus is a wrapper for the Model Evaluation Tools (MET) package. MET is a very
 
 - `ceil/`: Directory containing various scripts for ceiling verification.
 - `env/`: Directory containing various environment-related files. When porting to a new machine, only files in here should need to be changed.
+- `gen_vx_masks/`: Directory containing scripts to create various masks (with the exception of the severe\_wx\_env mask).
 - `plotting/`: Directory containing various plotting scripts. For plotting, it is recommended to use `plotting/plot_driver.py` with a YAML file similar to `plotting/plot_param_SAMPLE.yml`.
 - `severe_wx_env/`: Directory containing various scripts for severe weather environment verification (i.e., verification of CAPE, CIN, SRH, etc when MUCAPE > 50 J/kg).
 - `test/`: Directory containing various tests for the METplus helper functions.
@@ -26,27 +27,39 @@ Other machines can be used, but METplus would need to be installed if it is not 
 
 It is assumed that the observations are originally in prepBUFR format and that the forecasts are grib2 files in UPP format.
 
+### A Note Regarding Wind Vector Directions
+
+Model output may contain either grid-relative or Earth-relative coordinates for vector winds. MET will automatically rotate forecast model winds from grid-relative to Earth-relative if needed as long as the forecast model output is in GRIB format (for more information, see this [discussion](https://github.com/dtcenter/METplus/discussions/2370)). To check whether grid-relative winds are being rotated properly, set `LOG_MET_VERBOSITY = 5` and check for the following line in the log files:
+
+```
+Rotating U and V wind components from grid-relative to earth-relative.
+```
+
+Keep in mind that MET DOES NOT automatically rotate winds in the "truth" dataset. So the nature run output used for verification must have Earth-relative winds. To check whether the winds in a GRIB file are grid-relative or Earth-relative, run the following command: `wgrib2 -vector_dir <fname>`. Earth-relative winds will appear as "winds(N/S)". The wgrib2 utility can be used to rotate winds so they are Earth-relative.
+
 ## Running METplus
 
 ### General Instructions
 
 #### Option 1
 
-1. Copy `run_metplus.sh`, `metplus_orion.env`, `smurdzek_orion.conf`, and the desired MET tool configuration file (e.g., `PB2NC.conf`) to your run directory.
-2. Edit `smurdzek_orion.conf` to have the proper input and output directories.
-3. Edit `run_metplus.sh` to include the proper MET tool configuration file.
-4. Edit the MET tool configuration file.
-5. Run using `sbatch run_metplus.sh`. Note that this script handles setting up the environment.
-6. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
-7. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
+1. Create a verification mask using one of the scripts in `gen_vx_masks`. You will likely need to edit the paths.
+2. Copy `run_metplus.sh`, `metplus_orion.env`, `smurdzek_orion.conf`, and the desired MET tool configuration file (e.g., `PB2NC.conf`) to your run directory.
+3. Edit `smurdzek_orion.conf` to have the proper input and output directories.
+4. Edit `run_metplus.sh` to include the proper MET tool configuration file.
+5. Edit the MET tool configuration file.
+6. Run using `sbatch run_metplus.sh`. Note that this script handles setting up the environment.
+7. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
+8. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
 
 #### Option 2 (preferred option)
 
-1. Copy `make_submit_metplus_jobs.sh` to your run directory.
-2. Edit `make_submit_metplus_jobs.sh`. Only the section above the horizontal line should need editing.
-3. Run using `bash make_submit_metplus_jobs.sh`. This will create the configuration files for METplus and submit the slurm jobs.
-4. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
-5. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
+1. Create a verification mask using one of the scripts in `gen_vx_masks`. You will likely need to edit the paths.
+2. Copy `make_submit_metplus_jobs.sh` to your run directory.
+3. Edit `make_submit_metplus_jobs.sh`. Only the section above the horizontal line should need editing.
+4. Run using `bash make_submit_metplus_jobs.sh`. This will create the configuration files for METplus and submit the slurm jobs.
+5. For GridStat verification, the `utils/link_GridStat_output.sh` script needs to be run before plotting to put the MET output files in the expected directory structure.
+6. Create plots using `plotting/plot_driver.py`, which uses a YAML input file (see `test/cases/plots/*/plot_param.yml` for examples). Note that precipitation verification cannot be plotted for hour 0, so it is recommended that a separate YAML input file be used for precip verification.
 
 NOTE: To run PointStat, obs must first be converted from prepBUFR to netCDF using PB2NC. 
 
@@ -77,8 +90,9 @@ Ceiling verification is a bit more convoluted than the verification types listed
 
 Severe weather environment verification first requires the creation of mask using gen\_vx\_mask that identifies regions where MUCAPE > 50 J/kg in the nature run. This mask can then be used to perform GridStat verification only using regions where MUCAPE > 50 J/kg. The general steps for severe weather environment verification are as follows:
 
-1. Use `severe_wx_env/make_input_run_preprocess_severe_NR.sh` to create the MUCAPE mask from the nature run output. This will likely require copying the script to your work directory, editing the top portion, and running.
-2. Use `make_submit_metplus_jobs.sh` to run the severe weather environment verification (template: `severe_wx_env/GridStat_severe_wx_env.conf`). These steps are the same as "Option 2" in the "General Instructions" section above. Note that this configuration file uses GRIB records to extract various severe weather fields, and that these records might change depending on the UPP version being used.
+1. Create a base verification mask using one of the scripts in `gen_vx_masks`. You will likely need to edit the paths.
+2. Use `severe_wx_env/make_input_run_preprocess_severe_NR.sh` to create the MUCAPE mask from the nature run output. This will likely require copying the script to your work directory, editing the top portion, and running.
+3. Use `make_submit_metplus_jobs.sh` to run the severe weather environment verification (template: `severe_wx_env/GridStat_severe_wx_env.conf`). These steps are the same as "Option 2" in the "General Instructions" section above. Note that this configuration file uses GRIB records to extract various severe weather fields, and that these records might change depending on the UPP version being used.
 
 ## Useful Documentation
 

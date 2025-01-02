@@ -17,7 +17,7 @@ import scipy.stats as ss
 # Functions
 #---------------------------------------------------------------------------------------------------
 
-def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False):
+def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False, mats_ste=False):
     """
     Compute the confidence interval for the mean of a dataset using a t distribution
 
@@ -32,6 +32,10 @@ def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False):
         the standard error. Method is based on Wilks (2011), eqn 5.12 (note that this is slightly 
         different from the equation used in MATS at GSL). Note that this assumes that the input 
         data are "in order" (e.g., each data point is an hour after the previous data point).
+    mats_ste : Boolean, optional
+        Option to use the MATS formulation for standard error when accounting for temporal
+        autocorrelation. For information on the MATS method, see here:
+        https://ruc.noaa.gov/stats/vertical/StdErrorcalculationonEMBverificationpages/StdErrorcalculationonEMBverificationpages.html
 
     Returns
     -------
@@ -50,7 +54,10 @@ def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False):
         auto_corr = np.corrcoef(data[1:], data[:-1])[0, -1]
     else:
         auto_corr = 0
-    ste = std / (np.sqrt(n * (1 - auto_corr) / (1 + auto_corr)))
+    if mats_ste:
+        ste = std / (np.sqrt((n - 1) * (1 - auto_corr)))
+    else:
+        ste = std / (np.sqrt(n * (1 - auto_corr) / (1 + auto_corr)))
 
     ci = (avg + (t_low * ste), avg - (t_low * ste))
 
@@ -161,7 +168,7 @@ def read_ascii(fnames, verbose=True):
     raw_dfs = []
     for f in fnames:
         try:
-            df = pd.read_csv(f, delim_whitespace=True)
+            df = pd.read_csv(f, sep='\s+')
             if len(df) > 0:
                 raw_dfs.append(df)
         except FileNotFoundError:
@@ -237,6 +244,60 @@ def compute_stats(verif_df, line_type='sl1l2'):
         new_df['MAG_BIAS_DIFF'] = verif_df['F_SPEED_BAR'] - verif_df['O_SPEED_BAR']
 
     return new_df
+
+
+def compute_stats_diff(verif_df1, verif_df2, var=['RMSE'], compute_kw={}, 
+                       match=['FCST_LEAD', 'FCST_VAR', 'FCST_VALID_BEG', 'FCST_LEV', 'FCST_UNITS', 'VX_MASK']):
+    """
+    Compute pairwise difference statistics between two verification DataFrames
+
+    Parameters
+    ----------
+    verif_df1 : pd.DataFrame
+        DataFrame with MET output from read_ascii() for the first simulation
+    verif_df2 : pd.DataFrame
+        DataFrame with MET output from read_ascii() for the second simulation
+    var : list of strings, optional
+        Variables to take differences of
+    compute_kw : dictionary, optional
+        Keyword arguments passed to mt.compute_stats
+    match : list of strings, optional
+        Fields that must match to perform a pairwise difference
+
+    Returns
+    -------
+    diff_df : pd.DataFrame
+        DataFrame with differences
+
+    """
+
+    # Compute additional statistics for each line
+    verif_df1_stats = compute_stats(verif_df1, **compute_kw)
+    verif_df2_stats = compute_stats(verif_df2, **compute_kw)
+
+    # Create dictionary to save differences in
+    diff_dict = {'DESC':[]}
+    for v in var:
+        diff_dict[v] = []
+    for m in match:
+        diff_dict[m] = []
+    
+    # Compute differences
+    for i in range(len(verif_df1_stats)):
+        cond = {}
+        for m in match:
+            cond[m] = verif_df1_stats.iloc[i][m]
+        subset2 = subset_verif_df(verif_df2_stats, cond)
+        if len(subset2) == 1:
+            diff_dict['DESC'].append(f"{verif_df1_stats.iloc[i]['DESC']} - {subset2['DESC'].values[0]}")
+            for m in match:
+                diff_dict[m].append(cond[m])
+            for v in var:
+                diff_dict[v].append(verif_df1_stats.iloc[i][v] - subset2[v].values[0])
+
+    diff_df = pd.DataFrame.from_dict(diff_dict)
+
+    return diff_df
 
 
 def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=False, ci=False, ci_lvl=0.95,
@@ -378,10 +439,10 @@ def compute_stats_vert_avg(verif_df, vcoord='P', vmin=100, vmax=1000, line_type=
                                   np.unique(red_df['FCST_VAR'].values),
                                   np.unique(red_df['OBTYPE'].values))).T.reshape(-1, 4)
     for i in range(combos.shape[0]):
-        subset = verif_df.loc[(red_df['FCST_LEAD'] == combos[i, 0]) &
-                              (red_df['FCST_VALID_BEG'] == combos[i, 1]) &
-                              (red_df['FCST_VAR'] == combos[i, 2]) &
-                              (red_df['OBTYPE'] == combos[i, 3])].copy()
+        subset = red_df.loc[(red_df['FCST_LEAD'] == combos[i, 0]) &
+                            (red_df['FCST_VALID_BEG'] == combos[i, 1]) &
+                            (red_df['FCST_VAR'] == combos[i, 2]) &
+                            (red_df['OBTYPE'] == combos[i, 3])].copy()
         tmp_df = compute_stats_entire_df(subset, line_type=line_type)
         dfs.append(tmp_df)
 

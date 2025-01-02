@@ -65,12 +65,8 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
 
     """
 
-    # Define default plot_param
+    # Make a copy of plot_param
     plot_param_local = copy.deepcopy(plot_param)
-    param_default = {'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'}   
-    for k in param_default.keys():
-        if k not in plot_param_local:
-            plot_param_local[k] = param_default[k]
 
     # Output file name
     param_str = ''
@@ -93,6 +89,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
     for key in input_sims.keys():
         plot_df = mt.subset_verif_df(verif_df[key], plot_param_local)
+        ylabel = f"{plot_df['FCST_LEV'].values[0]} {plot_df['FCST_VAR'].values[0]} {plot_stat} ({plot_df['FCST_UNITS'].values[0]})"
         if toggle_pts:
             ax.plot(valid_times, plot_df[plot_stat], linestyle='-', marker='o', c=input_sims[key]['color'],
                     label='%s (mean = %.6f)' % (key, np.mean(plot_df[plot_stat])))
@@ -102,7 +99,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     if plot_stat == 'TOTAL':
         ax.set_ylabel('number', size=14)
     else:
-        ax.set_ylabel('%s %s %s (%s)' % (plot_param_local['FCST_LEV'], plot_param_local['FCST_VAR'], plot_stat, plot_df['FCST_UNITS'].values[0]), size=14)
+        ax.set_ylabel(ylabel, size=14)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
@@ -110,8 +107,9 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
 
     param_key = list(plot_param_local.keys())
-    for k in ['FCST_LEV', 'FCST_VAR']:
-        param_key.remove(k)
+    for k in ['FCST_LEV', 'FCST_VAR', 'OBS_LEV', 'OBS_VAR']:
+        if k in param_key:
+            param_key.remove(k)
     ttl_list = [f'{k}: {plot_param_local[k]}' for k in param_key]
     ax.set_title(f"{fcst_lead}-hr Forecast\n{',  '.join(ttl_list)}", size=18)
 
@@ -178,12 +176,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
 
     """
 
-    # Define default plot_param
+    # Make a copy of plot_param
     plot_param_local = copy.deepcopy(plot_param)
-    param_default = {'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'}   
-    for k in param_default.keys():
-        if k not in plot_param_local:
-            plot_param_local[k] = param_default[k]
 
     # Read in data
     verif_df = {}
@@ -215,6 +209,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         for l in fcst_lead:
             plot_param_local['FCST_LEAD'] = l*1e4
             red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
+            ylabel = f"{red_df['FCST_LEV'].values[0]} {red_df['FCST_VAR'].values[0]} {plot_stat} ({red_df['FCST_UNITS'].values[0]})"
             stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type, ci=ci, ci_lvl=ci_lvl,
                                                   ci_opt=ci_opt, ci_kw=ci_kw)
             yplot.append(stats_df[plot_stat].values[0])
@@ -238,7 +233,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     if plot_stat == 'TOTAL':
         ax.set_ylabel('number', size=14)
     else:
-        ax.set_ylabel('%s %s %s (%s)' % (plot_param_local['FCST_LEV'], plot_param_local['FCST_VAR'], plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
+        ax.set_ylabel(ylabel, size=14)
     ax.set_xlabel('lead time (hr)', size=14)
     ax.grid()
     ax.legend(fontsize=12)
@@ -246,8 +241,9 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         ax.set_ylim(bottom=0)
 
     param_key = list(plot_param_local.keys())
-    for k in ['FCST_LEV', 'FCST_VAR', 'FCST_LEAD']:
-        param_key.remove(k)
+    for k in ['FCST_LEV', 'FCST_VAR', 'OBS_LEV', 'OBS_VAR', 'FCST_LEAD']:
+        if k in param_key:
+            param_key.remove(k)
     ttl_list = [f'{k}: {plot_param_local[k]}' for k in param_key]
     ax.set_title(f"Die-Off\n{',  '.join(ttl_list)}", size=18)
 
@@ -319,12 +315,8 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
 
     """
 
-    # Define default plot_param
+    # Make a copy of plot_param
     plot_param_local = copy.deepcopy(plot_param)
-    param_default = {'FCST_VAR':'TMP', 'OBTYPE':'ADPUPA'}   
-    for k in param_default.keys():
-        if k not in plot_param_local:
-            plot_param_local[k] = param_default[k]
 
     # Read in data
     verif_df = {}
@@ -348,6 +340,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         if 'subset' in input_sims[key].keys(): 
             plot_param_local['OBTYPE'] = input_sims[key]['subset']
         red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
+        xlabel = f"{red_df['FCST_VAR'].values[0]} {plot_stat} ({red_df['FCST_UNITS'].values[0]})"
         prslev = [int(s[1:]) for s in np.unique(red_df['FCST_LEV'].values)]
         if len(exclude_plvl) > 0:
             for p in exclude_plvl:
@@ -381,7 +374,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     if plot_stat == 'TOTAL':
         ax.set_xlabel('number', size=14)
     else:
-        ax.set_xlabel('%s %s (%s)' % (plot_param_local['FCST_VAR'], plot_stat, red_df['FCST_UNITS'].values[0]), size=14)
+        ax.set_xlabel(xlabel, size=14)
     ax.set_ylabel('pressure (hPa)', size=14)
     ax.set_ylim(ylim)
     ax.set_yscale('log')
@@ -391,10 +384,11 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         ax.set_xlim(left=0)
 
     param_key = list(plot_param_local.keys())
-    for k in ['FCST_VAR']:
-        param_key.remove(k)
+    for k in ['FCST_VAR', 'OBS_VAR']:
+        if k in param_key:
+            param_key.remove(k)
     ttl_list = [f'{k}: {plot_param_local[k]}' for k in param_key]
-    ax.set_title(f"{fcst_lead}-hr Foercast\n{',  '.join(ttl_list)}", size=18)
+    ax.set_title(f"{fcst_lead}-hr Forecast\n{',  '.join(ttl_list)}", size=18)
 
     if save:
         plt.savefig(output_file)
@@ -454,12 +448,8 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
 
     """
 
-    # Define default plot_param
+    # Make a copy of plot_param
     plot_param_local = copy.deepcopy(plot_param)
-    param_default = {'FCST_VAR':'TMP', 'OBTYPE':'ADPSFC'}   
-    for k in param_default.keys():
-        if k not in plot_param_local:
-            plot_param_local[k] = param_default[k]
 
     param_str = ''
     for k in plot_param_local.keys():
@@ -485,6 +475,7 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
     for key in input_sims.keys():
         for j, itime in enumerate(init_times):
             tmp_df = mt.subset_verif_df(verif_df[key][itime], plot_param_local)
+            ylabel = f"{tmp_df['FCST_VAR'].values[0]} {plot_stat} ({tmp_df['FCST_UNITS'].values[0]})"
             if plot_lvl1 == plot_lvl2:
                 plot_df = tmp_df.loc[tmp_df['FCST_LEV'] == plot_lvl1].copy()
             else:
@@ -510,10 +501,9 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
         ax.set_ylabel('number', size=14)
     else:
         if plot_lvl1 == plot_lvl2:
-            ax.set_ylabel('%s %s %s (%s)' % (plot_lvl1, plot_param_local['FCST_VAR'], plot_stat, tmp_df['FCST_UNITS'].values[0]), size=14)
+            ax.set_ylabel(f"{plot_lvl1} {ylabel}", size=14)
         else:
-            ax.set_ylabel('%s$-$%s %s %s (%s)' % (plot_lvl1, plot_lvl2, plot_param_local['FCST_VAR'], plot_stat,
-                                                  tmp_df['FCST_UNITS'].values[0]), size=14)
+            ax.set_ylabel(f"{plot_lvl1} {plot_lvl2} {ylabel}", size=14)
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
