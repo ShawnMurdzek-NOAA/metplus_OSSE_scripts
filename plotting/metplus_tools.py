@@ -300,8 +300,9 @@ def compute_stats_diff(verif_df1, verif_df2, var=['RMSE'], compute_kw={},
     return diff_df
 
 
-def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=False, ci=False, ci_lvl=0.95,
-                            ci_opt='t_dist', ci_kw={}):
+def compute_stats_entire_df(verif_df, verif_df2=None, line_type='sl1l2', agg=False, 
+                            diff_kw={'var':['RMSE']},
+                            ci=False, ci_lvl=0.95, ci_opt='t_dist', ci_kw={}):
     """
     Compute statistics using all lines in a MET output DataFrame.
 
@@ -309,12 +310,22 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=False, ci=False, ci
     ----------
     verif_df : pd.DataFrame
         DataFrame with MET output from read_ascii()
+    verif_df2 : pd.DataFrame, optional
+        DataFrame with MET output from read_ascii() that is used to compute pairwise differences 
+        with verif_df. If verif_df2 is not None, all stats will be computed using the differences
+        between verif_df and verif_df2. Set to None to not use pairwise differences.
     line_type : string, optional
         MET output line type
     agg : Boolean, optional
         Option to compute statistics by aggregating the partial sums. This is the more "correct"
         method, but is not compatible with confidence intervals. Currently only available for
         'sl1l2' and 'vl1l2' line_type.
+    diff_kw : Dictionary, optional
+        If agg == False:
+            Keyword arguments passed to compute_stats_diff()
+        If agg == True:
+            Should contain a single key ('var'), with the values being the variable names to take 
+            differences of
     ci : Boolean, optional
         Option to draw confidence intervals
     ci_lvl : Float, optional
@@ -332,34 +343,56 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=False, ci=False, ci
     """
 
     if (agg and not ci) and (line_type in ['sl1l2', 'vl1l2']):
- 
-        # Update means to include all lines in the input DataFrame
-        cols = []
-        for c in verif_df.columns:
-            if c[-3:] == 'BAR':
-                cols.append(c)
 
-        new_means = {}
-        new_means['TOTAL'] = np.sum(verif_df['TOTAL'].values)
+        # Loop over one df (if no diffs) or two dfs (if diffs)
+        df_list = [verif_df]
+        if verif_df2 is not None:
+            df_list.append(verif_df2)
+        df_out = []
 
-        # Check to ensure that length of verif_df is not 0
-        if len(verif_df) == 0:
-            print('Warning: mt.compute_stats_entire_df: Length of verif_df = 0')
+        for df in df_list:
 
-        for c in cols:
-            new_means[c] = np.zeros(1)
-            new_means[c][0] = (np.sum(verif_df[c].values * verif_df['TOTAL'].values) /
-                               new_means['TOTAL'])
+            # Update means to include all lines in the input DataFrame
+            cols = []
+            for c in df.columns:
+                if c[-3:] == 'BAR':
+                    cols.append(c)
 
-        combined_df = pd.DataFrame(new_means)
+            new_means = {}
+            new_means['TOTAL'] = np.sum(df['TOTAL'].values)
 
-        # Compute statistics
-        new_df = compute_stats(combined_df, line_type=line_type)
+            # Check to ensure that length of df is not 0
+            if len(df) == 0:
+                print('Warning: mt.compute_stats_entire_df: Length of df = 0')
+
+            for c in cols:
+                new_means[c] = np.zeros(1)
+                new_means[c][0] = (np.sum(df[c].values * df['TOTAL'].values) /
+                                   new_means['TOTAL'])
+
+            combined_df = pd.DataFrame(new_means)
+
+            # Compute statistics
+            df_out.append(compute_stats(combined_df, line_type=line_type))
+
+        if len(df_out) == 1:
+            new_df = df_out[0]
+        else:
+            new_dict = {'TOTAL': df_out[0]['TOTAL'].values}
+            for v in diff_kw['var']:
+                new_dict[v] = df_out[0][v].values - df_out[1][v].values
+            new_df = pd.DataFrame(new_dict)
 
     else:
 
         # Compute statistics first, then average
-        verif_df = compute_stats(verif_df, line_type=line_type)
+        if verif_df2 is None:
+            verif_df = compute_stats(verif_df, line_type=line_type)
+        else:
+            if 'compute_kw' not in diff_kw:
+                diff_kw['compute_kw'] = {}
+            diff_kw['compute_kw']['line_type'] = line_type
+            verif_df = compute_stats_diff(verif_df, verif_df2, **diff_kw)
         new_means = {}
         avg_col = []
         for c in verif_df.columns:
@@ -402,7 +435,8 @@ def compute_stats_entire_df(verif_df, line_type='sl1l2', agg=False, ci=False, ci
     return new_df
 
 
-def compute_stats_vert_avg(verif_df, vcoord='P', vmin=100, vmax=1000, line_type='sl1l2'):
+def compute_stats_vert_avg(verif_df, verif_df2=None, diff_kw={'var':['RMSE']}, vcoord='P', 
+                           vmin=100, vmax=1000, line_type='sl1l2'):
     """
     Compute vertically aggregated statistics from a MET output DataFrame.
 
@@ -410,6 +444,12 @@ def compute_stats_vert_avg(verif_df, vcoord='P', vmin=100, vmax=1000, line_type=
     ----------
     verif_df : pd.DataFrame
         DataFrame with MET output from read_ascii()
+    verif_df2 : pd.DataFrame, optional
+        DataFrame with MET output from read_ascii() that is used to compute pairwise differences 
+        with verif_df. If verif_df2 is not None, all stats will be computed using the differences
+        between verif_df and verif_df2. Set to None to not use pairwise differences.
+    diff_kw : Dictionary, optional
+        Keyword arguments passed to compute_stats_diff()
     vcoord : string, optional
         Vertical coordinate. This is the first character in the FCST_LEV entries (usually 'P' or 
         'Z')
@@ -428,22 +468,34 @@ def compute_stats_vert_avg(verif_df, vcoord='P', vmin=100, vmax=1000, line_type=
     """
 
     # Only retain rows within our vertical averaging column
-    fcst_lev_num = np.array([float(s[1:]) for s in verif_df['FCST_LEV'].values])
-    fcst_lev_type = np.array([s[0] for s in verif_df['FCST_LEV'].values])
-    red_df = verif_df.loc[(fcst_lev_type == vcoord) & (fcst_lev_num >= vmin) & (fcst_lev_num <= vmax)].copy()
+    df_list = [verif_df]
+    if verif_df2 is not None:
+        df_list.append(verif_df2)
+    red_df = []
+    for df in df_list:
+        fcst_lev_num = np.array([float(s[1:]) for s in verif_df['FCST_LEV'].values])
+        fcst_lev_type = np.array([s[0] for s in verif_df['FCST_LEV'].values])
+        red_df.append(verif_df.loc[(fcst_lev_type == vcoord) & (fcst_lev_num >= vmin) & (fcst_lev_num <= vmax)].copy())
 
     # Loop over each unique combo of FCST_LEAD, FCST_VALID_BEG, FCST_VAR, and OBTYPE
     dfs = []
-    combos = np.array(np.meshgrid(np.unique(red_df['FCST_LEAD'].values),
-                                  np.unique(red_df['FCST_VALID_BEG'].values),
-                                  np.unique(red_df['FCST_VAR'].values),
-                                  np.unique(red_df['OBTYPE'].values))).T.reshape(-1, 4)
+    combos = np.array(np.meshgrid(np.unique(red_df[0]['FCST_LEAD'].values),
+                                  np.unique(red_df[0]['FCST_VALID_BEG'].values),
+                                  np.unique(red_df[0]['FCST_VAR'].values),
+                                  np.unique(red_df[0]['OBTYPE'].values))).T.reshape(-1, 4)
     for i in range(combos.shape[0]):
-        subset = red_df.loc[(red_df['FCST_LEAD'] == combos[i, 0]) &
-                            (red_df['FCST_VALID_BEG'] == combos[i, 1]) &
-                            (red_df['FCST_VAR'] == combos[i, 2]) &
-                            (red_df['OBTYPE'] == combos[i, 3])].copy()
-        tmp_df = compute_stats_entire_df(subset, line_type=line_type)
+        subset = red_df[0].loc[(red_df[0]['FCST_LEAD'] == combos[i, 0]) &
+                                (red_df[0]['FCST_VALID_BEG'] == combos[i, 1]) &
+                                (red_df[0]['FCST_VAR'] == combos[i, 2]) &
+                                (red_df[0]['OBTYPE'] == combos[i, 3])].copy()
+        if len(red_df) == 2:
+            subset2 = red_df[1].loc[(red_df[1]['FCST_LEAD'] == combos[i, 0]) &
+                                    (red_df[1]['FCST_VALID_BEG'] == combos[i, 1]) &
+                                    (red_df[1]['FCST_VAR'] == combos[i, 2]) &
+                                    (red_df[1]['OBTYPE'] == combos[i, 3])].copy()
+        else:
+            subset2 = None
+        tmp_df = compute_stats_entire_df(subset, subset2, diff_kw=diff_kw, line_type=line_type)
         dfs.append(tmp_df)
 
     new_df = pd.concat(dfs)
