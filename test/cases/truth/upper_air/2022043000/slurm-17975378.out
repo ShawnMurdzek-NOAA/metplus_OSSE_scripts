@@ -1,0 +1,789 @@
+Wed May 15 09:09:54 CDT 2024
+05/15 14:10:16.494 metplus (config_metplus.py:102) INFO: Starting METplus configuration setup.
+05/15 14:10:16.496 metplus (config_metplus.py:230) INFO: Parsing config file: /apps/contrib/MET/METplus/METplus-5.0.1/parm/metplus_config/defaults.conf
+05/15 14:10:16.497 metplus (config_metplus.py:230) INFO: Parsing config file: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/GridStat_upper_air.conf
+05/15 14:10:16.498 metplus (config_metplus.py:230) INFO: Parsing config file: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/user.conf
+05/15 14:10:16.499 metplus (config_metplus.py:304) INFO: Adding LOG_TIMESTAMP='20240515141016'
+05/15 14:10:16.500 metplus (config_metplus.py:335) INFO: Replace LOG_METPLUS with '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/logs/metplus.log.20240515141016'
+05/15 14:10:16.503Z metplus INFO: Running METplus v5.0.1 as user smurdzek(9605) with command: /apps/contrib/MET/METplus/METplus-5.0.1/ush/run_metplus.py -c ./GridStat_upper_air.conf -c ./user.conf
+05/15 14:10:16.503Z metplus INFO: Log file: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/logs/metplus.log.20240515141016
+05/15 14:10:16.503Z metplus INFO: METplus Base: /apps/contrib/MET/METplus/METplus-5.0.1
+05/15 14:10:16.503Z metplus INFO: Final Conf: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/metplus_final.conf.20240515141016
+05/15 14:10:16.504Z metplus INFO: Config Input: /apps/contrib/MET/METplus/METplus-5.0.1/parm/metplus_config/defaults.conf
+05/15 14:10:16.504Z metplus INFO: Config Input: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/GridStat_upper_air.conf
+05/15 14:10:16.504Z metplus INFO: Config Input: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/user.conf
+05/15 14:10:16.512Z metplus INFO: ****************************************
+05/15 14:10:16.512Z metplus INFO: * Running METplus GridStatWrapper
+05/15 14:10:16.512Z metplus INFO: *  at init time: 2022-04-30 00:00
+05/15 14:10:16.512Z metplus INFO: ****************************************
+05/15 14:10:16.513Z metplus INFO: Processing forecast lead 0 hours
+05/15 14:10:16.611Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:10:16.611Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:10:16.611Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:10:16.611Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:10:16.611Z metplus INFO: FCST_TIME=000
+05/15 14:10:16.612Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:10:16.612Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:10:16.612Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:10:16.612Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:10:16.612Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:10:16.612Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:10:16.613Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:10:16.613Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:10:16.613Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:10:16.613Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:10:16.613Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:10:16.613Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:10:16.613Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:10:16.614Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:10:16.614Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:10:16.614Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:10:16.614Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:10:16.614Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:10:16.614Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:10:16.614Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:10:16.615Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:10:16.615Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:10:16.615Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:10:16.615Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:10:16.615Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:10:16.615Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:10:16.615Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:10:16.616Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:10:16.616Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:10:16.616Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:10:16.616Z metplus INFO: MODEL=FV3
+05/15 14:10:16.616Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:10:16.616Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:10:16.616Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:10:16.617Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:10:16.617Z metplus INFO: OBTYPE=NR
+05/15 14:10:16.617Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:10:16.617Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:10:16.617Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:10:16.617Z metplus INFO: VERIF_MASK=[]
+05/15 14:10:16.618Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/00/rrfs.t00z.prslev.f000.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300000_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043000
+05/15 14:14:31.523Z metplus INFO: Processing forecast lead 1 hour
+05/15 14:14:31.538Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:14:31.539Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:14:31.539Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:14:31.539Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:14:31.539Z metplus INFO: FCST_TIME=001
+05/15 14:14:31.539Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:14:31.539Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:14:31.539Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:14:31.539Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:14:31.539Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:14:31.539Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:14:31.539Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:14:31.539Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:14:31.539Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:14:31.539Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:14:31.539Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:14:31.539Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:14:31.540Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:14:31.540Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:14:31.540Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:14:31.540Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:14:31.540Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:14:31.540Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:14:31.540Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:14:31.540Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:14:31.540Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:14:31.540Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:14:31.540Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:14:31.540Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:14:31.540Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:14:31.540Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:14:31.540Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:14:31.540Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:14:31.540Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:14:31.540Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:14:31.541Z metplus INFO: MODEL=FV3
+05/15 14:14:31.541Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:14:31.541Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:14:31.541Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:14:31.541Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:14:31.541Z metplus INFO: OBTYPE=NR
+05/15 14:14:31.541Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:14:31.541Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:14:31.541Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:14:31.541Z metplus INFO: VERIF_MASK=[]
+05/15 14:14:31.541Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/00/rrfs.t00z.prslev.f001.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300100_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043000
+05/15 14:18:22.389Z metplus INFO: Processing forecast lead 2 hours
+05/15 14:18:22.404Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:18:22.404Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:18:22.404Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:18:22.404Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:18:22.404Z metplus INFO: FCST_TIME=002
+05/15 14:18:22.405Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:18:22.405Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:18:22.405Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:18:22.405Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:18:22.405Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:18:22.405Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:18:22.405Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:18:22.405Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:18:22.405Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:18:22.405Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:18:22.405Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:18:22.406Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:18:22.406Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:18:22.406Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:18:22.406Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:18:22.406Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:18:22.406Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:18:22.406Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:18:22.406Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:18:22.406Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:18:22.406Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:18:22.406Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:18:22.406Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:18:22.406Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:18:22.406Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:18:22.406Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:18:22.406Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:18:22.406Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:18:22.406Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:18:22.406Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:18:22.406Z metplus INFO: MODEL=FV3
+05/15 14:18:22.406Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:18:22.407Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:18:22.407Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:18:22.407Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:18:22.407Z metplus INFO: OBTYPE=NR
+05/15 14:18:22.407Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:18:22.407Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:18:22.407Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:18:22.407Z metplus INFO: VERIF_MASK=[]
+05/15 14:18:22.407Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/00/rrfs.t00z.prslev.f002.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043000
+05/15 14:21:58.243Z metplus INFO: Processing forecast lead 3 hours
+05/15 14:21:58.258Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:21:58.258Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:21:58.258Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:21:58.258Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:21:58.258Z metplus INFO: FCST_TIME=003
+05/15 14:21:58.258Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:21:58.259Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:21:58.259Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:21:58.259Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:21:58.259Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:21:58.259Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:21:58.259Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:21:58.259Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:21:58.259Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:21:58.259Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:21:58.259Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:21:58.259Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:21:58.259Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:21:58.259Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:21:58.259Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:21:58.259Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:21:58.260Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:21:58.260Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:21:58.260Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:21:58.260Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:21:58.260Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:21:58.260Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:21:58.260Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:21:58.260Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:21:58.260Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:21:58.260Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:21:58.260Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:21:58.260Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:21:58.260Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:21:58.260Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:21:58.260Z metplus INFO: MODEL=FV3
+05/15 14:21:58.260Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:21:58.261Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:21:58.261Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:21:58.261Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:21:58.261Z metplus INFO: OBTYPE=NR
+05/15 14:21:58.261Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:21:58.261Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:21:58.261Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:21:58.261Z metplus INFO: VERIF_MASK=[]
+05/15 14:21:58.261Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/00/rrfs.t00z.prslev.f003.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043000
+05/15 14:25:46.919Z metplus INFO: Processing forecast lead 6 hours
+05/15 14:25:46.935Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:25:46.935Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:25:46.935Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:25:46.935Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:25:46.935Z metplus INFO: FCST_TIME=006
+05/15 14:25:46.935Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:25:46.935Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:25:46.936Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:25:46.936Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:25:46.936Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:25:46.936Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:25:46.936Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:25:46.936Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:25:46.936Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:25:46.936Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:25:46.936Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:25:46.936Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:25:46.936Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:25:46.936Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:25:46.936Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:25:46.936Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:25:46.936Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:25:46.936Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:25:46.936Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:25:46.937Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:25:46.937Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:25:46.937Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:25:46.937Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:25:46.937Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:25:46.937Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:25:46.937Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:25:46.937Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:25:46.937Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:25:46.937Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:25:46.937Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:25:46.937Z metplus INFO: MODEL=FV3
+05/15 14:25:46.937Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:25:46.937Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:25:46.938Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:25:46.938Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:25:46.938Z metplus INFO: OBTYPE=NR
+05/15 14:25:46.938Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:25:46.938Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:25:46.938Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:25:46.938Z metplus INFO: VERIF_MASK=[]
+05/15 14:25:46.938Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/00/rrfs.t00z.prslev.f006.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300600_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043000
+05/15 14:29:19.928Z metplus INFO: Processing forecast lead 12 hours
+05/15 14:29:19.943Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:29:19.943Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:29:19.943Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:29:19.943Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:29:19.943Z metplus INFO: FCST_TIME=012
+05/15 14:29:19.943Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:29:19.944Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:29:19.944Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:29:19.944Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:29:19.944Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:29:19.944Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:29:19.944Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:29:19.944Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:29:19.944Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:29:19.944Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:29:19.944Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:29:19.944Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:29:19.944Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:29:19.944Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:29:19.944Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:29:19.944Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:29:19.944Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:29:19.944Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:29:19.945Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:29:19.945Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:29:19.945Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:29:19.945Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:29:19.945Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:29:19.945Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:29:19.945Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:29:19.945Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:29:19.945Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:29:19.945Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:29:19.945Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:29:19.945Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:29:19.945Z metplus INFO: MODEL=FV3
+05/15 14:29:19.945Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:29:19.945Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:29:19.945Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:29:19.945Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:29:19.945Z metplus INFO: OBTYPE=NR
+05/15 14:29:19.946Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:29:19.946Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:29:19.946Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:29:19.946Z metplus INFO: VERIF_MASK=[]
+05/15 14:29:19.946Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/00/rrfs.t00z.prslev.f012.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204301200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043000
+05/15 14:32:53.804Z metplus INFO: ****************************************
+05/15 14:32:53.804Z metplus INFO: * Running METplus GridStatWrapper
+05/15 14:32:53.805Z metplus INFO: *  at init time: 2022-04-30 01:00
+05/15 14:32:53.805Z metplus INFO: ****************************************
+05/15 14:32:53.807Z metplus INFO: Processing forecast lead 0 hours
+05/15 14:32:53.820Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:32:53.821Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:32:53.821Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:32:53.821Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:32:53.821Z metplus INFO: FCST_TIME=000
+05/15 14:32:53.821Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:32:53.821Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:32:53.821Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:32:53.821Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:32:53.821Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:32:53.821Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:32:53.821Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:32:53.821Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:32:53.821Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:32:53.821Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:32:53.821Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:32:53.821Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:32:53.821Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:32:53.821Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:32:53.821Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:32:53.822Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:32:53.822Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:32:53.822Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:32:53.822Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:32:53.822Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:32:53.822Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:32:53.822Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:32:53.822Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:32:53.822Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:32:53.822Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:32:53.822Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:32:53.822Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:32:53.822Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:32:53.822Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:32:53.822Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:32:53.822Z metplus INFO: MODEL=FV3
+05/15 14:32:53.822Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:32:53.822Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:32:53.822Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:32:53.822Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:32:53.822Z metplus INFO: OBTYPE=NR
+05/15 14:32:53.822Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:32:53.823Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:32:53.823Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:32:53.823Z metplus INFO: VERIF_MASK=[]
+05/15 14:32:53.823Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/01/rrfs.t01z.prslev.f000.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300100_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043001
+05/15 14:36:54.231Z metplus INFO: Processing forecast lead 1 hour
+05/15 14:36:54.244Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:36:54.244Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:36:54.244Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:36:54.244Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:36:54.245Z metplus INFO: FCST_TIME=001
+05/15 14:36:54.245Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:36:54.245Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:36:54.245Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:36:54.245Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:36:54.245Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:36:54.245Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:36:54.245Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:36:54.245Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:36:54.245Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:36:54.245Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:36:54.245Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:36:54.245Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:36:54.245Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:36:54.245Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:36:54.245Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:36:54.246Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:36:54.246Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:36:54.246Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:36:54.246Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:36:54.246Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:36:54.246Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:36:54.246Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:36:54.246Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:36:54.246Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:36:54.246Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:36:54.246Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:36:54.246Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:36:54.246Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:36:54.246Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:36:54.246Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:36:54.246Z metplus INFO: MODEL=FV3
+05/15 14:36:54.247Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:36:54.247Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:36:54.247Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:36:54.247Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:36:54.247Z metplus INFO: OBTYPE=NR
+05/15 14:36:54.247Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:36:54.247Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:36:54.247Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:36:54.247Z metplus INFO: VERIF_MASK=[]
+05/15 14:36:54.247Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/01/rrfs.t01z.prslev.f001.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043001
+05/15 14:41:05.279Z metplus INFO: Processing forecast lead 2 hours
+05/15 14:41:05.295Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:41:05.295Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:41:05.295Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:41:05.296Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:41:05.296Z metplus INFO: FCST_TIME=002
+05/15 14:41:05.296Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:41:05.296Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:41:05.296Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:41:05.296Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:41:05.296Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:41:05.296Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:41:05.296Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:41:05.296Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:41:05.296Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:41:05.296Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:41:05.296Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:41:05.296Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:41:05.296Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:41:05.296Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:41:05.297Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:41:05.297Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:41:05.297Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:41:05.297Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:41:05.297Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:41:05.297Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:41:05.297Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:41:05.297Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:41:05.297Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:41:05.297Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:41:05.297Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:41:05.297Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:41:05.297Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:41:05.297Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:41:05.297Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:41:05.297Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:41:05.297Z metplus INFO: MODEL=FV3
+05/15 14:41:05.298Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:41:05.298Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:41:05.298Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:41:05.298Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:41:05.298Z metplus INFO: OBTYPE=NR
+05/15 14:41:05.298Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:41:05.298Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:41:05.298Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:41:05.298Z metplus INFO: VERIF_MASK=[]
+05/15 14:41:05.298Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/01/rrfs.t01z.prslev.f002.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043001
+05/15 14:45:10.298Z metplus INFO: Processing forecast lead 3 hours
+05/15 14:45:10.305Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:45:10.305Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:45:10.305Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:45:10.305Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:45:10.305Z metplus INFO: FCST_TIME=003
+05/15 14:45:10.305Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:45:10.305Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:45:10.305Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:45:10.305Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:45:10.305Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:45:10.305Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:45:10.305Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:45:10.305Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:45:10.305Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:45:10.305Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:45:10.306Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:45:10.306Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:45:10.306Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:45:10.306Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:45:10.306Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:45:10.306Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:45:10.306Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:45:10.306Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:45:10.306Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:45:10.306Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:45:10.306Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:45:10.306Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:45:10.306Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:45:10.306Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:45:10.306Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:45:10.306Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:45:10.306Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:45:10.306Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:45:10.306Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:45:10.306Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:45:10.306Z metplus INFO: MODEL=FV3
+05/15 14:45:10.306Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:45:10.306Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:45:10.306Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:45:10.307Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:45:10.307Z metplus INFO: OBTYPE=NR
+05/15 14:45:10.307Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:45:10.307Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:45:10.307Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:45:10.307Z metplus INFO: VERIF_MASK=[]
+05/15 14:45:10.307Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/01/rrfs.t01z.prslev.f003.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300400_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043001
+05/15 14:48:55.353Z metplus INFO: Processing forecast lead 6 hours
+05/15 14:48:55.367Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:48:55.367Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:48:55.367Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:48:55.367Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:48:55.368Z metplus INFO: FCST_TIME=006
+05/15 14:48:55.368Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:48:55.368Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:48:55.368Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:48:55.368Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:48:55.368Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:48:55.368Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:48:55.368Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:48:55.368Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:48:55.368Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:48:55.368Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:48:55.368Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:48:55.368Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:48:55.368Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:48:55.368Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:48:55.369Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:48:55.369Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:48:55.369Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:48:55.369Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:48:55.369Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:48:55.369Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:48:55.369Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:48:55.369Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:48:55.369Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:48:55.369Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:48:55.369Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:48:55.369Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:48:55.369Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:48:55.369Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:48:55.369Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:48:55.369Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:48:55.370Z metplus INFO: MODEL=FV3
+05/15 14:48:55.370Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:48:55.370Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:48:55.370Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:48:55.370Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:48:55.370Z metplus INFO: OBTYPE=NR
+05/15 14:48:55.370Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:48:55.370Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:48:55.370Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:48:55.370Z metplus INFO: VERIF_MASK=[]
+05/15 14:48:55.371Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/01/rrfs.t01z.prslev.f006.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300700_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043001
+05/15 14:52:30.553Z metplus INFO: Processing forecast lead 12 hours
+05/15 14:52:31.040Z metplus (command_builder.py:257) ERROR: (command_builder.py:656) Could not find FCST_INPUT file /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/01/rrfs.t01z.prslev.f012.conus_3km.grib2 using template rrfs.{init?fmt=%Y%m%d}/{init?fmt=%H}/rrfs.t{init?fmt=%H}z.prslev.f{lead?fmt=%3H}.conus_3km.grib2
+05/15 14:52:31.040Z metplus INFO: ****************************************
+05/15 14:52:31.040Z metplus INFO: * Running METplus GridStatWrapper
+05/15 14:52:31.041Z metplus INFO: *  at init time: 2022-04-30 02:00
+05/15 14:52:31.041Z metplus INFO: ****************************************
+05/15 14:52:31.042Z metplus INFO: Processing forecast lead 0 hours
+05/15 14:52:31.055Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:52:31.055Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:52:31.055Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:52:31.055Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:52:31.055Z metplus INFO: FCST_TIME=000
+05/15 14:52:31.055Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:52:31.055Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:52:31.055Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:52:31.055Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:52:31.055Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:52:31.055Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:52:31.056Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:52:31.056Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:52:31.056Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:52:31.056Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:52:31.056Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:52:31.056Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:52:31.056Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:52:31.056Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:52:31.056Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:52:31.056Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:52:31.056Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:52:31.056Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:52:31.056Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:52:31.056Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:52:31.056Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:52:31.056Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:52:31.056Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:52:31.056Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:52:31.057Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:52:31.057Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:52:31.057Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:52:31.057Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:52:31.057Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:52:31.057Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:52:31.057Z metplus INFO: MODEL=FV3
+05/15 14:52:31.057Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:52:31.057Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:52:31.057Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:52:31.057Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:52:31.057Z metplus INFO: OBTYPE=NR
+05/15 14:52:31.057Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:52:31.057Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:52:31.057Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:52:31.057Z metplus INFO: VERIF_MASK=[]
+05/15 14:52:31.058Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/02/rrfs.t02z.prslev.f000.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300200_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043002
+05/15 14:56:27.103Z metplus INFO: Processing forecast lead 1 hour
+05/15 14:56:27.115Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 14:56:27.115Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 14:56:27.115Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 14:56:27.115Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:56:27.116Z metplus INFO: FCST_TIME=001
+05/15 14:56:27.116Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 14:56:27.116Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 14:56:27.116Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 14:56:27.116Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 14:56:27.116Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 14:56:27.116Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 14:56:27.116Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 14:56:27.116Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 14:56:27.116Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:56:27.116Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 14:56:27.116Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 14:56:27.117Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 14:56:27.117Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 14:56:27.117Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 14:56:27.117Z metplus INFO: METPLUS_MASK_DICT=
+05/15 14:56:27.117Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 14:56:27.117Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 14:56:27.117Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 14:56:27.117Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 14:56:27.117Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 14:56:27.117Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 14:56:27.117Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 14:56:27.117Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 14:56:27.117Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 14:56:27.117Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 14:56:27.117Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 14:56:27.117Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 14:56:27.117Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 14:56:27.117Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 14:56:27.117Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 14:56:27.117Z metplus INFO: MODEL=FV3
+05/15 14:56:27.118Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 14:56:27.118Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 14:56:27.118Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 14:56:27.118Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 14:56:27.118Z metplus INFO: OBTYPE=NR
+05/15 14:56:27.118Z metplus INFO: OMP_NUM_THREADS=1
+05/15 14:56:27.118Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 14:56:27.118Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 14:56:27.118Z metplus INFO: VERIF_MASK=[]
+05/15 14:56:27.118Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/02/rrfs.t02z.prslev.f001.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300300_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043002
+05/15 15:00:26.407Z metplus INFO: Processing forecast lead 2 hours
+05/15 15:00:26.420Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 15:00:26.421Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 15:00:26.421Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 15:00:26.421Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 15:00:26.421Z metplus INFO: FCST_TIME=002
+05/15 15:00:26.421Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 15:00:26.421Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 15:00:26.421Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 15:00:26.421Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 15:00:26.421Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 15:00:26.421Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 15:00:26.422Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 15:00:26.422Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 15:00:26.422Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 15:00:26.422Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 15:00:26.422Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 15:00:26.422Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 15:00:26.422Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 15:00:26.422Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 15:00:26.422Z metplus INFO: METPLUS_MASK_DICT=
+05/15 15:00:26.422Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 15:00:26.423Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 15:00:26.423Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 15:00:26.423Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 15:00:26.423Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 15:00:26.423Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 15:00:26.423Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 15:00:26.423Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 15:00:26.423Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 15:00:26.423Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 15:00:26.423Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 15:00:26.423Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 15:00:26.423Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 15:00:26.423Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 15:00:26.423Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 15:00:26.423Z metplus INFO: MODEL=FV3
+05/15 15:00:26.423Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 15:00:26.423Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 15:00:26.423Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 15:00:26.423Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 15:00:26.423Z metplus INFO: OBTYPE=NR
+05/15 15:00:26.423Z metplus INFO: OMP_NUM_THREADS=1
+05/15 15:00:26.423Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 15:00:26.423Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 15:00:26.424Z metplus INFO: VERIF_MASK=[]
+05/15 15:00:26.424Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/02/rrfs.t02z.prslev.f002.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300400_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043002
+05/15 15:04:35.056Z metplus INFO: Processing forecast lead 3 hours
+05/15 15:04:35.844Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 15:04:35.844Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 15:04:35.844Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 15:04:35.844Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 15:04:35.845Z metplus INFO: FCST_TIME=003
+05/15 15:04:35.845Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 15:04:35.845Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 15:04:35.845Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 15:04:35.845Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 15:04:35.845Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 15:04:35.845Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 15:04:35.846Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 15:04:35.846Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 15:04:35.846Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 15:04:35.846Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 15:04:35.846Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 15:04:35.846Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 15:04:35.846Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 15:04:35.847Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 15:04:35.847Z metplus INFO: METPLUS_MASK_DICT=
+05/15 15:04:35.847Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 15:04:35.847Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 15:04:35.847Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 15:04:35.847Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 15:04:35.847Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 15:04:35.848Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 15:04:35.848Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 15:04:35.848Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 15:04:35.848Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 15:04:35.848Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 15:04:35.848Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 15:04:35.848Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 15:04:35.849Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 15:04:35.849Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 15:04:35.849Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 15:04:35.849Z metplus INFO: MODEL=FV3
+05/15 15:04:35.849Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 15:04:35.849Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 15:04:35.849Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 15:04:35.850Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 15:04:35.850Z metplus INFO: OBTYPE=NR
+05/15 15:04:35.850Z metplus INFO: OMP_NUM_THREADS=1
+05/15 15:04:35.850Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 15:04:35.850Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 15:04:35.850Z metplus INFO: VERIF_MASK=[]
+05/15 15:04:35.858Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/02/rrfs.t02z.prslev.f003.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300500_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043002
+05/15 15:08:36.995Z metplus INFO: Processing forecast lead 6 hours
+05/15 15:08:37.025Z metplus INFO: ENVIRONMENT FOR NEXT COMMAND: 
+05/15 15:08:37.025Z metplus INFO: CLIMO_MEAN_FILE=
+05/15 15:08:37.025Z metplus INFO: CLIMO_STDEV_FILE=
+05/15 15:08:37.026Z metplus INFO: FCST_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 15:08:37.026Z metplus INFO: FCST_TIME=006
+05/15 15:08:37.026Z metplus INFO: INPUT_BASE=/work2/noaa/wrfruc/murdzek/
+05/15 15:08:37.026Z metplus INFO: METPLUS_CENSOR_THRESH=
+05/15 15:08:37.026Z metplus INFO: METPLUS_CENSOR_VAL=
+05/15 15:08:37.026Z metplus INFO: METPLUS_CLIMO_CDF_DICT=
+05/15 15:08:37.026Z metplus INFO: METPLUS_CLIMO_MEAN_DICT=
+05/15 15:08:37.026Z metplus INFO: METPLUS_CLIMO_STDEV_DICT=
+05/15 15:08:37.026Z metplus INFO: METPLUS_DESC=desc = "osse_spring_ctrl_new";
+05/15 15:08:37.027Z metplus INFO: METPLUS_DISTANCE_MAP_DICT=
+05/15 15:08:37.027Z metplus INFO: METPLUS_FCST_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 15:08:37.027Z metplus INFO: METPLUS_FCST_FILE_TYPE=
+05/15 15:08:37.027Z metplus INFO: METPLUS_FOURIER_DICT=
+05/15 15:08:37.027Z metplus INFO: METPLUS_GRID_WEIGHT_FLAG=
+05/15 15:08:37.027Z metplus INFO: METPLUS_HSS_EC_VALUE=
+05/15 15:08:37.027Z metplus INFO: METPLUS_INTERP_DICT=
+05/15 15:08:37.027Z metplus INFO: METPLUS_MASK_DICT=
+05/15 15:08:37.027Z metplus INFO: METPLUS_MET_CONFIG_OVERRIDES=
+05/15 15:08:37.027Z metplus INFO: METPLUS_MODEL=model = "FV3";
+05/15 15:08:37.027Z metplus INFO: METPLUS_NBRHD_COV_THRESH=cov_thresh = [>=0.5];
+05/15 15:08:37.028Z metplus INFO: METPLUS_NBRHD_SHAPE=shape = SQUARE;
+05/15 15:08:37.028Z metplus INFO: METPLUS_NBRHD_WIDTH=width = [1];
+05/15 15:08:37.028Z metplus INFO: METPLUS_NC_PAIRS_FLAG_DICT=nc_pairs_flag = {latlon = FALSE;raw = FALSE;diff = FALSE;climo = FALSE;apply_mask = FALSE;}
+05/15 15:08:37.028Z metplus INFO: METPLUS_NC_PAIRS_VAR_NAME=
+05/15 15:08:37.028Z metplus INFO: METPLUS_OBS_FIELD=field = [{ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }];
+05/15 15:08:37.028Z metplus INFO: METPLUS_OBS_FILE_TYPE=
+05/15 15:08:37.028Z metplus INFO: METPLUS_OBTYPE=obtype = "NR";
+05/15 15:08:37.028Z metplus INFO: METPLUS_OUTPUT_FLAG_DICT=output_flag = {sl1l2 = BOTH;vl1l2 = BOTH;}
+05/15 15:08:37.028Z metplus INFO: METPLUS_OUTPUT_PREFIX=output_prefix = "FV3_TMP_vs_NR_TMP";
+05/15 15:08:37.028Z metplus INFO: METPLUS_REGRID_DICT=regrid = {to_grid = FCST;method = NEAREST;}
+05/15 15:08:37.029Z metplus INFO: METPLUS_SEEPS_P1_THRESH=
+05/15 15:08:37.029Z metplus INFO: MET_TMP_DIR=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/tmp
+05/15 15:08:37.029Z metplus INFO: MODEL=FV3
+05/15 15:08:37.029Z metplus INFO: NEIGHBORHOOD_COV_THRESH=[>=0.5]
+05/15 15:08:37.029Z metplus INFO: NEIGHBORHOOD_SHAPE=SQUARE
+05/15 15:08:37.029Z metplus INFO: NEIGHBORHOOD_WIDTH=1
+05/15 15:08:37.029Z metplus INFO: OBS_FIELD={ name="TMP"; level="P1000"; },{ name="TMP"; level="P925"; },{ name="TMP"; level="P850"; },{ name="TMP"; level="P700"; },{ name="TMP"; level="P500"; },{ name="TMP"; level="P400"; },{ name="TMP"; level="P300"; },{ name="TMP"; level="P250"; },{ name="TMP"; level="P200"; },{ name="TMP"; level="P150"; },{ name="TMP"; level="P100"; },{ name="SPFH"; level="P1000"; },{ name="SPFH"; level="P925"; },{ name="SPFH"; level="P850"; },{ name="SPFH"; level="P700"; },{ name="SPFH"; level="P500"; },{ name="SPFH"; level="P400"; },{ name="SPFH"; level="P300"; },{ name="SPFH"; level="P250"; },{ name="SPFH"; level="P200"; },{ name="SPFH"; level="P150"; },{ name="SPFH"; level="P100"; },{ name="UGRD"; level="P1000"; },{ name="UGRD"; level="P925"; },{ name="UGRD"; level="P850"; },{ name="UGRD"; level="P700"; },{ name="UGRD"; level="P500"; },{ name="UGRD"; level="P400"; },{ name="UGRD"; level="P300"; },{ name="UGRD"; level="P250"; },{ name="UGRD"; level="P200"; },{ name="UGRD"; level="P150"; },{ name="UGRD"; level="P100"; },{ name="VGRD"; level="P1000"; },{ name="VGRD"; level="P925"; },{ name="VGRD"; level="P850"; },{ name="VGRD"; level="P700"; },{ name="VGRD"; level="P500"; },{ name="VGRD"; level="P400"; },{ name="VGRD"; level="P300"; },{ name="VGRD"; level="P250"; },{ name="VGRD"; level="P200"; },{ name="VGRD"; level="P150"; },{ name="VGRD"; level="P100"; }
+05/15 15:08:37.029Z metplus INFO: OBTYPE=NR
+05/15 15:08:37.029Z metplus INFO: OMP_NUM_THREADS=1
+05/15 15:08:37.029Z metplus INFO: OUTPUT_PREFIX=FV3_TMP_vs_NR_TMP
+05/15 15:08:37.029Z metplus INFO: REGRID_TO_GRID=FCST
+05/15 15:08:37.030Z metplus INFO: VERIF_MASK=[]
+05/15 15:08:37.030Z metplus INFO: COMMAND: /apps/contrib/MET/11.0.1/bin/grid_stat -v 2 /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/02/rrfs.t02z.prslev.f006.conus_3km.grib2 /work2/noaa/wrfruc/murdzek/nature_run_spring/UPP/20220430/wrfprs_202204300800_er.grib2 /apps/contrib/MET/METplus/METplus-5.0.1/parm/met_config/GridStatConfig_wrapped -outdir /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/GridStat/2022043002
+05/15 15:12:25.219Z metplus INFO: Processing forecast lead 12 hours
+05/15 15:12:26.004Z metplus (command_builder.py:257) ERROR: (command_builder.py:656) Could not find FCST_INPUT file /work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod/rrfs.20220430/02/rrfs.t02z.prslev.f012.conus_3km.grib2 using template rrfs.{init?fmt=%Y%m%d}/{init?fmt=%H}/rrfs.t{init?fmt=%H}z.prslev.f{lead?fmt=%3H}.conus_3km.grib2
+05/15 15:12:26.075Z metplus.GridStat (run_util.py:153) ERROR: GridStat had 2 errors.
+05/15 15:12:26.080Z metplus INFO: Overwrite final conf here: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/metplus_final.conf.20240515141016
+05/15 15:12:26.099Z metplus (run_util.py:203) ERROR: METplus has finished running as user smurdzek(9605) but had 2 errors.
+05/15 15:12:26.099Z metplus INFO: Check the log file for more information: /work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/upper_air/2022043000/output/logs/metplus.log.20240515141016
+Running METplus 5.0.1
+Starting METplus v5.0.1
+Wed May 15 10:12:30 CDT 2024
