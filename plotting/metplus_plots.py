@@ -94,7 +94,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     verbose : Boolean, optional
         Option to have verbose output from mt.read_ascii()
     include_zero : Boolean, optional
-        Option to include 0 in y axis
+        Option to include and bold the y = 0 line
     figsize : Tuple, optional
         Figure size
 
@@ -151,7 +151,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
-        ax.set_ylim(bottom=0)
+        ax.axhline(0, c='k', lw=1.5, ls='--')
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
 
     param_key = list(plot_param_local.keys())
@@ -220,8 +220,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         Additional keyword arguments passed to the confidence interval function
     mean_legend : Boolean, optional
         Option to plot the mean forecast statistic in the legend
-    include_zero : Booean, optional
-        Option to include 0 in y axis
+    include_zero : Boolean, optional
+        Option to include and bold the y = 0 line
     figsize : Tuple, optional
         Figure size
 
@@ -305,7 +305,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
-        ax.set_ylim(bottom=0)
+        ax.axhline(0, c='k', lw=1.5, ls='--')
 
     param_key = list(plot_param_local.keys())
     for k in ['FCST_LEV', 'FCST_VAR', 'OBS_LEV', 'OBS_VAR', 'FCST_LEAD']:
@@ -378,8 +378,8 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         Option to plot the mean forecast statistic in the legend
     ylim : List of floats, optional
         Y-axis limits (hPa)
-    include_zero : Booean, optional
-        Option to include 0 in x axis
+    include_zero : Boolean, optional
+        Option to include and bold the x = 0 line
     figsize : Tuple, optional
         Figure size
 
@@ -468,7 +468,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
-        ax.set_xlim(left=0)
+        ax.axvline(0, c='k', lw=1.5, ls='--')
 
     param_key = list(plot_param_local.keys())
     for k in ['FCST_VAR', 'OBS_VAR']:
@@ -523,8 +523,8 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
         String to add to the output file
     verbose : Boolean, optional
         Option to have verbose output from mt.read_ascii()
-    include_zero : Booean, optional
-        Option to include 0 in y axis
+    include_zero : Boolean, optional
+        Option to include and bold the y = 0 line
     figsize : Tuple, optional
         Figure size
 
@@ -594,7 +594,7 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
     ax.grid()
     ax.legend(fontsize=12)
     if include_zero:
-        ax.set_ylim(bottom=0)
+        ax.axhline(0, c='k', lw=1.5, ls='--')
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b\n%H:%M'))
 
     param_key = list(plot_param_local.keys())

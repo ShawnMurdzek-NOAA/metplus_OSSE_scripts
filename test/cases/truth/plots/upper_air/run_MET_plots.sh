@@ -1,11 +1,11 @@
 #!/bin/sh
 
 #SBATCH -A wrfruc
-#SBATCH -t 08:00:00
+#SBATCH -t 00:20:00
 #SBATCH --ntasks=1
-#SBATCH --partition=orion
+#SBATCH --partition=hercules
 
-machine=orion
+machine=hercules
 src_dir=/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts
 work_dir=`pwd`
 
@@ -19,6 +19,6 @@ cd ${work_dir}
 source ${src_dir}/env/py_${machine}.env
 cp ${src_dir}/plotting/plot_driver.py .
 python plot_driver.py plot_param.yml
-python plot_driver.py plot_param_precip.yml
+python plot_driver.py plot_param_diff.yml
 
 date

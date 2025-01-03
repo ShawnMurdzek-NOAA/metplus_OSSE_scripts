@@ -16,13 +16,15 @@ sim_dict:
   ctrl:
     color: 'k'
     dir: '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/truth/{subtyp}/output/{typ}'
-  uas:
+    ctrl: True
+  diff_uas:
     color: 'r'
     dir: '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/truth/{subtyp}_uas/output/{typ}'
+    ctrl: False
 
 # Output directory and output tag
 out_dir: '/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts/test/cases/truth/plots/upper_air'
-out_tag: 'test'
+out_tag: 'test_diff'
 
 # Valid times for verification
 # Use the following format for start times: YYYY-MM-DD HH:MM:SS (no quotes are needed)
@@ -74,7 +76,22 @@ plot_dict:
         kwargs: &tmp_ua_kwargs
           file_prefix: 'grid_stat_FV3_TMP_vs_NR_TMP'
           line_type: 'sl1l2'
-          include_zero: False
+          diffs: True
+          include_ctrl: True
+          diff_kw: &tmp_ua_diff_kwargs
+            var:
+              - 'RMSE'
+              - 'BIAS_DIFF'
+              - 'TOTAL'
+            match:
+              - 'FCST_LEAD'
+              - 'FCST_VAR'
+              - 'FCST_VALID_BEG'
+              - 'FCST_LEV'
+              - 'FCST_UNITS'
+              - 'VX_MASK'
+              - 'OBTYPE'
+          include_zero: True
           plot_param:
             OBTYPE: 'NR'
             FCST_VAR: 'TMP'
@@ -96,6 +113,12 @@ plot_dict:
         kwargs:
           <<: *tmp_ua_kwargs
           line_type: 'vl1l2'
+          diff_kw:
+            <<: *tmp_ua_diff_kwargs
+            var:
+              - 'VECT_RMSE'
+              - 'TOTAL'
+              - 'MAG_BIAS_DIFF'
           plot_param:
             OBTYPE: 'NR'
             FCST_VAR: 'UGRD_VGRD'
