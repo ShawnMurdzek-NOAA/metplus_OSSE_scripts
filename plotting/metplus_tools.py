@@ -400,7 +400,8 @@ def compute_stats_entire_df(verif_df, verif_df2=None, line_type='sl1l2', agg=Fal
                 avg_col.append(c)
                 new_means[c] = np.zeros(1)
                 new_means[c][0] = np.mean(verif_df[c].values)
-        new_means['TOTAL'] = np.sum(verif_df['TOTAL'].values)
+        if 'TOTAL' in verif_df.columns:
+            new_means['TOTAL'] = np.sum(verif_df['TOTAL'].values)
         if 'TOTAL' in avg_col:
             avg_col.remove('TOTAL')
 
