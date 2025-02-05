@@ -207,7 +207,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     out_tag : String, optional
         String to add to the output file
     verbose : Boolean, optional
-        Option to have verbose output from mt.read_ascii()
+        Option to have verbose output from this function and mt.read_ascii()
     ax : matplotlib.axes object, optional
         Axes to draw plot on
     ci : Boolean, optional
@@ -262,6 +262,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         output_file = f"{param_str}{plot_stat}_{out_tag}_dieoff.png"
     for key in input_sims.keys():
         if diffs and not include_ctrl and (key == ctrl_name): continue
+        if verbose: print()
+        if verbose: print(f"in plot_sfc_dieoff(). Sim = {key}")
         yplot = []
         ci_low = []
         ci_high = []
@@ -270,6 +272,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         for l in fcst_lead:
             plot_param_local['FCST_LEAD'] = l*1e4
             red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
+            if verbose: print(f"forecast lead = {l}, len(red_df) = {len(red_df)}")
             if diffs and (key != ctrl_name):
                 red_df_ctrl = mt.subset_verif_df(verif_df[ctrl_name], plot_param_local)
                 stats_df = mt.compute_stats_entire_df(red_df, red_df_ctrl, line_type=line_type, 
