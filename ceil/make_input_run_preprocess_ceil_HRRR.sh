@@ -37,7 +37,7 @@ for flen in ${fcst_len[@]}; do
       in_file=${parentDIR}/${s}/postprd/wrfprs_hrconus_${flen}.grib2
       if [ -f ${in_file} ]; then
         echo ${in_file} >> ${out_dir}/${in_fname}
-        echo RRFS_ceil_${s}00_f${flen}.nc >> ${out_dir}/${out_fname}
+        echo HRRR_ceil_${s}00_f${flen}.nc >> ${out_dir}/${out_fname}
       fi
     fi
   done
