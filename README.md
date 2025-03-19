@@ -10,6 +10,7 @@ METplus is a wrapper for the Model Evaluation Tools (MET) package. MET is a very
 - `plotting/`: Directory containing various plotting scripts. For plotting, it is recommended to use `plotting/plot_driver.py` with a YAML file similar to `plotting/plot_param_SAMPLE.yml`.
 - `severe_wx_env/`: Directory containing various scripts for severe weather environment verification (i.e., verification of CAPE, CIN, SRH, etc when MUCAPE > 50 J/kg).
 - `test/`: Directory containing various tests for the METplus helper functions.
+- `upper_air_with_mask/`: Directory containing configuration files and other scripts for upper-air and lower-atmosphere verification with pressure levels beneath the surface masked.
 - `utils/`: Directory containing various scripts that might be helpful.
 - `make_submit_metplus_jobs.sh`: Helper script to make METplus configuration files and submit job scripts. A new set of configuration files and job scripts is created every 12 hours in model time. These jobs should be small enough to finish within the maximum allowed walltime (8 hours).
 - `run_metplus.sh`: Main driver to run METplus.
@@ -18,8 +19,8 @@ METplus is a wrapper for the Model Evaluation Tools (MET) package. MET is a very
 
 Only the following machines are currently supported:
 
-- Orion (MSU)
-- Hercules (MSU)
+- Orion (MSU HPC2)
+- Hercules (MSU HPC2)
 
 Other machines can be used, but METplus would need to be installed if it is not already and various machine-specific files would need to be added to `env/`. A list of machines that already have METplus installed can be found [here](https://dtcenter.org/community-code/metplus/metplus-5-0-existing-builds).
 
@@ -70,10 +71,10 @@ NOTE: To run PointStat, obs must first be converted from prepBUFR to netCDF usin
 For the following verification types, use the following configuration files (`.conf`) with the "general instructions" above:
 
 - `GridStat_2D.conf`: Grid-to-grid verification using the GridStat tool for 80-m winds and PBL height.
-- `GridStat_lower_atm.conf`: Upper-air grid-to-grid verification using the GridStat tool. Verification statistics are generated for T, Q, and winds every 25 hPa between 1000 and 600 hPa.
+- `GridStat_lower_atm.conf`: Upper-air grid-to-grid verification using the GridStat tool. Verification statistics are generated for T, Q, and winds every 25 hPa between 1000 and 600 hPa. Note that pressure levels beneath the surface are not masked.
 - `GridStat_precip_radar.conf`: Grid-to-grid verification using the GridStat tool for 1-hr precipitation totals and composite reflectivity. Verification uses contingency table metrics with various thresholds.
 - `GridStat_sfc.conf`: Surface grid-to-grid verification using the GridStat tool. Verification statistics are generated for 2-m T, 2-m Q, and 10-m winds.
-- `GridStat_ua.conf`: Upper-air grid-to-grid verification using the GridStat tool. Verification statistics are generated for T, Q, and winds at mandatory pressure levels between 1000 and 100 hPa.
+- `GridStat_ua.conf`: Upper-air grid-to-grid verification using the GridStat tool. Verification statistics are generated for T, Q, and winds at mandatory pressure levels between 1000 and 100 hPa. Note that pressure levels beneath the surface are not masked.
 - `PointStat_sfc.conf`: Surface verification using the PointStat tool. Verification statistics are generated for 2-m T, 2-m Q, and 10-m winds. Both ADPSFC and SFCSHP platforms are used. 
 - `PointStat_ua.conf`: Upper-air verification using the PointStat tool. Verification statistics are generated for T, Q, and winds at mandatory pressure levels between 1000 and 100 hPa. Only the ADPUPA platforms is used.
 - `PB2NC.conf`: Converts prepBUFR files to netCDF files that can be used by MET. Must be done prior to running any PointStat tool.
@@ -93,6 +94,14 @@ Severe weather environment verification first requires the creation of mask usin
 1. Create a base verification mask using one of the scripts in `gen_vx_masks`. You will likely need to edit the paths.
 2. Use `severe_wx_env/make_input_run_preprocess_severe_NR.sh` to create the MUCAPE mask from the nature run output. This will likely require copying the script to your work directory, editing the top portion, and running.
 3. Use `make_submit_metplus_jobs.sh` to run the severe weather environment verification (template: `severe_wx_env/GridStat_severe_wx_env.conf`). These steps are the same as "Option 2" in the "General Instructions" section above. Note that this configuration file uses GRIB records to extract various severe weather fields, and that these records might change depending on the UPP version being used.
+
+#### Upper-Air and Lower-Atmosphere Verification with Pressure Levels Beneath the Surface Masked
+
+By default, MET does not mask pressure levels that are beneath the surface. Adding in the capability is a bit clunky and requires a separate 2D mask for each pressure level considered by the verification. 
+
+To create the masks, use the `create_below_sfc_mask.py` script. The `create_file_name_list.sh` script is useful for creating a text file with the list of nature run output files, which is required by `create_below_sfc_mask.py`. For the usage of `create_below_sfc_mask.py`, run `python create_below_sfc_mask.py -h`.
+
+Once the masks are created, the `.conf` files in this directory can be used. Note that when using these configuration files, `{MASK_DIR}` must be replaced with the path leading to the masks. These configuration files also have a lot of variables in them (each pressure level and model variable combination is a separate variable for verification). This can be quite cumbersome to deal with, so the `write_FCST_OBS_fields.sh` script can be used to write the FCST and OBS field specifications to a text file, where they can then be copied into the METplus configuration files.
 
 ## Useful Documentation
 
