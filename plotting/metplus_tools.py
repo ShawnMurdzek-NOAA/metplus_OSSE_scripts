@@ -189,7 +189,9 @@ def subset_verif_df(df, param):
     df : pd.DataFrame
         MET verification output
     param : dictionary
-        Row conditions. Key = column name, value = column value
+        Row conditions. Key = column name (from MET output file), value = column value
+        In addition to being a column name, the key can also be "not_<column name>". In this case, 
+        rows with a column value equal to <column name> are excluded.
 
     Returns
     -------
@@ -200,7 +202,10 @@ def subset_verif_df(df, param):
 
     cond = np.ones(len(df), dtype=bool)
     for k in param.keys():
-        cond = cond * (df[k] == param[k])
+        if k[:3] == 'not':
+            cond = cond * (df[k[4:]] != param[k])
+        else:
+            cond = cond * (df[k] == param[k])
     subset_df = df.loc[cond, :].copy()
 
     return subset_df
