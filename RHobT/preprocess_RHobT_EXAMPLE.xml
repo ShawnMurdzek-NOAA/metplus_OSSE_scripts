@@ -8,7 +8,7 @@ Job information
 <!ENTITY MACHINE         "orion">
 <!ENTITY RSRV_DEFAULT    "<account>wrfruc</account><queue>batch</queue><partition>&MACHINE;</partition>">
 <!ENTITY CORES           "1">
-<!ENTITY WTIME           "03:00:00">
+<!ENTITY WTIME           "04:00:00">
 
 <!--
 Directories
