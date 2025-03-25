@@ -8,6 +8,7 @@ METplus is a wrapper for the Model Evaluation Tools (MET) package. MET is a very
 - `env/`: Directory containing various environment-related files. When porting to a new machine, only files in here should need to be changed.
 - `gen_vx_masks/`: Directory containing scripts to create various masks (with the exception of the severe\_wx\_env mask).
 - `plotting/`: Directory containing various plotting scripts. For plotting, it is recommended to use `plotting/plot_driver.py` with a YAML file similar to `plotting/plot_param_SAMPLE.yml`.
+- `RHobT/`: Directory containing various script for computing and verifying RHobT.
 - `severe_wx_env/`: Directory containing various scripts for severe weather environment verification (i.e., verification of CAPE, CIN, SRH, etc when MUCAPE > 50 J/kg).
 - `test/`: Directory containing various tests for the METplus helper functions.
 - `upper_air_with_mask/`: Directory containing configuration files and other scripts for upper-air and lower-atmosphere verification with pressure levels beneath the surface masked.
@@ -102,6 +103,12 @@ By default, MET does not mask pressure levels that are beneath the surface. Addi
 To create the masks, use the `create_below_sfc_mask.py` script. The `create_file_name_list.sh` script is useful for creating a text file with the list of nature run output files, which is required by `create_below_sfc_mask.py`. For the usage of `create_below_sfc_mask.py`, run `python create_below_sfc_mask.py -h`.
 
 Once the masks are created, the `.conf` files in this directory can be used. Note that when using these configuration files, `{MASK_DIR}` must be replaced with the path leading to the masks. These configuration files also have a lot of variables in them (each pressure level and model variable combination is a separate variable for verification). This can be quite cumbersome to deal with, so the `write_FCST_OBS_fields.sh` script can be used to write the FCST and OBS field specifications to a text file, where they can then be copied into the METplus configuration files.
+
+#### RHobT Verification
+
+Most of the upper-air and lower_atm verification configuration files verify specific humidity as the moisture variable. The `RHobT` directory contains scripts that allow the user to verify RHobT (i.e., relative humidity computed using the temperature from the nature run and specific humidity from the forecast runs).
+
+First, RHobT must be computed using a Python script (`RHobT/compute_RHobT.py`) that relies on pygrib instead of xarray for GRIB file manipulation (this is because pygrib can edit GRIB files whereas xarray can only read GRIB files). This script computes RHobT from nature run and forecast run GRIB output and saves RHobT to a separate GRIB file. This new GRIB file can then be used for verification. Computing RHobT for all pressure levels can be rather time consuming, so a Rocoto workflow is provided to automate the process. To run, copy `RHobT/preprocess_RHobT_EXAMPLE.xml` to your working directory, edit the variables in the workflow as needed, then run as a cron job.
 
 ## Useful Documentation
 
