@@ -1,9 +1,6 @@
 """
 Compute RHobT and Save to a Separate GRIB File
 
-Owing to odd behavior with pygrib and the forecast output GRIB files, RH values are only precise 
-within 1%
-
 shawn.s.murdzek@noaa.gov
 """
 
@@ -43,7 +40,13 @@ def parse_in_args(argv):
     parser = argparse.ArgumentParser(description='This script computes RHobT (relative humidity \
                                                   using the observed temperature and forecasted \
                                                   specific humidity) and saves the output to a \
-                                                  separate GRIB file.')
+                                                  separate GRIB file. Note that the precision \
+                                                  of RHobT is controlled by the precision of RH in \
+                                                  the forecast output file (fcst_fname). RRFS \
+                                                  output appears to have a precision of ~1%, so \
+                                                  that is the precision of RHobT when using RRFS. \
+                                                  For HRRR, the precision appears to be closer to \
+                                                  0.3%.')
     
     # Positional arguments
     parser.add_argument('NR_fname', 
