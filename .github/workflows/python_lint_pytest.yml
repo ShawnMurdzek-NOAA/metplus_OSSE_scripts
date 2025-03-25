@@ -30,6 +30,7 @@ jobs:
     - name: Install dependencies
       run: |
         conda env create --file env/pytest_env.yml --name metplus_env
+        conda env create --file env/pygrib_env.yml --name pygrib_env
     - name: Lint with flake8
       run: |
         # stop if there are Python syntax errors or undefined names
@@ -43,4 +44,11 @@ jobs:
         export PYTHONPATH=$PYTHONPATH:/home/runner/work/metplus_OSSE_scripts/
         echo $PYTHONPATH
         cd ./test
-        pytest --ignore=./cases
+        pytest --ignore=./cases --ignore=./test_compute_RHobT.py
+    - name: Test RHobT with pytest
+      run: |
+        source activate pygrib_env
+        export PYTHONPATH=$PYTHONPATH:/home/runner/work/metplus_OSSE_scripts/
+        echo $PYTHONPATH
+        cd ./test
+        pytest test_compute_RHobT.py

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow [
+
+<!--
+Job information
+-->
+<!ENTITY SCHED           "slurm">
+<!ENTITY MACHINE         "orion">
+<!ENTITY RSRV_DEFAULT    "<account>wrfruc</account><queue>batch</queue><partition>&MACHINE;</partition>">
+<!ENTITY CORES           "1">
+<!ENTITY WTIME           "03:00:00">
+
+<!--
+Directories
+-->
+<!ENTITY SIM "spring">
+<!ENTITY HOMEDIR "/work2/noaa/wrfruc/murdzek/RRFS_OSSE/metplus_verif_grid_NR/rrfs-workflow_orion/&SIM;/RHobT/preprocess">
+<!ENTITY FCSTDIR "/work2/noaa/wrfruc/murdzek/RRFS_OSSE/syn_data_rrfs-workflow_orion/spring/NCO_dirs/ptmp/prod">
+<!ENTITY NRDIR "/work2/noaa/wrfruc/murdzek/nature_run_spring/UPP">
+<!ENTITY METPLUS_SCRIPTS "/work2/noaa/wrfruc/murdzek/src/metplus_OSSE_scripts">
+
+<!--
+Other variables
+-->
+<!ENTITY FCST_HRS "000 001 002 003 006 012">
+
+
+]>
+<workflow realtime="F" scheduler="&SCHED;" cyclethrottle="25" cyclelifespan="30:00:00:00">
+
+  <cycledef group="preprocess"> 202204292100 202205061100 01:00:00 </cycledef>
+
+  <log>
+    <cyclestr>&HOMEDIR;/RHobT_preprocess_&SIM;.log</cyclestr>
+  </log>
+
+  <task name="preprocess_RHobT" cycledefs="preprocess" maxtries="3">
+
+    &RSRV_DEFAULT;
+    <command>&METPLUS_SCRIPTS;/RHobT/run_compute_RHobT.sh</command>
+    <cores>&CORES;</cores>
+    <walltime>&WTIME;</walltime>
+    <jobname>preprocess_RHobT</jobname>
+    <join><cyclestr>&HOMEDIR;/rrfs.@Y@m@d/@H/preprocess_RHobT.log</cyclestr></join>
+
+    <envar><name>ENV_FILE</name><value>&METPLUS_SCRIPTS;/env/pygrib_&MACHINE;.env</value></envar>
+    <envar><name>SCRIPT</name><value>&METPLUS_SCRIPTS;/RHobT/compute_RHobT.py</value></envar>
+    <envar><name>WORKDIR</name><value><cyclestr>&HOMEDIR;/rrfs.@Y@m@d/@H</cyclestr></value></envar>
+    <envar><name>FCST_TMPL</name><value><cyclestr>&FCSTDIR;/rrfs.@Y@m@d/@H/rrfs.t@Hz.prslev.f{FHR}.conus_3km.grib2</cyclestr></value></envar>
+    <envar><name>NR_TMPL</name><value><cyclestr>&NRDIR;/%Y%m%d/wrfprs_%Y%m%d%H00_er.grib2</cyclestr></value></envar>
+    <envar><name>FCST_HRS</name><value>&FCST_HRS;</value></envar>
+    <envar><name>INIT</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+
+  </task>
+
+</workflow>
