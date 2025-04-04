@@ -110,6 +110,8 @@ Most of the upper-air and lower_atm verification configuration files verify spec
 
 First, RHobT must be computed using a Python script (`RHobT/compute_RHobT.py`) that relies on pygrib instead of xarray for GRIB file manipulation (this is because pygrib can edit GRIB files whereas xarray can only read GRIB files). This script computes RHobT from nature run and forecast run GRIB output and saves RHobT to a separate GRIB file. This new GRIB file can then be used for verification. Computing RHobT for all pressure levels can be rather time consuming, so a Rocoto workflow is provided to automate the process. To run, copy `RHobT/preprocess_RHobT_EXAMPLE.xml` to your working directory, edit the variables in the workflow as needed, then run as a cron job.
 
+Second, to perform verification, use the `RHobT/GridStat_RHobT.conf` configuration file (or something similar).
+
 ## Useful Documentation
 
 - [MET](https://met.readthedocs.io/en/latest/index.html): Includes in-depth details about all the various options for the MET tools.  

@@ -2,9 +2,10 @@
 # These specifications can then be copy-and-pasted into a METplus .conf file
 
 out_file='tmp.txt'
-var=( 'TMP' 'SPFH' 'UGRD' 'VGRD' )
+var=( 'RH' )
 #plvl=( 975 950 925 900 875 850 825 800 775 750 725 700 675 650 625 600 )
-plvl=( 925 850 700 500 400 300 250 200 150 100 )
+#plvl=( 925 850 700 500 400 300 250 200 150 100 )
+plvl=( 975 950 925 900 875 850 825 800 775 750 725 700 675 650 625 600 500 400 300 250 200 150 100 )
 
 i=1
 for v in ${var[@]}; do
