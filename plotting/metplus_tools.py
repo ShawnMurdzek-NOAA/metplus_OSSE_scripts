@@ -122,6 +122,98 @@ def confidence_interval_mean(data, level=0.95, option='t_dist', ci_kw={}):
     return ci
 
 
+def percent_diff(exp_data, ctrl_data, axis=0):
+    """
+    Compute the percent difference between an experiment and control dataset
+
+    Parameters
+    ----------
+    exp_data : np.array
+        Experimental output data
+    ctrl_data : np.array
+        Control dataset
+    axis : integer, optional
+        The axis of exp_data and ctrl_data over which np.mean() is called
+
+    Returns
+    -------
+    pct_diff : float
+        Percent difference
+
+    """
+
+    exp_mean = np.mean(exp_data, axis=axis)
+    ctrl_mean = np.mean(ctrl_data, axis=axis)
+    pct_diff = 1e2 * (exp_mean - ctrl_mean) / ctrl_mean
+
+    return pct_diff
+
+
+def confidence_interval_bootstrap_pct_diff(exp_data, ctrl_data, level=0.95, fct=percent_diff,
+                                           bootstrap_kw={}):
+    """
+    Compute the confidence interval for the percent difference between experimental output and a 
+    control dataset using a bootstrap
+
+    Parameters
+    ----------
+    exp_data : np.array
+        Experimental output data
+    ctrl_data : np.array
+        Control dataset
+    level : Float, optional
+        Confidence level for the confidence interval
+    fct : Function, optional
+        Function used to compute the percent difference
+    bootstrap_kw : Dictionary, optional
+        Keywords passed to ss.bootstrap
+
+    Returns
+    -------
+    ci : Tuple
+        Upper and lower bound of the confidence interval
+
+    """
+
+    out = ss.bootstrap((exp_data, ctrl_data), fct, confidence_level=level, **bootstrap_kw)
+    ci = (out.confidence_interval.high, out.confidence_interval.low)
+
+    return ci
+
+
+def confidence_interval_pct_diff(exp_data, ctrl_data, level=0.95, option='bootstrap', ci_kw={}):
+    """
+    Compute the confidence interval for the percent difference between experimental output and a 
+    control dataset
+
+    Parameters
+    ----------
+    exp_data : np.array
+        Experimental output data
+    ctrl_data : np.array
+        Control dataset
+    level : Float, optional
+        Confidence level for the confidence interval
+    option : String, optional
+        Method used to compute confidence interval ('bootstrap')
+    ci_kw : Dictionary, optional
+        Keywords passed to the confidence interval function
+
+    Returns
+    -------
+    ci : Tuple
+        Upper and lower bound of the confidence interval
+
+    """
+
+    if option == 'bootstrap':
+        ci = confidence_interval_bootstrap_pct_diff(exp_data, ctrl_data, level=level, **ci_kw)
+    else:
+        print(f'confidence interval option {option} does not exist')
+
+    return ci
+
+
 def compute_stdev(sum_val, sum_sq, n):
     """
     Compute the standard deviation from partial sums. Based on calculate_stddev from METcalcpy.
