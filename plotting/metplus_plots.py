@@ -611,6 +611,59 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
     return verif_df
 
 
+def plot_pct_diffs(verif_df_list, xvals, xlabel, plot_stat='RMSE', out_tag='', 
+                   verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='bootstrap', ci_kw={},
+                   figsize=(8, 6), plot_pct_diff_kw={}, plot_ci_kw={}):
+
+    # Compute percent differences for plot_var
+    ctrl_df = verif_df_list[0]
+    pct_diff = [0]
+    if ci:
+        ci_vals = [(0, 0)]
+    for verif_df in verif_df_list[1:]:
+        pct_diff.append(mt.percent_diff(verif_df[plot_stat].values, ctrl_df[plot_stat].values))
+        if ci:
+            ci_vals.append(mt.confidence_interval_pct_diff(verif_df[plot_stat].values,
+                                                           ctrl_df[plot_stat].values,
+                                                           level=ci_lvl,
+                                                           option=ci_opt,
+                                                           ci_kw=ci_kw))
+
+    # Sort based on xvals
+    xvals = np.array(xvals)
+    pct_diff = np.array(pct_diff)
+    sort_idx = np.argsort(xvals)
+    xvals = xvals[sort_idx]
+    pct_diff = pct_diff[sort_idx]
+    if ci:
+        ci_sorted = []
+        for i in sort_idx:
+            ci_sorted.append(ci_vals[i])
+
+    # Make plot
+    save = False
+    if ax == None:
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
+        save = True
+        output_file = f"{plot_stat}_{out_tag}_pct_diff.png"
+    ax.plot(xvals, pct_diff, **plot_pct_diff_kw)
+    if ci:
+        for i, x in enumerate(xvals):
+            ax.plot([x, x], ci_sorted[i], marker='_', **plot_ci_kw)
+
+    ax.grid()
+    ax.set_xlabel(xlabel, size=14)
+    ax.set_ylabel(f'{plot_stat} % difference', size=14)
+
+    if save:
+        plt.savefig(out_fname)
+    
+    if ci:
+        return pct_diff, ci_sorted
+    else:
+        return pct_diff
+
+
 """
 End metplus_plots.py 
 """
