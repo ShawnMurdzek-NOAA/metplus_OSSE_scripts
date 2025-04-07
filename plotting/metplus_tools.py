@@ -84,7 +84,7 @@ def confidence_interval_bootstrap_mean(data, level=0.95, bootstrap_kw={}):
 
     """
 
-    out = ss.bootstrap((data,), np.mean, **bootstrap_kw)
+    out = ss.bootstrap((data,), np.mean, confidence_level=level, **bootstrap_kw)
     ci = (out.confidence_interval.high, out.confidence_interval.low)
 
     return ci
