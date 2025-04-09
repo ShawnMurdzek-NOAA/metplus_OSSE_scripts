@@ -656,7 +656,7 @@ def plot_pct_diffs(verif_df_list, xvals, xlabel, plot_stat='RMSE', out_tag='',
     ax.set_ylabel(f'{plot_stat} % difference', size=14)
 
     if save:
-        plt.savefig(out_fname)
+        plt.savefig(output_file)
     
     if ci:
         return pct_diff, ci_sorted
