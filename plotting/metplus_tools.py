@@ -534,7 +534,7 @@ def compute_stats_entire_df(verif_df, verif_df2=None, line_type='sl1l2', agg=Fal
 
 
 def compute_stats_vert_avg(verif_df, verif_df2=None, diff_kw={'var':['RMSE']}, vcoord='P', 
-                           vmin=100, vmax=1000, line_type='sl1l2'):
+                           vmin=100, vmax=1000, line_type='sl1l2', stats_kw={}):
     """
     Compute vertically aggregated statistics from a MET output DataFrame.
 
@@ -557,6 +557,8 @@ def compute_stats_vert_avg(verif_df, verif_df2=None, diff_kw={'var':['RMSE']}, v
         Maximum value of the vertical coordinate for averaging
     line_type : string, optional
         MET output line type
+    stats_kw : dictionary, optional
+        Keyword arguments passed to compute_stats_entire_df()
 
     Returns
     -------
@@ -593,7 +595,7 @@ def compute_stats_vert_avg(verif_df, verif_df2=None, diff_kw={'var':['RMSE']}, v
                                     (red_df[1]['OBTYPE'] == combos[i, 3])].copy()
         else:
             subset2 = None
-        tmp_df = compute_stats_entire_df(subset, subset2, diff_kw=diff_kw, line_type=line_type)
+        tmp_df = compute_stats_entire_df(subset, subset2, diff_kw=diff_kw, line_type=line_type, **stats_kw)
         dfs.append(tmp_df)
 
     new_df = pd.concat(dfs)
