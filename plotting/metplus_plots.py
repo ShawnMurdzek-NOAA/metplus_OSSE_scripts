@@ -420,6 +420,7 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         output_file = f"{param_str}{plot_stat}_{fcst_lead}hr_{out_tag}_vprof.png"
     for key in input_sims.keys():
         if diffs and not include_ctrl and (key == ctrl_name): continue
+        if 'ls' not in input_sims[key].keys(): input_sims[key]['ls'] = '-'
         if 'subset' in input_sims[key].keys(): 
             plot_param_local['OBTYPE'] = input_sims[key]['subset']
         red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
@@ -453,10 +454,11 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         else:
             llabel = key
         if toggle_pts:
-            ax.plot(xplot, prslev, linestyle='-', marker='o', c=input_sims[key]['color'],
-                    label=llabel)
+            ax.plot(xplot, prslev, linestyle=input_sims[key]['ls'], marker='o', 
+                    c=input_sims[key]['color'], label=llabel)
         else:
-            ax.plot(xplot, prslev, linestyle='-', c=input_sims[key]['color'], label=llabel)
+            ax.plot(xplot, prslev, linestyle=input_sims[key]['ls'], c=input_sims[key]['color'], 
+                    label=llabel)
         if ci:
             for j, p in enumerate(prslev):
                 ax.plot([ci_low[j], ci_high[j]], [p, p], linestyle='-', marker='|', lw=0.5, 
