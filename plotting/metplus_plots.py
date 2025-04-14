@@ -136,13 +136,16 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
     for key in input_sims.keys():
         if diffs and not include_ctrl and (key == ctrl_name): continue
+        if 'ls' not in input_sims[key].keys(): input_sims[key]['ls'] = '-'
         plot_df = mt.subset_verif_df(verif_df[key], plot_param_local)
         ylabel = f"{plot_df['FCST_LEV'].values[0]} {plot_df['FCST_VAR'].values[0]} {plot_stat} ({plot_df['FCST_UNITS'].values[0]})"
         if toggle_pts:
-            ax.plot(valid_times, plot_df[plot_stat], linestyle='-', marker='o', c=input_sims[key]['color'],
+            ax.plot(valid_times, plot_df[plot_stat], linestyle=input_sims[key]['ls'], marker='o', 
+                    c=input_sims[key]['color'], 
                     label='%s (mean = %.6f)' % (key, np.mean(plot_df[plot_stat])))
         else:
-            ax.plot(valid_times, plot_df[plot_stat], linestyle='-', c=input_sims[key]['color'],
+            ax.plot(valid_times, plot_df[plot_stat], linestyle=input_sims[key]['ls'], 
+                    c=input_sims[key]['color'],
                     label='%s (mean = %.6f)' % (key, np.mean(plot_df[plot_stat])))
     if plot_stat == 'TOTAL':
         ax.set_ylabel('number', size=14)
@@ -262,6 +265,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         output_file = f"{param_str}{plot_stat}_{out_tag}_dieoff.png"
     for key in input_sims.keys():
         if diffs and not include_ctrl and (key == ctrl_name): continue
+        if 'ls' not in input_sims[key].keys(): input_sims[key]['ls'] = '-'
         if verbose: print()
         if verbose: print(f"in plot_sfc_dieoff(). Sim = {key}")
         yplot = []
@@ -292,10 +296,11 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         else:
             llabel = key
         if toggle_pts:
-            ax.plot(fcst_lead, yplot, linestyle='-', marker='o', c=input_sims[key]['color'],
-                    label=llabel)
+            ax.plot(fcst_lead, yplot, linestyle=input_sims[key]['ls'], marker='o', 
+                    c=input_sims[key]['color'], label=llabel)
         else:
-            ax.plot(fcst_lead, yplot, linestyle='-', c=input_sims[key]['color'], label=llabel)
+            ax.plot(fcst_lead, yplot, linestyle=input_sims[key]['ls'], c=input_sims[key]['color'], 
+                    label=llabel)
         if ci:
             for j, fl in enumerate(fcst_lead):
                 ax.plot([fl, fl], [ci_low[j], ci_high[j]], linestyle='-', marker='_', lw=0.5, 
