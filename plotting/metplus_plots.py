@@ -621,6 +621,48 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
 def plot_pct_diffs(verif_df_list, xvals, xlabel, plot_stat='RMSE', out_tag='', 
                    verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='bootstrap', ci_kw={},
                    figsize=(8, 6), plot_pct_diff_kw={}, plot_ci_kw={}):
+    """
+    Plot percent differences
+
+    Parameters
+    ----------
+    verif_df_list : list of pd.DataFrame
+        DataFrames containing that statistic listed in plot_stat
+    xvals : list
+        X-axis values (percent diffs are plotted on Y axis)
+    xlabel : string
+        X-axis label
+    plot_stat : String, optional
+        Forecast statistic to plot
+    out_tag : String, optional
+        String to add to the output file
+    verbose : Boolean, optional
+        Option to have verbose output from mt.read_ascii()
+    ax : matplotlib.axes object, optional
+        Axes to draw plot on
+    ci : Boolean, optional
+        Option to draw confidence intervals
+    ci_lvl : Float, optional
+        Confidence interval level as a fraction
+    ci_opt : String, optional
+        Method used to create confidence intervals
+    ci_kw : Dictionary, optional
+        Additional keyword arguments passed to the confidence interval function
+    figsize : Tuple, optional
+        Figure size
+    plot_pct_diff_kw : dictionary, optional
+        Keyword arguments passed to ax.plot() when plotting percent differences 
+    plot_ci_kw : dictionary, optional
+        Keyword arguments passed to ax.plot() when plotting confidence intervals
+
+    Returns
+    -------
+    pct_diff : list
+        Percent differences
+    ci_sorted : list
+        Confidence interval bounds. Only returned if ci = True.
+
+    """
 
     # Compute percent differences for plot_var
     ctrl_df = verif_df_list[0]
