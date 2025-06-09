@@ -51,7 +51,7 @@ def confidence_interval_t_mean(data, level=0.95, acct_lag_corr=False, mats_ste=F
 
     # Compute standard error
     if acct_lag_corr:
-        auto_corr = np.corrcoef(data[1:], data[:-1])[0, -1]
+        auto_corr = max(np.corrcoef(data[1:], data[:-1])[0, -1], 0)
     else:
         auto_corr = 0
     if mats_ste:
