@@ -59,7 +59,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
                         line_type='sl1l2', diffs=False, include_ctrl=True, diff_kw={},
                         plot_param={'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'},
                         plot_stat='RMSE', toggle_pts=True, out_tag='', verbose=False,
-                        include_zero=False, figsize=(8, 6)):
+                        ax=None, include_zero=False, figsize=(8, 6)):
     """
     Plot time series for surface verification
 
@@ -93,6 +93,8 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         String to add to the output file
     verbose : Boolean, optional
         Option to have verbose output from mt.read_ascii()
+    ax : matplotlib.axes object, optional
+        Axes to draw plot on
     include_zero : Boolean, optional
         Option to include and bold the y = 0 line
     figsize : Tuple, optional
@@ -107,12 +109,6 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
 
     # Make a copy of plot_param
     plot_param_local = copy.deepcopy(plot_param)
-
-    # Output file name
-    param_str = ''
-    for k in plot_param_local.keys():
-        param_str = param_str + f'{plot_param_local[k]}_'
-    output_file = f"{param_str}{plot_stat}_{fcst_lead}hr_{out_tag}_timeseries.png"
 
     # If computing differences, determine control simulation name and add line_type to diff_kw
     if diffs:
@@ -133,7 +129,14 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
             verif_df[key] = mt.compute_stats(verif_df[key], line_type=line_type)
 
     # Make plot
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
+    save = False
+    if ax == None:
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
+        save = True
+        param_str = ''
+        for k in plot_param_local.keys():
+            param_str = param_str + f'{plot_param_local[k]}_'
+        output_file = f"{param_str}{plot_stat}_{fcst_lead}hr_{out_tag}_timeseries.png"
     for key in input_sims.keys():
         if diffs and not include_ctrl and (key == ctrl_name): continue
         if 'ls' not in input_sims[key].keys(): input_sims[key]['ls'] = '-'
@@ -164,9 +167,11 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
     ttl_list = [f'{k}: {plot_param_local[k]}' for k in param_key]
     ax.set_title(f"{fcst_lead}-hr Forecast\n{',  '.join(ttl_list)}", size=18)
 
-    plt.savefig(output_file)
-
-    return verif_df
+    if save:
+        plt.savefig(output_file)
+        return verif_df
+    else:
+        return verif_df, ax
 
 
 def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], 
