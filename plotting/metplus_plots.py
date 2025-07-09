@@ -176,7 +176,7 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
 
 def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12], 
                     file_prefix='point_stat', line_type='sl1l2', 
-                    diffs=False, pct_diffs=False, include_ctrl=True, diff_kw={},
+                    diffs=False, include_ctrl=True, diff_kw={},
                     plot_param={'FCST_VAR':'TMP', 'FCST_LEV':'Z2', 'OBTYPE':'ADPSFC'}, 
                     plot_stat='RMSE', toggle_pts=True, out_tag='', 
                     verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='t_dist', ci_kw={},
@@ -201,8 +201,6 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
         METplus line type
     diffs : Boolean, optional
         Option to plot differences between the input_sims with ctrl = True and all other simulations
-    pct_diffs : Boolean, optional
-        Option to plot percent differences between the input_sims with ctrl = True and all other simulations
     include_ctrl : Boolean, optional
         Option to include the control simulation when plotting differences between experiments and
         the control
@@ -246,13 +244,8 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
     plot_param_local = copy.deepcopy(plot_param)
 
     # If computing differences, determine control simulation name and add line_type to diff_kw
-    if diffs or pct_diffs:
+    if diffs:
         ctrl_name, diff_kw = diff_plot_prep(input_sims, diff_kw, line_type)
-
-    # Set include_ctrl to False if pct_diffs = True
-    if include_ctrl and pct_diffs:
-        print('mp.plot_sfc_dieoff(): Setting include_ctrl to False b/c pct_diffs = True')
-        include_ctrl = False
 
     # Read in data
     verif_df = {}
@@ -276,7 +269,7 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
             param_str = param_str + f'{plot_param_local[k]}_'
         output_file = f"{param_str}{plot_stat}_{out_tag}_dieoff.png"
     for key in input_sims.keys():
-        if (diffs or pct_diffs) and not include_ctrl and (key == ctrl_name): continue
+        if diffs and not include_ctrl and (key == ctrl_name): continue
         if 'ls' not in input_sims[key].keys(): input_sims[key]['ls'] = '-'
         if verbose: print()
         if verbose: print(f"in plot_sfc_dieoff(). Sim = {key}")
@@ -290,40 +283,18 @@ def plot_sfc_dieoff(input_sims, valid_times, fcst_lead=[0, 1, 2, 3, 6, 12],
             red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
             ylabel = f"{red_df['FCST_LEV'].values[0]} {red_df['FCST_VAR'].values[0]} {plot_stat} ({red_df['FCST_UNITS'].values[0]})"
             if verbose: print(f"forecast lead = {l}, len(red_df) = {len(red_df)}")
-            if pct_diffs:
-                stat_df = mt.compute_stats(red_df, line_type=line_type)
-                red_ctrl_df = mt.subset_verif_df(verif_df[ctrl_name], plot_param_local)
-                stat_ctrl_df = mt.compute_stats(red_ctrl_df, line_type=line_type)
-
-                # Ensure that the experiment and control have matching entries
-                intersect_idx = np.intersect1d(stat_df['FCST_VALID_END'].values,
-                                               stat_ctrl_df['FCST_VALID_END'].values,
-                                               return_indices=True)
-                exp_vals = stat_df[plot_stat].values[intersect_idx[1]]
-                ctrl_vals = stat_ctrl_df[plot_stat].values[intersect_idx[2]]
-
-                yplot.append(mt.percent_diff(exp_vals, ctrl_vals))
-                if ci:
-                    ci_vals = mt.confidence_interval_pct_diff(exp_vals,
-                                                              ctrl_vals,
-                                                              level=ci_lvl,
-                                                              option=ci_opt,
-                                                              ci_kw=ci_kw)
-                    ci_low.append(ci_vals[0])
-                    ci_high.append(ci_vals[1])
+            if diffs and (key != ctrl_name):
+                red_df_ctrl = mt.subset_verif_df(verif_df[ctrl_name], plot_param_local)
+                stats_df = mt.compute_stats_entire_df(red_df, red_df_ctrl, line_type=line_type, 
+                                                      diff_kw=diff_kw, ci=ci, ci_lvl=ci_lvl,
+                                                      ci_opt=ci_opt, ci_kw=ci_kw)
             else:
-                if diffs and (key != ctrl_name):
-                    red_df_ctrl = mt.subset_verif_df(verif_df[ctrl_name], plot_param_local)
-                    stats_df = mt.compute_stats_entire_df(red_df, red_df_ctrl, line_type=line_type, 
-                                                          diff_kw=diff_kw, ci=ci, ci_lvl=ci_lvl,
-                                                          ci_opt=ci_opt, ci_kw=ci_kw)
-                else:
-                    stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type, ci=ci, ci_lvl=ci_lvl,
-                                                          ci_opt=ci_opt, ci_kw=ci_kw)
-                yplot.append(stats_df[plot_stat].values[0])
-                if ci:
-                    ci_low.append(stats_df['low_%s' % plot_stat].values[0])
-                    ci_high.append(stats_df['high_%s' % plot_stat].values[0])
+                stats_df = mt.compute_stats_entire_df(red_df, line_type=line_type, ci=ci, ci_lvl=ci_lvl,
+                                                      ci_opt=ci_opt, ci_kw=ci_kw)
+            yplot.append(stats_df[plot_stat].values[0])
+            if ci:
+                ci_low.append(stats_df['low_%s' % plot_stat].values[0])
+                ci_high.append(stats_df['high_%s' % plot_stat].values[0])
         yplot = np.array(yplot)
         if mean_legend:
             llabel = '%s (mean = %.6f)' % (key, np.mean(yplot))
@@ -698,19 +669,17 @@ def plot_pct_diffs(verif_df_list, xvals, xlabel, plot_stat='RMSE', out_tag='',
 
     """
 
-    # Compute percent differences for plot_var
-    ctrl_df = verif_df_list[0]
+    # Compute percent differences for plot_stat
+    ctrl_df = verif_df_list.pop(0)
+    ctrl = ctrl_df[plot_stat].values
     pct_diff = [0]
     if ci:
         ci_vals = [(0, 0)]
-    for verif_df in verif_df_list[1:]:
-        pct_diff.append(mt.percent_diff(verif_df[plot_stat].values, ctrl_df[plot_stat].values))
+    for verif_df in verif_df_list:
+        pct_diff_all = 1e2 * (verif_df[plot_stat].values - ctrl) / ctrl
+        pct_diff.append(np.mean(pct_diff_all))
         if ci:
-            ci_vals.append(mt.confidence_interval_pct_diff(verif_df[plot_stat].values,
-                                                           ctrl_df[plot_stat].values,
-                                                           level=ci_lvl,
-                                                           option=ci_opt,
-                                                           ci_kw=ci_kw))
+            ci_vals.append(mt.confidence_interval_mean(pct_diff_all, level=ci_lvl, option=ci_opt, ci_kw=ci_kw))
 
     # Sort based on xvals
     xvals = np.array(xvals)

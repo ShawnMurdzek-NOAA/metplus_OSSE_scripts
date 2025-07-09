@@ -122,98 +122,6 @@ def confidence_interval_mean(data, level=0.95, option='t_dist', ci_kw={}):
     return ci
 
 
-def percent_diff(exp_data, ctrl_data, axis=0):
-    """
-    Compute the percent difference between an experiment and control dataset
-
-    Parameters
-    ----------
-    exp_data : np.array
-        Experimental output data
-    ctrl_data : np.array
-        Control dataset
-    axis : integer, optional
-        The axis of exp_data and ctrl_data over which np.mean() is called
-
-    Returns
-    -------
-    pct_diff : float
-        Percent difference
-
-    """
-
-    exp_mean = np.mean(exp_data, axis=axis)
-    ctrl_mean = np.mean(ctrl_data, axis=axis)
-    pct_diff = 1e2 * (exp_mean - ctrl_mean) / ctrl_mean
-
-    return pct_diff
-
-
-def confidence_interval_bootstrap_pct_diff(exp_data, ctrl_data, level=0.95, fct=percent_diff,
-                                           bootstrap_kw={}):
-    """
-    Compute the confidence interval for the percent difference between experimental output and a 
-    control dataset using a bootstrap
-
-    Parameters
-    ----------
-    exp_data : np.array
-        Experimental output data
-    ctrl_data : np.array
-        Control dataset
-    level : Float, optional
-        Confidence level for the confidence interval
-    fct : Function, optional
-        Function used to compute the percent difference
-    bootstrap_kw : Dictionary, optional
-        Keywords passed to ss.bootstrap
-
-    Returns
-    -------
-    ci : Tuple
-        Upper and lower bound of the confidence interval
-
-    """
-
-    out = ss.bootstrap((exp_data, ctrl_data), fct, confidence_level=level, **bootstrap_kw)
-    ci = (out.confidence_interval.high, out.confidence_interval.low)
-
-    return ci
-
-
-def confidence_interval_pct_diff(exp_data, ctrl_data, level=0.95, option='bootstrap', ci_kw={}):
-    """
-    Compute the confidence interval for the percent difference between experimental output and a 
-    control dataset
-
-    Parameters
-    ----------
-    exp_data : np.array
-        Experimental output data
-    ctrl_data : np.array
-        Control dataset
-    level : Float, optional
-        Confidence level for the confidence interval
-    option : String, optional
-        Method used to compute confidence interval ('bootstrap')
-    ci_kw : Dictionary, optional
-        Keywords passed to the confidence interval function
-
-    Returns
-    -------
-    ci : Tuple
-        Upper and lower bound of the confidence interval
-
-    """
-
-    if option == 'bootstrap':
-        ci = confidence_interval_bootstrap_pct_diff(exp_data, ctrl_data, level=level, **ci_kw)
-    else:
-        print(f'confidence interval option {option} does not exist')
-
-    return ci
-
-
 def compute_stdev(sum_val, sum_sq, n):
     """
     Compute the standard deviation from partial sums. Based on calculate_stddev from METcalcpy.
@@ -343,7 +251,7 @@ def compute_stats(verif_df, line_type='sl1l2'):
     return new_df
 
 
-def compute_stats_diff(verif_df1, verif_df2, var=['RMSE'], compute_kw={}, 
+def compute_stats_diff(verif_df1, verif_df2, var=['RMSE'], compute_kw={}, pct=False,
                        match=['FCST_LEAD', 'FCST_VAR', 'FCST_VALID_BEG', 'FCST_LEV', 'FCST_UNITS', 'VX_MASK']):
     """
     Compute pairwise difference statistics between two verification DataFrames
@@ -358,6 +266,8 @@ def compute_stats_diff(verif_df1, verif_df2, var=['RMSE'], compute_kw={},
         Variables to take differences of
     compute_kw : dictionary, optional
         Keyword arguments passed to mt.compute_stats
+    pct : Boolean, optional
+        Option to compute percent differences
     match : list of strings, optional
         Fields that must match to perform a pairwise difference
 
@@ -390,7 +300,10 @@ def compute_stats_diff(verif_df1, verif_df2, var=['RMSE'], compute_kw={},
             for m in match:
                 diff_dict[m].append(cond[m])
             for v in var:
-                diff_dict[v].append(verif_df1_stats.iloc[i][v] - subset2[v].values[0])
+                if pct:
+                    diff_dict[v].append(1e2 * (verif_df1_stats.iloc[i][v] - subset2[v].values[0]) / subset2[v].values[0])
+                else:
+                    diff_dict[v].append(verif_df1_stats.iloc[i][v] - subset2[v].values[0])
 
     diff_df = pd.DataFrame.from_dict(diff_dict)
 
@@ -398,7 +311,7 @@ def compute_stats_diff(verif_df1, verif_df2, var=['RMSE'], compute_kw={},
 
 
 def compute_stats_entire_df(verif_df, verif_df2=None, line_type='sl1l2', agg=False, 
-                            diff_kw={'var':['RMSE']},
+                            diff_kw={'var':['RMSE'], 'pct':False},
                             ci=False, ci_lvl=0.95, ci_opt='t_dist', ci_kw={}):
     """
     Compute statistics using all lines in a MET output DataFrame.
@@ -421,8 +334,9 @@ def compute_stats_entire_df(verif_df, verif_df2=None, line_type='sl1l2', agg=Fal
         If agg == False:
             Keyword arguments passed to compute_stats_diff()
         If agg == True:
-            Should contain a single key ('var'), with the values being the variable names to take 
-            differences of
+            Should contain two keys: 
+                'var': List of variables to take differences of
+                'pct': Option to compute percent diffs
     ci : Boolean, optional
         Option to draw confidence intervals
     ci_lvl : Float, optional
@@ -438,6 +352,10 @@ def compute_stats_entire_df(verif_df, verif_df2=None, line_type='sl1l2', agg=Fal
         DataFrame with a single line of statistics summarizing the entire input DataFrame
 
     """
+
+    # Add 'pct' to diff_kw if not included
+    if 'pct' not in diff_kw:
+        diff_kw['pct'] = False
 
     if (agg and not ci) and (line_type in ['sl1l2', 'vl1l2']):
 
@@ -478,6 +396,9 @@ def compute_stats_entire_df(verif_df, verif_df2=None, line_type='sl1l2', agg=Fal
             new_dict = {'TOTAL': df_out[0]['TOTAL'].values}
             for v in diff_kw['var']:
                 new_dict[v] = df_out[0][v].values - df_out[1][v].values
+                if diff_kw['pct']:
+                    new_dict[v] = 1e2 * new_dict[v] / df_out[1][v].values
+
             new_df = pd.DataFrame(new_dict)
 
     else:
