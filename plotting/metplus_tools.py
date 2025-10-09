@@ -171,9 +171,10 @@ def read_ascii(fnames, verbose=True):
             df = pd.read_csv(f, sep='\s+')
             if len(df) > 0:
                 raw_dfs.append(df)
+            else:
+                raise ValueError(f"Empty MET file: {f}")
         except FileNotFoundError:
-            if verbose:
-                print('File not found: %s' % f)
+            if verbose: print(f"MET file not found: {f}")
             continue
     verif_df = pd.concat(raw_dfs)
 

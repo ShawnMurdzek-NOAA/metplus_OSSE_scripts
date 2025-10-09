@@ -109,6 +109,10 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
 
     # Make a copy of plot_param
     plot_param_local = copy.deepcopy(plot_param)
+    if verbose:
+        print('\nStarting plot_sfc_timeseries()')
+        print('plot_param =')
+        print(plot_param_local)
 
     # If computing differences, determine control simulation name and add line_type to diff_kw
     if diffs:
@@ -141,6 +145,8 @@ def plot_sfc_timeseries(input_sims, valid_times, fcst_lead=6, file_prefix='point
         if diffs and not include_ctrl and (key == ctrl_name): continue
         if 'ls' not in input_sims[key].keys(): input_sims[key]['ls'] = '-'
         plot_df = mt.subset_verif_df(verif_df[key], plot_param_local)
+        if verbose: print(f"\nin plot_sfc_timeseries(). Sim = {key}")
+        if verbose: print(f"len(plot_df) = {len(plot_df)}")
         ylabel = f"{plot_df['FCST_LEV'].values[0]} {plot_df['FCST_VAR'].values[0]} {plot_stat} ({plot_df['FCST_UNITS'].values[0]})"
         if toggle_pts:
             ax.plot(valid_times, plot_df[plot_stat], linestyle=input_sims[key]['ls'], marker='o', 
