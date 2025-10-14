@@ -1,0 +1,29 @@
+Scripts for verifying wind ramp events
+
+General Process
+---------------
+For both the NR and RRFS...
+    - Extract U and V and 80 m using wgrib2
+    - Compute 80-m wind speed using wgrib2
+    - Use MET PCP-Combine to compute 80-m wind speed diffs between two times
+    - [NR only] Create a mask that only includes points in CONUS with 80-m winds > the cut-in speed and < rated speed
+
+Use MET GridStat to verify 80-m wind differences using the mask the isolates CONUS grid points 
+with winds between the cut-in speed an rated speed
+
+Directions
+----------
+- Run process_NR_output_for_wind_ramp.sh and process_RRFS_output_for_wind_ramp.sh
+- Manually move output from the above scripts to an ./output/ directory
+- Run run_GridStat.sh
+
+Testing
+-------
+The check_ctc.py script checks whether the verification is being performed properly.
+
+Contingency table counts differ when being computed in Python vs MET. This is b/c the wind speeds
+differ slightly (i.e., round-off error) when computed in Python vs wgrib2. When accounting for this
+difference, the contingency table counts match.
+
+Also took a quick peek at the mask generated here. The plotted mask looks reasonable and wind speeds
+less than 3 m/s and greater than 15 m/s are indeed masked.
