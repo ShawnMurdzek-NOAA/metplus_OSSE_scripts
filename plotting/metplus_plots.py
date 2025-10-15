@@ -354,8 +354,11 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
     input_sims : Dictionary
         METplus output files. Key is simulation name (used in the legend). The value is another
         dictionary containing 'dir' (METplus output directory) and 'color'. Dictionary can also
-        conatin 'subset', which overrides "OBTYPE" in plot_param, and 'prefix', which
+        contain 'subset', which overrides "OBTYPE" in plot_param, and 'prefix', which
         overrides the "file_prefix" keyword argument.
+        Optional keys for each simulation:
+            ctrl: Whether this simulation is the control run (needed for differences)
+            scale: Scalar that multiplies whatever is being plotted
     valid_times : List of dt.datetime objects
         Forecast valid times
     fcst_lead : Integer, optional
@@ -436,9 +439,13 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
         output_file = f"{param_str}{plot_stat}_{fcst_lead}hr_{out_tag}_vprof.png"
     for key in input_sims.keys():
         if diffs and not include_ctrl and (key == ctrl_name): continue
+
+        # Set default values
         if 'ls' not in input_sims[key].keys(): input_sims[key]['ls'] = '-'
+        if 'scale' not in input_sims[key].keys(): input_sims[key]['scale'] = 1
         if 'subset' in input_sims[key].keys(): 
             plot_param_local['OBTYPE'] = input_sims[key]['subset']
+
         red_df = mt.subset_verif_df(verif_df[key], plot_param_local)
         xlabel = f"{red_df['FCST_VAR'].values[0]} {plot_stat} ({red_df['FCST_UNITS'].values[0]})"
         prslev = [int(s[1:]) for s in np.unique(red_df['FCST_LEV'].values)]
@@ -461,10 +468,10 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
                 stats_df = mt.compute_stats_entire_df(prs_df, line_type=line_type, ci=ci, 
                                                       ci_lvl=ci_lvl,
                                                       ci_opt=ci_opt, ci_kw=ci_kw)
-            xplot[j] = stats_df[plot_stat].values[0]
+            xplot[j] = stats_df[plot_stat].values[0] * input_sims[key]['scale']
             if ci:
-                ci_low[j] = stats_df['low_%s' % plot_stat].values[0]
-                ci_high[j] = stats_df['high_%s' % plot_stat].values[0]
+                ci_low[j] = stats_df['low_%s' % plot_stat].values[0] * input_sims[key]['scale']
+                ci_high[j] = stats_df['high_%s' % plot_stat].values[0] * input_sims[key]['scale']
         if mean_legend:
             llabel = '%s (mean = %.6f)' % (key, np.mean(xplot))
         else:
