@@ -13,6 +13,7 @@ METplus is a wrapper for the Model Evaluation Tools (MET) package. MET is a very
 - `test/`: Directory containing various tests for the METplus helper functions.
 - `upper_air_with_mask/`: Directory containing configuration files and other scripts for upper-air and lower-atmosphere verification with pressure levels beneath the surface masked.
 - `utils/`: Directory containing various scripts that might be helpful.
+- `wind_ramp/`: Directory containing various scripts and configuration files for wind ramp verification. WARNING: These scripts are incomplete, so this verification is not as robust as, e.g., `severe_wx_env/`.
 - `make_submit_metplus_jobs.sh`: Helper script to make METplus configuration files and submit job scripts. A new set of configuration files and job scripts is created every 12 hours in model time. These jobs should be small enough to finish within the maximum allowed walltime (8 hours).
 - `run_metplus.sh`: Main driver to run METplus.
 
