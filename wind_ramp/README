@@ -1,5 +1,14 @@
 Scripts for verifying wind ramp events
 
+More information about wind ramps: Bianco et al. (2016, WAF, https://doi.org/10.1175/WAF-D-15-0144.1)
+
+Sample thresholds for cut-in speed, rated speed, and cut-out speed: 
+https://www.energy.gov/eere/articles/how-do-wind-turbines-survive-severe-weather-and-storms
+
+TO DO
+-----
+- Add scripts so that the wind ramp verification can easily be run for several output times
+
 General Process
 ---------------
 For both the NR and RRFS...
