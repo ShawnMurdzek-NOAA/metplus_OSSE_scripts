@@ -461,6 +461,9 @@ def plot_ua_vprof(input_sims, valid_times, fcst_lead=6, file_prefix='point_stat'
             prs_df = red_df.loc[red_df['FCST_LEV'] == ('P%d' % p)]
             if diffs and (key != ctrl_name):
                 prs_df_ctrl = mt.subset_verif_df(verif_df[ctrl_name], plot_param_local)
+                if f"P{p}" not in prs_df_ctrl['FCST_LEV'].unique():
+                    print(f"Skipping P{p}")
+                    continue
                 stats_df = mt.compute_stats_entire_df(prs_df, prs_df_ctrl, line_type=line_type, 
                                                       diff_kw=diff_kw, ci=ci, ci_lvl=ci_lvl,
                                                       ci_opt=ci_opt, ci_kw=ci_kw)
