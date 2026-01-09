@@ -641,7 +641,7 @@ def plot_sawtooth(input_sims, init_times, fcst_lead=[0, 1], verif_type='sfc',
 
 def plot_pct_diffs(verif_df_list, xvals, xlabel, plot_stat='RMSE', out_tag='', 
                    verbose=False, ax=None, ci=False, ci_lvl=0.95, ci_opt='bootstrap', ci_kw={},
-                   figsize=(8, 6), plot_pct_diff_kw={}, plot_ci_kw={}):
+                   figsize=(8, 6), plot_pct_diff_kw={}, plot_ci_kw={}, include_ctrl=True):
     """
     Plot percent differences
 
@@ -675,6 +675,10 @@ def plot_pct_diffs(verif_df_list, xvals, xlabel, plot_stat='RMSE', out_tag='',
         Keyword arguments passed to ax.plot() when plotting percent differences 
     plot_ci_kw : dictionary, optional
         Keyword arguments passed to ax.plot() when plotting confidence intervals
+    include_ctrl : boolean, optional
+        Option to include ctrl run (first DataFrame in verif_df_list) in plot.
+        If True, len(xvals) = len(verif_df_list)
+        If False, len(xvals) = len(verif_df_list) - 1
 
     Returns
     -------
@@ -688,9 +692,11 @@ def plot_pct_diffs(verif_df_list, xvals, xlabel, plot_stat='RMSE', out_tag='',
     # Compute percent differences for plot_stat
     ctrl_df = verif_df_list.pop(0)
     ctrl = ctrl_df[plot_stat].values
-    pct_diff = [0]
-    if ci:
-        ci_vals = [(0, 0)]
+    pct_diff = []
+    if ci: ci_vals = []
+    if include_ctrl:
+        pct_diff.append(0)
+        if ci: ci_vals.append((0, 0))
     for verif_df in verif_df_list:
         pct_diff_all = 1e2 * (verif_df[plot_stat].values - ctrl) / ctrl
         pct_diff.append(np.mean(pct_diff_all))
