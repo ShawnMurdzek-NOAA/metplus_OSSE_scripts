@@ -97,7 +97,11 @@ for subtyp in plot_dict['surface'].keys():
             input_sims_sfc = copy.deepcopy(sim_dict)
             for key in input_sims_sfc:
                 input_sims_sfc[key]['dir'] = input_sims_sfc[key]['dir'].format(typ=verif_type, subtyp=subtyp)
-            _ = mp.plot_sfc_dieoff(input_sims_sfc, valid_times, 
+            vtimes = copy.deepcopy(valid_times)
+            for t in vtime_exclude:
+                if t in vtimes:
+                    vtimes.remove(t)
+            _ = mp.plot_sfc_dieoff(input_sims_sfc, vtimes, 
                                 fcst_lead=fcst_lead_dieoff, 
                                 plot_stat=plot_stat,
                                 toggle_pts=True,
@@ -144,9 +148,13 @@ for subtyp in plot_dict['upper_air'].keys():
             input_sims_ua = copy.deepcopy(sim_dict)
             for key in input_sims_ua:
                 input_sims_ua[key]['dir'] = input_sims_ua[key]['dir'].format(typ=verif_type, subtyp=subtyp)
+            vtimes = copy.deepcopy(valid_times_ua)
+            for t in vtime_exclude:
+                if t in vtimes:
+                    vtimes.remove(t)
             for lvl in var_dict['plot_lvl']:
                 var_dict_lvl['kwargs']['plot_param']['FCST_LEV'] = lvl
-                _ = mp.plot_sfc_dieoff(input_sims_ua, valid_times_ua, 
+                _ = mp.plot_sfc_dieoff(input_sims_ua, vtimes, 
                                     fcst_lead=fcst_lead_dieoff, 
                                     plot_stat=plot_stat,
                                     toggle_pts=True,
@@ -156,7 +164,7 @@ for subtyp in plot_dict['upper_air'].keys():
                                     **ci_kw_copy)
                 plt.close()
             for ftime in fcst_lead_other:
-                _ = mp.plot_ua_vprof(input_sims_ua, valid_times_ua, 
+                _ = mp.plot_ua_vprof(input_sims_ua, vtimes, 
                                     fcst_lead=ftime, 
                                     plot_stat=plot_stat,
                                     toggle_pts=True,
