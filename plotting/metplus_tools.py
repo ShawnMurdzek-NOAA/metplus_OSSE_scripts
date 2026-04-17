@@ -424,6 +424,15 @@ def compute_stats_entire_df(verif_df, verif_df2=None, line_type='sl1l2', agg=Fal
         if 'TOTAL' in avg_col:
             avg_col.remove('TOTAL')
 
+        # Edge case: If computing differences, diff fields will not be added to new_means if all
+        # values are 0 owing to the `np.unique` condition above. This block adds these fields back in
+        if verif_df2 is not None:
+            for c in diff_kw['var']:
+                if c not in new_means:
+                    avg_col.append(c)
+                    new_means[c] = np.zeros(1)
+                    new_means[c][0] = np.mean(verif_df[c].values)
+
         #cols_old = verif_df.columns
         #verif_df = compute_stats(verif_df, line_type=line_type) 
         #cols_new = verif_df.columns
@@ -495,9 +504,9 @@ def compute_stats_vert_avg(verif_df, verif_df2=None, diff_kw={'var':['RMSE']}, v
         df_list.append(verif_df2)
     red_df = []
     for df in df_list:
-        fcst_lev_num = np.array([float(s[1:]) for s in verif_df['FCST_LEV'].values])
-        fcst_lev_type = np.array([s[0] for s in verif_df['FCST_LEV'].values])
-        red_df.append(verif_df.loc[(fcst_lev_type == vcoord) & (fcst_lev_num >= vmin) & (fcst_lev_num <= vmax)].copy())
+        fcst_lev_num = np.array([float(s[1:]) for s in df['FCST_LEV'].values])
+        fcst_lev_type = np.array([s[0] for s in df['FCST_LEV'].values])
+        red_df.append(df.loc[(fcst_lev_type == vcoord) & (fcst_lev_num >= vmin) & (fcst_lev_num <= vmax)].copy())
 
     # Loop over each unique combo of FCST_LEAD, FCST_VALID_BEG, FCST_VAR, and OBTYPE
     dfs = []

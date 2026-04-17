@@ -133,7 +133,26 @@ class TestMETtools():
         mean_RMSE_diff = (np.mean(ua_met_stats['RMSE'].values) - 
                           np.mean(ua_uas_met_stats['RMSE'].values))
 
-        assert np.isclose(mean_RMSE_diff, stat_df['RMSE']) 
+        assert np.isclose(mean_RMSE_diff, stat_df['RMSE'])
+
+
+    def test_compute_stats_entire_df_diff_0(self, sample_ua_met_sl1l2):
+        # Examine a specific edge case where the difference should be 0
+        # For earlier code iterations, the RMSE column is dropped in this case
+
+        # Only retain 0-hr TMP forecasts
+        ua_subset = mt.subset_verif_df(sample_ua_met_sl1l2, 
+                                       {'FCST_VAR':'TMP', 'FCST_LEAD':0})
+
+        # Compute mean RMSE diff using compute_stats_entire_df
+        stat_df = mt.compute_stats_entire_df(ua_subset,
+                                             verif_df2=ua_subset,
+                                             line_type='sl1l2',
+                                             agg=False,
+                                             diff_kw={'var':['RMSE']},
+                                             ci=False)
+
+        assert np.isclose(0, stat_df['RMSE'])
 
 
     def test_compute_stats_entire_df_agg(self, sample_ua_met_sl1l2):
@@ -157,6 +176,73 @@ class TestMETtools():
         agg_RMSE = np.sqrt(FFBAR - 2*FOBAR + OOBAR)
 
         assert np.isclose(agg_RMSE, stat_df['RMSE']) 
+
+
+    def test_compute_stats_vert_avg(self, sample_ua_met_sl1l2):
+
+        # Only retain 0-hr TMP forecasts
+        ua_subset = mt.subset_verif_df(sample_ua_met_sl1l2, 
+                                       {'FCST_VAR':'TMP', 'FCST_LEAD':0})
+
+        # Compute mean RMSE using compute_stats_vert_avg
+        stat_df = mt.compute_stats_vert_avg(ua_subset,
+                                            verif_df2=None,
+                                            diff_kw={},
+                                            vcoord='P',
+                                            vmin=850,
+                                            vmax=1000,
+                                            line_type='sl1l2',
+                                            stats_kw={'agg':False})
+
+        # Compute mean RMSE offline
+        # Note that RMSEs are computed separately for each valid time
+        ua_met_stats = mt.compute_stats(ua_subset)
+        ua_met_stats = ua_met_stats.loc[(ua_met_stats['FCST_LEV'] == 'P1000') | 
+                                        (ua_met_stats['FCST_LEV'] == 'P925') |
+                                        (ua_met_stats['FCST_LEV'] == 'P850')]
+        mean_RMSE = []
+        for t in stat_df['FCST_VALID_BEG'].values:
+            mean_RMSE.append(np.mean(ua_met_stats.loc[ua_met_stats['FCST_VALID_BEG'] == t, 'RMSE'].values))
+        mean_RMSE = np.array(mean_RMSE)
+
+        assert np.all(np.isclose(mean_RMSE, stat_df['RMSE']))
+
+
+    def test_compute_stats_vert_avg_diff(self, sample_ua_met_sl1l2, sample_ua_uas_met_sl1l2):
+
+        # Only retain 0-hr TMP forecasts
+        ua_subset = mt.subset_verif_df(sample_ua_met_sl1l2, 
+                                       {'FCST_VAR':'TMP', 'FCST_LEAD':0})
+        ua_uas_subset = mt.subset_verif_df(sample_ua_uas_met_sl1l2, 
+                                           {'FCST_VAR':'TMP', 'FCST_LEAD':0, 'VX_MASK':'FULL'})
+
+        # Compute mean RMSE diff using compute_stats_entire_df
+        stat_df = mt.compute_stats_vert_avg(ua_subset,
+                                            verif_df2=ua_uas_subset,
+                                            diff_kw={'var':['RMSE']},
+                                            vcoord='P',
+                                            vmin=850,
+                                            vmax=1000,
+                                            line_type='sl1l2',
+                                            stats_kw={'agg':False})
+
+        # Compute mean RMSE diff offline
+        # Note that RMSEs are computed separately for each valid time
+        offline_stats = []
+        for df in [ua_subset, ua_uas_subset]:
+            tmp_stats = mt.compute_stats(df)
+            tmp_stats = tmp_stats.loc[(tmp_stats['FCST_LEV'] == 'P1000') | 
+                                      (tmp_stats['FCST_LEV'] == 'P925') |
+                                      (tmp_stats['FCST_LEV'] == 'P850')]
+            mean_RMSE = []
+            for t in stat_df['FCST_VALID_BEG'].values:
+                mean_RMSE.append(np.mean(tmp_stats.loc[tmp_stats['FCST_VALID_BEG'] == t, 'RMSE'].values))
+            offline_stats.append(np.array(mean_RMSE))
+        mean_RMSE_diff = offline_stats[0] - offline_stats[1]
+
+        print(stat_df)
+
+        assert np.all(np.isclose(mean_RMSE_diff, stat_df['RMSE']))
 
 
 """
